@@ -1,2 +1,96 @@
 @import url("/Global/global.css");
+@import url("/Global/reset.css");
+@import url("/Global/fonts.css");
+@import url("/Global/variable.css");
 @import url("../Responsive/Admin/login-responsive.css");
+
+body {
+  background-color: var(--SideBar-color);
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-container img {
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: var(--Font_Numans);
+  font-size: 70px;
+  font-weight: 400;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--Filmalisa-text-color);
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+
+  background-color: var(--Admin-sidebar-color);
+
+  border: 1px solid var(--Border-color_1);
+  border-radius: 12px;
+
+  width: 547px;
+  margin-bottom: 16px;
+}
+.form-group img {
+  margin: 20px 16px;
+}
+
+.form-group input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--Input-text-color);
+  font-size: 16px;
+  font-family: var(--Font_Poppins);
+}
+
+.login-btn {
+  padding: 16px 32px 16px 32px;
+  gap: 8px;
+  border-radius: 12px;
+  opacity: 0px;
+  background: var(--Btn-color);
+  border: 2px solid var(--SideBar-color);
+  font-family: var(--Font_Poppins);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  margin-top: 24px;
+}
+
+.form-group:hover {
+  border-color: var(--Btn-color);
+  transition: border-color 0.5s;
+}
+
+.login-btn:hover {
+  background: var(--Cards-bg-color);
+  border-color: var(--Cards-bg-color);
+  color: var(--Text-color_1);
+  transition: 0.5s;
+}

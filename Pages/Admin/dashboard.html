@@ -5,12 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="/Styles/Admin/dashboard.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="/Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Dashboard Page</h1>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li class="menu-item menu-dashboard hover2">
+          <img
+            src="/Assets/icons/dashboard/dashboard-vector.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-star.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Categories</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+      </ul>
+      <div class="logout-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Dashboard</p>
+        </div>
+        <div class="profile">
+          <img
+            src="/Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card-div">
+          <div class="card1 card-hover">
+            <p class="card-p1">Favorite actions</p>
+            <p class="card-p2">121</p>
+          </div>
+          <div class="card2 card-hover">
+            <p class="card-p1">Users</p>
+            <p class="card-p2">10</p>
+          </div>
+          <div class="card3 card-hover">
+            <p class="card-p1">Movies</p>
+            <p class="card-p2">40</p>
+          </div>
+          <div class="card4 card-hover">
+            <p class="card-p1">Comments</p>
+            <p class="card-p2">45</p>
+          </div>
+        </div>
+        <div class="card-div">
+          <div class="card5 card-hover">
+            <p class="card-p1">Categories</p>
+            <p class="card-p2">12</p>
+          </div>
+          <div class="card6 card-hover">
+            <p class="card-p1">Actors</p>
+            <p class="card-p2">20</p>
+          </div>
+          <div class="card7 card-hover">
+            <p class="card-p1">Contacts</p>
+            <p class="card-p2">20</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="/Scripts/Admin/dashboard.js"></script>
   </body>
 </html>
