@@ -1,2 +1,11 @@
 @import url("/Global/global.css");
 @import url("../Responsive/Admin/actors-responsive.css");
+
+
+div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px
+;
+}
