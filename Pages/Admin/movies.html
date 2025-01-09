@@ -89,7 +89,7 @@
         </div>
 
         <div class="profile">
-          <button class="button" id="createButton" onclick="openModal()">
+          <button class="button" id="create-btn" onclick="openModal()">
             <span class="button-span">Create</span>
           </button>
           <img
@@ -127,6 +127,62 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <div class="modal-content">
+        <div class="content-wrapper">
+          <div class="form-wrapper">
+            <form id="myForm">
+              <div class="form-group">
+                <input type="text" id="title" placeholder="title" />
+              </div>
+              <div class="form-group">
+                <textarea id="overview" placeholder="overview"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" id="cover-url" placeholder="cover URL" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="fragman"
+                  placeholder="fragman (youtube embed url)"
+                />
+              </div>
+              <div class="form-group">
+                <input type="text" id="watch-url" placeholder="watch url" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="imdb" placeholder="imdb" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="runtime" placeholder="run time minute" />
+              </div>
+              <div class="form-group">
+                <select id="category">
+                  <option value="">category</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
+                </select>
+              </div>
+              <div class="form-group horizontal-group">
+                <div class="checkbox-group">
+                  <label for="adult" class="adult">Adult</label>
+                  <input type="checkbox" id="adult" />
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="image-wrapper">
+            <img src="/Assets/images/modul-photos.svg" alt="Image" />
+          </div>
+        </div>
       </div>
     </div>
     <script src="/Scripts/Admin/movies.js"></script>
