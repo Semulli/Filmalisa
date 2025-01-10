@@ -4,6 +4,7 @@
 @import url("/Global/variable.css");
 @import url("../Responsive/Admin/movies-responsive.css");
 @import url("/Global/bootstrap.css");
+
 body {
   display: flex;
 }
