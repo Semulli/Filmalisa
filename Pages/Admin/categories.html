@@ -4,13 +4,151 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/Styles/Admin/categories.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="/Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Categories Page</h1>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li class="menu-item menu-dashboard hover1">
+          <img
+            src="/Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li class="menu-item hover2">
+          <img
+            src="/Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li class="menu-item menu-movies hover1">
+          <img
+            src="/Assets/icons/categories/movie.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text movie">Categories</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+      </ul>
+      <div class="logout-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Categories</p>
+        </div>
+
+        <div class="profile">
+          <button class="button" id="create-btn" onclick="openModal()">
+            <span class="button-span">Create</span>
+          </button>
+          <img
+            src="/Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Name</th>
+              <th class="th-border2"></th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr>
+              <td>1</td>
+              <td>Action</td>
+              <td class="td-imgIcon">
+                <img
+                  src="/Assets/icons/categories/edit-icon.png
+                "
+                  alt="edit-icon"
+                  class="img-icon"
+                />
+                <img
+                  src="/Assets/icons/categories/remove-icon.png
+              "
+                  alt="remove-icon"
+                  class="img-icon"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <form id="myForm">
+        <div class="form-group">
+          <input type="text" id="title" placeholder="Category name" />
+        </div>
+        <div class="form-group2 horizontal-group">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
     <script src="/Scripts/Admin/categories.js"></script>
   </body>
 </html>
