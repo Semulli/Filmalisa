@@ -5,7 +5,6 @@
 @import url("/Global/bootstrap.css");
 @import url("../Responsive/Admin/login-responsive.css");
 
-
 body {
   background-color: var(--SideBar-color);
   display: flex;
@@ -96,4 +95,3 @@ form {
   color: var(--Text-color_1);
   transition: 0.5s;
 }
-
