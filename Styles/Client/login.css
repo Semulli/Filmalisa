@@ -134,3 +134,12 @@ form {
   color: var(--Text-color_1);
   transition: 0.5s;
 }
+
+nav{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+a{
+  color: var(--Link-color);
+}
