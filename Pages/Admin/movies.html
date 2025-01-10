@@ -5,12 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies</title>
     <link rel="stylesheet" href="/Styles/Admin/movies.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="/Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Movies Page</h1>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li class="menu-item menu-dashboard hover1">
+          <img
+            src="/Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li class="menu-item menu-movies hover2">
+          <img
+            src="/Assets/icons/movie/movie-icon2.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text movie">Movies</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-star.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Categories</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+      </ul>
+      <div class="logout-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Movies</p>
+        </div>
+
+        <div class="profile">
+          <button class="button" id="create-btn" onclick="openModal()">
+            <span class="button-span">Create</span>
+          </button>
+          <img
+            src="/Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Title</th>
+              <th>Overview</th>
+              <th>Category</th>
+              <th class="th-border2">IMDB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="movie-title">
+                <img
+                  src="/Assets/icons/movie/movie-icon.svg"
+                  alt="Movie Poster"
+                /><br />
+                <p>Lost in Space</p>
+              </td>
+              <td>Lorem ipsum test...</td>
+              <td>Action</td>
+              <td>7.6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <div class="modal-content">
+        <div class="content-wrapper">
+          <div class="form-wrapper">
+            <form id="myForm">
+              <div class="form-group">
+                <input type="text" id="title" placeholder="title" />
+              </div>
+              <div class="form-group">
+                <textarea id="overview" placeholder="overview"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" id="cover-url" placeholder="cover URL" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="fragman"
+                  placeholder="fragman (youtube embed url)"
+                />
+              </div>
+              <div class="form-group">
+                <input type="text" id="watch-url" placeholder="watch url" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="imdb" placeholder="imdb" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="runtime" placeholder="run time minute" />
+              </div>
+              <div class="form-group">
+                <select id="category">
+                  <option value="">category</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
+                </select>
+              </div>
+              <div class="form-group horizontal-group">
+                <div class="checkbox-group">
+                  <label for="adult" class="adult">Adult</label>
+                  <input type="checkbox" id="adult" />
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="image-wrapper">
+            <img src="/Assets/images/modul-photos.svg" alt="Image" />
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="/Scripts/Admin/movies.js"></script>
   </body>
 </html>
