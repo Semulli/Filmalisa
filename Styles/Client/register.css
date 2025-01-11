@@ -1,5 +1,6 @@
 @import url("/Global/global.css");
 @import url("../Responsive/Client/register-responsive.css");
+
 .client-login {
     display: flex;
   }
@@ -143,3 +144,4 @@
   a{
     color: var(--Link-color);
   }
+

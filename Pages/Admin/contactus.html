@@ -5,12 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contactus</title>
     <link rel="stylesheet" href="/Styles/Admin/contactus.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="/Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Contactus Page</h1>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li class="menu-item menu-dashboard hover1">
+          <img
+            src="/Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-star.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Categories</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li class="menu-item menu-movies hover2">
+          <img
+            src="/Assets/icons/contactus/contactus-icon.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text movie">Contact us</span>
+        </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Actors</span>
+        </li>
+      </ul>
+      <div class="logout-div">
+        <img
+          src="/Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Contact us</p>
+        </div>
+
+        <div class="profile">
+          <img
+            src="/Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Reason</th>
+              <th class="th-border2"></th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr>
+              <td>1</td>
+              <td>JohnDoe</td>
+              <td>johndoe@gmail.com</td>
+              <td id="comment-1">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum,
+                doloribus minus! Quo, eum cum! Ipsum eligendi porro
+                exercitationem alias provident dicta nisi temporibus omnis saepe
+                repellat cumque aliquam, eum et doloribus quod. Omnis alias
+                ducimus molestiae unde laborum, voluptatibus, nesciunt aut sed
+                quisquam, quo accusamus! Ab porro maiores id officia officiis?
+                Nam voluptatum nisi odio architecto quasi modi maxime natus
+                aspernatur dignissimos numquam, blanditiis fugiat adipisci ea
+                provident tenetur tempora, rem deleniti? Cum, provident tempore
+                libero totam ab explicabo suscipit ratione veritatis, odit harum
+                praesentium, atque eos in mollitia eum sed? Nihil dolores
+                quisquam perferendis culpa, commodi numquam dolorem
+                perspiciatis.
+              </td>
+              <td class="td-imgIcon">
+                <img
+                  src="/Assets/icons/comments/comments-zoom.png"
+                  alt="zoom-icon"
+                  class="img-icon"
+                  onclick="showCommentModal('comment-1')"
+                />
+                <img
+                  src="/Assets/icons/categories/remove-icon.png"
+                  alt="remove-icon"
+                  class="img-icon"
+                  id="create-btn2"
+                  onclick="openRemoveModal()"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <div class="modal-content">
+        <div class="comment-wrapper">
+          <p id="modalComment"></p>
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------------------------------------------------------------->
+
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">
+            Are you sure you want to remove this comment?
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="/Scripts/Admin/contactus.js"></script>
   </body>
 </html>
