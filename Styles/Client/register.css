@@ -11,7 +11,7 @@
   }
   
   
-  /* sidebar */
+ 
   .side-bar {
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
       scroll-behavior: smooth;
   }
   
-  /* right part */
+ 
   
   .right-part{
    
