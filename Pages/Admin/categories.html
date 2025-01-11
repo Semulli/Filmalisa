@@ -74,6 +74,14 @@
           />
           <span class="menu-text">Contact us</span>
         </li>
+        <li class="menu-item hover1">
+          <img
+            src="/Assets/icons/dashboard/dashboard-user.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Actors</span>
+        </li>
       </ul>
       <div class="logout-div">
         <img
@@ -126,9 +134,11 @@
                 />
                 <img
                   src="/Assets/icons/categories/remove-icon.png
-              "
+                "
                   alt="remove-icon"
                   class="img-icon"
+                  id="create-btn2"
+                  onclick="openRemoveModal()"
                 />
               </td>
             </tr>
@@ -149,6 +159,25 @@
         </div>
       </form>
     </div>
+
+    <!----------------------------------------------------------------------------------->
+
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">
+            Are you sure you want to remove this comment?
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="/Scripts/Admin/categories.js"></script>
   </body>
 </html>

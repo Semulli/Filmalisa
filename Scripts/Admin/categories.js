@@ -35,3 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function openRemoveModal() {
+  const modal = document.getElementById("modal-remove");
+  modal.style.display = "flex";
+}
+
+function closeRemoveModal() {
+  const modal = document.getElementById("modal-remove");
+  modal.style.display = "none";
+}
