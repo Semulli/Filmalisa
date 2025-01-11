@@ -105,10 +105,12 @@
           <thead>
             <tr>
               <th class="th-border">ID</th>
+              <th></th>
               <th>Title</th>
               <th>Overview</th>
               <th>Category</th>
-              <th class="th-border2">IMDB</th>
+              <th>IMDB</th>
+              <th class="th-border2"></th>
             </tr>
           </thead>
           <tbody>
@@ -119,14 +121,48 @@
                   src="/Assets/icons/movie/movie-icon.svg"
                   alt="Movie Poster"
                 /><br />
-                <p>Lost in Space</p>
               </td>
+              <td>Lost in Space</td>
               <td>Lorem ipsum test...</td>
               <td>Action</td>
               <td>7.6</td>
+              <td class="td-imgIcon">
+                <img
+                  src="/Assets/icons/categories/edit-icon.png"
+                  alt="zoom-icon"
+                  style="width: 18px; height: 18px"
+                  class="img-icon"
+                  onclick=""
+                />
+                <img
+                  src="/Assets/icons/categories/remove-icon.png"
+                  alt="remove-icon"
+                  class="img-icon img-icon1"
+                  style="width: 18px; height: 18px"
+                  id="create-btn2"
+                  onclick="openRemoveModal()"
+                />
+              </td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">
+            Are you sure you want to remove this comment?
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
       </div>
     </div>
 
