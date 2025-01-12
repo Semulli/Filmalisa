@@ -4,7 +4,7 @@ document.getElementById("create-btn").addEventListener("click", function () {
 
 document.getElementById("modal").addEventListener("click", function (event) {
   if (event.target === this) {
-    document.getElementById("modal").style.display = "none";
+    closeModal();
   }
 });
 
@@ -18,7 +18,9 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
 
   inputs.forEach((input) => {
     if (input.type !== "checkbox" && input.value.trim() === "") {
-      input.setAttribute("placeholder-original", input.placeholder);
+      if (!input.hasAttribute("placeholder-original")) {
+        input.setAttribute("placeholder-original", input.placeholder);
+      }
       input.placeholder = "This field is required!";
       input.classList.add("error");
       isValid = false;
@@ -36,9 +38,9 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
         input.checked = false;
       } else {
         input.value = "";
+        input.placeholder =
+          input.getAttribute("placeholder-original") || input.placeholder;
       }
-      input.placeholder =
-        input.getAttribute("placeholder-original") || input.placeholder;
       input.classList.remove("error");
     });
 
@@ -59,9 +61,9 @@ function closeModal() {
       input.checked = false;
     } else {
       input.value = "";
+      input.placeholder =
+        input.getAttribute("placeholder-original") || input.placeholder;
     }
-    input.placeholder =
-      input.getAttribute("placeholder-original") || input.placeholder;
     input.classList.remove("error");
   });
 
@@ -78,3 +80,13 @@ inputs.forEach((input) => {
     }
   });
 });
+
+function openRemoveModal() {
+  const modal = document.getElementById("modal-remove");
+  modal.style.display = "flex";
+}
+
+function closeRemoveModal() {
+  const modal = document.getElementById("modal-remove");
+  modal.style.display = "none";
+}
