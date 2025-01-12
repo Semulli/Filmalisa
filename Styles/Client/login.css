@@ -65,7 +65,7 @@ h1{
 }
 
 h2{
-  font-family: var(--Font_Poppins);
+font-family: var(--Font_Poppins);
 font-size: 40px;
 font-weight: 500;
 line-height: 80px;
