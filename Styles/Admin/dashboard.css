@@ -151,7 +151,7 @@ body {
 
 .card-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 34px;
   padding: 80px 78px 0px 24px;
 }
