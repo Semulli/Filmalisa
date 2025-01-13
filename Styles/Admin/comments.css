@@ -111,7 +111,6 @@ body {
   color: var(--Btn-color);
 }
 
-/* test */
 .right {
   width: 100%;
   background-color: var(--Modal-color);
@@ -165,7 +164,6 @@ body {
   color: var(--Text-color_3);
 }
 
-/* table */
 .table-div {
   margin: 94px 75px 0px 24px;
 }
@@ -173,10 +171,11 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 0px auto;
   background-color: #ffffff;
   color: #000000;
   border-radius: 10px;
+  text-align: center;
 }
 
 .th-border {
@@ -188,12 +187,27 @@ table {
 
 th,
 td {
-  width: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-align: center;
+  vertical-align: middle;
+}
+
+th,
+td {
+  font-family: var(--Font_Nunito_Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.1px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  height: 48px;
 }
 
 td {
-  padding: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -201,7 +215,7 @@ td {
 }
 
 th {
-  padding: 16px;
+  padding: 8px;
   background-color: var(--TEXT-color_5);
   color: #ffffff;
 }
@@ -246,11 +260,13 @@ th:nth-child(5) {
 }
 td,
 th:nth-child(6) {
-  width: 30px;
+  text-align: center;
+  width: 45px;
 }
 td,
-th:nth-child(6) {
-  width: 30px;
+th:nth-child(7) {
+  text-align: center;
+  width: 45px;
 }
 
 .button {
@@ -279,7 +295,6 @@ th:nth-child(6) {
   transition: background-color 0.3s;
 }
 
-/* modal */
 .modal-content-2 {
   background-color: #171616;
   padding: 30px;
@@ -291,7 +306,6 @@ th:nth-child(6) {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Mesaj */
 .comment-wrapper2 {
   margin-bottom: 20px;
   font-size: 16px;
@@ -299,7 +313,6 @@ th:nth-child(6) {
   line-height: 1.5;
 }
 
-/* Modal Butonlar */
 .modal-buttons {
   display: flex;
   justify-content: center;
@@ -333,7 +346,6 @@ th:nth-child(6) {
   background-color: #5a5a5a;
 }
 
-/* Modal */
 .modal-remove {
   display: flex;
   justify-content: center;
@@ -346,7 +358,7 @@ th:nth-child(6) {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
 }
-/* modal2 */
+
 .modal {
   display: flex;
   justify-content: center;
@@ -417,7 +429,6 @@ th:nth-child(6) {
   background-color: #7a3bb5;
 }
 
-/* categories */
 .img-icon {
   width: 18px;
   height: 18px;
@@ -429,8 +440,6 @@ th:nth-child(6) {
   gap: 10px;
   height: 100%;
 }
-
-/* input text  */
 
 input[type="text"] {
   border: 1px solid #333333;

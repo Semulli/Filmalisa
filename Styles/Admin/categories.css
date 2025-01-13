@@ -188,16 +188,19 @@ table {
 
 th,
 td {
-  width: 48px;
+  font-family: var(--Font_Nunito_Sans);
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.1px;
+  letter-spacing: 0.01em;
   text-align: center;
-}
-
-td {
-  padding: 10px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  height: 48px;
 }
 
 th {
-  padding: 16px;
   background-color: var(--TEXT-color_5);
   color: #ffffff;
 }
@@ -212,14 +215,14 @@ td img {
 td:first-child {
   align-content: center;
   text-align: center;
-  width: 54px;
+  width: 94px;
 }
 
 td,
 th:nth-child(2) {
   align-content: center;
   text-align: center;
-  width: 200px;
+  width: 150px;
 }
 
 td,

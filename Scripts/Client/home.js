@@ -18,7 +18,7 @@ dots.forEach((dot, idx) => {
 });
 
 // Auto slide
-// setInterval(() => {
-//   currentIndex = (currentIndex + 1) % 3;
-//   showSlide(currentIndex);
-// }, 5000); // 5 saniyede bir geçiş
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % 3;
+  showSlide(currentIndex);
+}, 5000); // 5 saniyede bir geçiş

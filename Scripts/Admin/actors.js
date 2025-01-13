@@ -4,7 +4,6 @@ document.getElementById("create-btn").addEventListener("click", function () {
 
 document.getElementById("modal").addEventListener("click", function (event) {
   if (event.target === this) {
-    resetModal();
     document.getElementById("modal").style.display = "none";
   }
 });
