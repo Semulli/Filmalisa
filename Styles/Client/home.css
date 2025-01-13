@@ -1,7 +1,7 @@
-@import url("/Global/global.css");
-@import url("/Global/reset.css");
-@import url("/Global/fonts.css");
-@import url("/Global/variable.css");
+@import url("../../Global/global.css");
+@import url("../../Global/reset.css");
+@import url("../../Global/fonts.css");
+@import url("../../Global/variable.css");
 @import url("../Responsive/Client/home-responsive.css");
 
 body {
