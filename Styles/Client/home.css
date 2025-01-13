@@ -10,7 +10,9 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: Arial, sans-serif;
-  background-color: #1d1d1d;
+  background-color: var(--TEXT-color_8);
+
+  font-family: var(--Font_Roboto);
 }
 
 .left {
@@ -59,16 +61,14 @@ body {
 
 .right {
   flex: 1;
-  height: 648px;
-  display: flex;
-  justify-content: center;
   position: relative;
+  overflow-y: auto;
 }
 
 .carousel-container {
   position: relative;
+  height: 648px;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -89,12 +89,12 @@ body {
 
 .text-overlay {
   position: absolute;
-  top: 50%;
   margin-left: 180px;
-  transform: translateY(-50%);
   color: white;
   z-index: 2;
   max-width: 632px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .category {
@@ -110,7 +110,7 @@ body {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #0feffd;
+  color: var(--Link-hover-color);
 }
 
 .rating {
@@ -218,16 +218,6 @@ p {
   background-image: url("/Assets/images/batman.jpg");
 }
 
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  color: white;
-  z-index: 2;
-  max-width: 632px;
-}
-
 .carousel-buttons {
   position: absolute;
   bottom: 20px;
@@ -252,4 +242,200 @@ p {
 .carousel-buttons button.active {
   opacity: 1;
   transform: scale(1);
+}
+
+/* .....  */
+
+.category-section {
+  color: white;
+}
+
+.category-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.movie-card {
+  background: var(--TEXT-color_8);
+  overflow: hidden;
+  width: 292px;
+  height: 440px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-header {
+  margin: 28px 0px 18px 52px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-family: var(--Font_Roboto);
+}
+
+.category-P {
+  font-size: 35px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.chevron-icon {
+  margin-left: 20px;
+  width: 12px;
+  height: 12px;
+  border-right: 3.5px solid #ffffff;
+  border-top: 3.5px solid #ffffff;
+  transform: rotate(45deg);
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.movie-details {
+  padding: 24px;
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.movie-card:hover .movie-image {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover .movie-details {
+  transform: translateY(-20%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-category {
+  display: inline-block;
+  background: #1d1d1d80;
+  padding: 4px 8px;
+  border-radius: 0px 8px 0px 8px;
+  color: var(--Link-hover-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.movie-title {
+  margin: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding-top: 16px;
+}
+
+/* ...  */
+
+.section-container {
+  color: white;
+}
+
+.section-header {
+  display: flex;
+  margin: 60px 0px 26px 56px;
+  align-items: center;
+  color: #ffffff;
+  font-family: var(--Font_Roboto);
+}
+
+.section-title {
+  font-size: 35px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.direction-icon {
+  margin-left: 20px;
+  width: 12px;
+  height: 12px;
+  border-right: 3.5px solid #ffffff;
+  border-top: 3.5px solid #ffffff;
+  transform: rotate(45deg);
+}
+
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-card {
+  background: #1d1d1d;
+  overflow: hidden;
+  width: 504px;
+  height: 736px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.content-card:hover .content-image {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.content-card:hover .content-info {
+  transform: translateY(-20%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.content-image {
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.content-info {
+  padding: 24px;
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.content-category {
+  display: inline-block;
+  background: #1d1d1d80;
+  padding: 4px 8px;
+  border-radius: 0px 8px 0px 8px;
+  color: var(--Link-hover-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.content-title {
+  margin: 0;
+  color: white;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  padding-top: 16px;
 }
