@@ -142,9 +142,9 @@ input::placeholder {
 }
 
 input:focus {
-  background-color: rgba(0, 0, 0, 0.3); 
-  color: #fff; 
-  outline: none; 
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  outline: none;
 }
 
 .started-btn {
@@ -368,7 +368,6 @@ textarea {
   text-align: left;
 }
 
-.footer nav a:hover{
+.footer nav a:hover {
   color: var(--Cards-bg-color);
 }
-
