@@ -1,3 +1,13 @@
+window.addEventListener("load", () => {
+  const accessToken = sessionStorage.getItem("access_token");
+
+  if (!accessToken) {
+    window.location.href = "login.html";
+  }
+});
+
+// ----------------------------------------------------------------
+
 document.getElementById("create-btn").addEventListener("click", function () {
   document.getElementById("modal").style.display = "flex";
 });
