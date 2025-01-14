@@ -1,14 +1,17 @@
-const contentContainer = document.querySelector('.content-container');
-let scrollAmount = 0;
+const icons = document.querySelectorAll(".icon-img");
 
-function autoScroll() {
-  if (scrollAmount <= contentContainer.scrollWidth - contentContainer.clientWidth) {
-    contentContainer.scrollBy(2, 0); 
-    scrollAmount += 2;
-  } else {
-    contentContainer.scrollTo(0, 0); 
-    scrollAmount = 0;
-  }
-}
+document.addEventListener("mousemove", (event) => {
+  icons.forEach((icon) => {
+    const rect = icon.getBoundingClientRect();
+    const distance = Math.sqrt(
+      Math.pow(event.clientX - (rect.left + rect.width / 2), 2) +
+        Math.pow(event.clientY - (rect.top + rect.height / 2), 2)
+    );
 
-setInterval(autoScroll, 2000); 
+    if (distance < 100) {
+      icon.classList.add("active");
+    } else {
+      icon.classList.remove("active");
+    }
+  });
+});
