@@ -5,12 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorite</title>
     <link rel="stylesheet" href="../../Styles/Client/favorite.css" />
-    <link rel="icon" href="../../Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
-  <body>
-    <h1>Favorite Page</h1>
+  <body class="bg-dark text-light">
+    <main class="client-login">
+      <div class="side-bar">
+        <figure>
+          <img
+            src="../../Assets/images/logo_with_uploaded_image (1).png"
+            alt=" filmalisaLogo"
+            class="main-logo"
+          />
+        </figure>
+
+        <nav class="logo_links">
+          <a href="../Client/home.html"
+            ><img src="../../Assets/icons/Client-login/home.svg" alt="" />
+          </a>
+          <a href="../Client/search.html"
+            ><img src="../../Assets/icons/Client-login/movie.svg" alt=""
+          /></a>
+          <a href="../Client/account.html"
+            ><img src="../../Assets/icons/Client-login/tv.svg" alt=""
+          /></a>
+          <a href="../Client/favorite.html"
+            ><img
+              src="../../Assets/icons/Client-login/favorite.svg"
+              class="favorite-icon"
+              alt=""
+          /></a>
+        </nav>
+      </div>
+
+      <div class="section-container">
+        <div class="section-header">
+          <p class="section-title">Favorite movies</p>
+          <div class="direction-icon"></div>
+        </div>
+        <div class="content-container">
+          <div class="content-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-3.svg"
+              alt="Wonder Woman 1984"
+              class="content-image"
+            />
+            <div class="content-info">
+              <span class="content-category">Sci-Fi & Fantasy</span>
+              <p class="content-title">Game of thrones</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-4.svg"
+              alt="Zack Snyder's Justice League"
+              class="content-image"
+            />
+            <div class="content-info">
+              <span class="content-category">Sci-Fi & Fantasy</span>
+              <p class="content-title">The Falcon and the Winter Soldier</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="../../Scripts/Client/favorite.js"></script>
   </body>
 </html>
