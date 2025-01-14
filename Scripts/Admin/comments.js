@@ -1,3 +1,13 @@
+window.addEventListener("load", () => {
+  const accessToken = sessionStorage.getItem("access_token");
+
+  if (!accessToken) {
+    window.location.href = "login.html";
+  }
+});
+
+// ----------------------------------------------------------------
+
 function showCommentModal(commentId) {
   const commentText = document.getElementById(commentId).textContent.trim();
   const modal = document.getElementById("modal");

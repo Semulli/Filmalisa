@@ -38,6 +38,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
+  padding-bottom: 30px;
 }
 
 .form-group {
@@ -93,4 +94,22 @@ form {
   border-color: var(--Cards-bg-color);
   color: var(--Text-color_1);
   transition: 0.5s;
+}
+
+.show-icon {
+  cursor: pointer; /* Pointer göstərir */
+  transition: filter 0.3s ease; /* Yavaş keçid effekti */
+}
+
+.show-icon:hover {
+  filter: brightness(0) invert(1); /* İkonu ağ edir */
+}
+
+.password-wrapper {
+  position: relative; /* İkon və input bir konteynerdə */
+}
+
+#password {
+  width: 100%;
+  padding-right: 40px; /* İkona yer açmaq üçün padding */
 }
