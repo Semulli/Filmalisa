@@ -111,7 +111,6 @@ body {
   color: var(--Btn-color);
 }
 
-/* test */
 .right {
   width: 100%;
   background-color: var(--Modal-color);
@@ -165,7 +164,6 @@ body {
   color: var(--Text-color_3);
 }
 
-/* table */
 .table-div {
   margin: 94px 75px 0px 24px;
 }
@@ -282,7 +280,6 @@ th:nth-child(6) {
   transition: background-color 0.3s;
 }
 
-/* modal */
 .modal-content-2 {
   background-color: #171616;
   padding: 30px;
@@ -294,7 +291,6 @@ th:nth-child(6) {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Mesaj */
 .comment-wrapper2 {
   margin-bottom: 20px;
   font-size: 16px;
@@ -302,7 +298,6 @@ th:nth-child(6) {
   line-height: 1.5;
 }
 
-/* Modal Butonlar */
 .modal-buttons {
   display: flex;
   justify-content: space-around;
@@ -336,7 +331,6 @@ th:nth-child(6) {
   background-color: #5a5a5a;
 }
 
-/* Modal */
 .modal-remove {
   display: flex;
   justify-content: center;
@@ -349,7 +343,7 @@ th:nth-child(6) {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
 }
-/* modal2 */
+
 .modal {
   display: flex;
   justify-content: center;
@@ -420,7 +414,6 @@ th:nth-child(6) {
   background-color: #7a3bb5;
 }
 
-/* categories */
 .img-icon {
   width: 18px;
   height: 18px;
@@ -432,8 +425,6 @@ th:nth-child(6) {
   gap: 10px;
   height: 100%;
 }
-
-/* input text  */
 
 input[type="text"] {
   border: 1px solid #333333;

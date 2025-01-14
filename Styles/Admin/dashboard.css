@@ -6,6 +6,8 @@
 
 body {
   display: flex;
+  margin: 0;
+  height: 100vh;
 }
 .left {
   width: 250px;
@@ -110,6 +112,10 @@ body {
 .right {
   width: 100%;
   background-color: var(--Modal-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .header {
