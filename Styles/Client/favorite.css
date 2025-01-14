@@ -11,7 +11,7 @@
   height: 56px;
 }
 
-/* sidebar */
+
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -47,12 +47,9 @@
 .icon-img {
   filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
     hue-rotate(160deg) brightness(101%) contrast(102%);
-    transition: filter 0.3s ease;
+  
 }
 
-.icon-img.active {
-    filter: brightness(1.5) saturate(150%);
-  }
 
 .section-container {
   color: white;
