@@ -11,7 +11,6 @@
   height: 56px;
 }
 
-
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -25,7 +24,6 @@
   padding-top: 40px;
   backdrop-filter: blur(24px);
   gap: 64px;
-  /* background-color: var(--SideBar-color); */
 }
 
 .logo_links {
@@ -39,17 +37,32 @@
   filter: brightness(1.8);
   scroll-behavior: smooth;
 }
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
 
 .icon:hover {
   color: #1d1d1d;
+  transform: scale(1.2); 
+  filter: brightness(2); 
+  z-index: 20; 
 }
 
 .icon-img {
   filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-    hue-rotate(160deg) brightness(101%) contrast(102%);
-  
+  hue-rotate(160deg) brightness(101%) contrast(102%);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.icon:hover .icon-img {
+  transform: scale(1.2); 
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
+  hue-rotate(160deg) brightness(101%) contrast(102%);
+}
 
 .section-container {
   color: white;
@@ -60,7 +73,7 @@
 .section-header {
   display: flex;
   /* margin: 60px 0px 26px 56px; */
-
+  margin-left: 10px;
   align-items: center;
   color: #ffffff;
   font-family: var(--Font_Roboto);
@@ -69,7 +82,7 @@
 .section-title {
   font-size: 35px;
   font-weight: 500;
-  margin: 0;
+  /* margin: 0; */
   padding-top: 157px;
 }
 
@@ -80,18 +93,15 @@
 }
 
 .content-card {
-  background: #1d1d1d;
   overflow: hidden;
-  width: 504px;
-  height: 736px;
+  width: 404px;
+  height: 636px;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.content-card:hover {
+.content-image:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -119,10 +129,12 @@
 
 .content-image {
   opacity: 0.8;
-  width: 100%;
-  height: 100%;
+  height: 636px;
+  width: 404px;
   object-fit: cover;
   transition: opacity 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .content-info {
@@ -145,9 +157,8 @@
 }
 
 .content-title {
-  margin: 0;
+  font-family: var(--Font_Roboto);
   font-size: 35px;
   font-weight: 500;
   line-height: 40px;
-  /* padding-top: 16px; */
 }
