@@ -111,7 +111,6 @@ body {
   color: var(--Btn-color);
 }
 
-/* test */
 .right {
   width: 100%;
   background-color: var(--Modal-color);
@@ -165,7 +164,6 @@ body {
   color: var(--Text-color_3);
 }
 
-/* table */
 .table-div {
   margin: 94px 75px 0px 24px;
 }
@@ -258,7 +256,6 @@ th:nth-child(3) {
   transition: background-color 0.3s;
 }
 
-/* modal */
 .modal {
   display: flex;
   justify-content: center;
@@ -313,7 +310,6 @@ input[type="text"]::placeholder {
   color: #6c6c6c;
 }
 
-/* Button */
 .submit-btn {
   background-color: #9b51e0;
   color: #ffffff;
@@ -334,7 +330,6 @@ input[type="text"]::placeholder {
   background-color: #7a3bb5;
 }
 
-/* categories */
 .img-icon {
   width: 18px;
   height: 18px;
@@ -346,8 +341,6 @@ input[type="text"]::placeholder {
   align-items: center;
   justify-content: start;
 }
-
-/* input text  */
 
 input[type="text"] {
   border: 1px solid #333333;
@@ -367,7 +360,6 @@ input[type="text"].error {
   transition: background-color 0.3s ease;
 }
 
-/* modal */
 .modal-content-2 {
   background-color: #171616;
   padding: 30px;
@@ -379,7 +371,6 @@ input[type="text"].error {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Mesaj */
 .comment-wrapper2 {
   margin-bottom: 20px;
   font-size: 16px;
@@ -387,7 +378,6 @@ input[type="text"].error {
   line-height: 1.5;
 }
 
-/* Modal Butonlar */
 .modal-buttons {
   display: flex;
   justify-content: space-around;
@@ -421,7 +411,6 @@ input[type="text"].error {
   background-color: #5a5a5a;
 }
 
-/* Modal */
 .modal-remove {
   display: flex;
   justify-content: center;
