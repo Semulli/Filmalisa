@@ -6,6 +6,10 @@ window.addEventListener("load", () => {
   }
 });
 
+document.querySelector(".logout-div").addEventListener("click", () => {
+  sessionStorage.removeItem("access_token");
+  window.location.href = "../../Pages/Admin/login.html";
+});
 // ----------------------------------------------------------------
 
 function showCommentModal(commentId) {
