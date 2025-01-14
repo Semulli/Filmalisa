@@ -8,12 +8,10 @@ document.getElementById("modal").addEventListener("click", function (event) {
   }
 });
 
-// sumbit
-
 document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("title");
-  const form = document.getElementById("myForm");
-  const submitButton = document.querySelector(".submit-btn");
+  const input = document.getElementById("title"),
+    form = document.getElementById("myForm"),
+    submitButton = document.querySelector(".submit-btn");
 
   input.addEventListener("input", () => {
     if (input.value.trim() !== "") {
