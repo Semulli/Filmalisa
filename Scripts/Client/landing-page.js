@@ -13,12 +13,22 @@ function toggleAccordion(header) {
 const emailEl = document.querySelector("#emailInput");
 const btn = document.querySelector("#startBtn");
 
-btn.addEventListener("click", () => {
-  if (emailEl.value == "") {
-    emailEl.style.border = "1px solid red";
-  } else {
-    location.href = "../../Pages/Client/login.html";
-    emailEl.style.border="none"
-    emailEl.value= ""
+if (emailEl && btn) {
+  const registerURL = "https://semulli.github.io/Filmalisa/Pages/Client/register.html";
+
+  function setEmailBorder(isValid) {
+    emailEl.style.border = isValid ? "none" : "1px solid red";
   }
-});
+
+  btn.addEventListener("click", () => {
+    if (emailEl.value.trim() === "") {
+      setEmailBorder(false);
+    } else {
+      location.href = registerURL;
+      setEmailBorder(true);
+      emailEl.value = "";
+    }
+  });
+} else {
+  console.error("Email input veya buton bulunamadı.");
+}
