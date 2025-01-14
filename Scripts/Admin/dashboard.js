@@ -6,6 +6,10 @@ window.addEventListener("load", () => {
   }
 });
 
+document.querySelector(".logout-div").addEventListener("click", () => {
+  sessionStorage.removeItem("access_token");
+  window.location.href = "../../Pages/Admin/login.html";
+});
 // ----------------------------------------------------------------
 
 const API_URL = "https://api.sarkhanrahimli.dev/api/filmalisa/admin/dashboard";
@@ -14,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("access_token");
 
   if (!token) {
-    alert("Lütfen giriş yapın!");
     window.location.href = "../../Pages/Admin/login.html";
     return;
   }
