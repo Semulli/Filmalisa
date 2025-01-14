@@ -214,15 +214,15 @@ p {
 }
 
 .slide-1 {
-  background-image: url("/Assets/images/home-background.svg");
+  background-image: url("../../Assets/images/home-background.svg");
 }
 
 .slide-2 {
-  background-image: url("/Assets/images/avatar.jpg");
+  background-image: url("../../Assets/images/avatar.jpg");
 }
 
 .slide-3 {
-  background-image: url("/Assets/images/batman.jpg");
+  background-image: url("../../Assets/images/batman.jpg");
 }
 
 .carousel-buttons {
