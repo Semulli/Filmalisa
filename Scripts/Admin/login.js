@@ -1,3 +1,12 @@
+window.addEventListener("load", () => {
+  const accessToken = sessionStorage.getItem("access_token");
+
+  if (accessToken) {
+    window.location.href = "dashboard.html";
+  }
+});
+// ----------------------------------------------------------------
+
 document
   .getElementById("login-form")
   .addEventListener("submit", async (event) => {
@@ -35,11 +44,13 @@ document
 
     let hasError = false;
     if (!isValidEmail(email)) {
-      emailDiv.style.border = "2px solid red";
+      emailDiv.style.border = "1px solid red";
+      passwordDiv.style.border = "1px solid red";
       hasError = true;
     }
     if (password !== "1234") {
-      passwordDiv.style.border = "2px solid red";
+      emailDiv.style.border = "1px solid red";
+      passwordDiv.style.border = "1px solid red";
       hasError = true;
     }
     if (hasError) {
