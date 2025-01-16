@@ -95,7 +95,8 @@ function displayTable(items, tableBody, rowsPerPage, page) {
 
     const imdbValue = isNaN(parseFloat(movie.imdb)) ? "NaN" : movie.imdb;
 
-    const categoryValue = `${movie.category}`;
+    // category.name kullanımı
+    const categoryValue = movie.category?.name || "Unknown Category";
 
     newRow.innerHTML = `
       <td>${start + index + 1}</td>
