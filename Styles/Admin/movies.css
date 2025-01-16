@@ -300,11 +300,11 @@ th {
 
 .modal-content {
   background-color: #171616;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
   width: 70%;
-  max-width: 900px;
-  height: 720px;
+  max-width: 800px;
+  height: 650px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
@@ -345,7 +345,7 @@ input,
 textarea,
 select {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #475069;
   border-radius: 5px;
   background: #0000001a;
@@ -357,7 +357,7 @@ textarea::placeholder {
 }
 
 textarea {
-  height: 100px;
+  height: 80px;
   width: 100%;
   padding: 10px;
   border: 1px solid #475069;
@@ -533,7 +533,7 @@ textarea.error::placeholder,
   border: 1px solid #475069;
   border-radius: 5px;
   color: #475069;
-  padding: 10px;
+  padding: 5px;
   position: relative;
   user-select: none;
   cursor: pointer;
@@ -634,7 +634,7 @@ textarea.error::placeholder,
   border: 1px solid #475069;
   border-radius: 5px;
   color: #475069;
-  padding: 10px;
+  padding: 5px;
   position: relative;
   user-select: none;
   cursor: pointer;
