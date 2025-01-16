@@ -46,11 +46,14 @@ const categoryToggle = categoryDropdown.querySelector(".category-toggle");
 const categoryItems = categoryDropdown.querySelector("#category-items");
 const runtimeInput = document.getElementById("runtime");
 const imdbInput = document.getElementById("imdb");
+const imageElement = document.querySelector(".image-wrapper img");
+
+const defaultImage = "../../Assets/images/default.jpg";
 // ---------------------------------------------------------------------------------------------------------------------
 // Movie Table
 
 let currentPage = 1;
-const rowsPerPage = 9;
+const rowsPerPage = 7;
 let movies = [];
 
 async function fetchMovies() {
@@ -95,7 +98,6 @@ function displayTable(items, tableBody, rowsPerPage, page) {
 
     const imdbValue = isNaN(parseFloat(movie.imdb)) ? "NaN" : movie.imdb;
 
-    // category.name kullanımı
     const categoryValue = movie.category?.name || "Unknown Category";
 
     newRow.innerHTML = `
@@ -555,6 +557,11 @@ function resetForm() {
 
   dropdownToggle?.classList.remove("error");
   categoryToggle?.classList.remove("error");
+
+  const imageElement = document.querySelector(".image-wrapper img");
+  if (imageElement) {
+    imageElement.src = defaultImage;
+  }
 }
 
 function closeModal() {
@@ -565,7 +572,12 @@ function closeModal() {
   resetForm();
 }
 
+let isSubmitting = false;
+
 async function createMovie() {
+  if (isSubmitting) return;
+  isSubmitting = true;
+
   let isValid = true;
 
   const inputs = document.querySelectorAll(
@@ -667,6 +679,7 @@ async function createMovie() {
     });
 
   if (!isValid) {
+    isSubmitting = false;
     return;
   }
 
@@ -691,6 +704,7 @@ async function createMovie() {
     !movieData.actors.length
   ) {
     console.error("Eksik veya hatalı alanlar mevcut:", movieData);
+    isSubmitting = false;
     return;
   }
 
@@ -720,9 +734,10 @@ async function createMovie() {
     closeModal();
   } catch (error) {
     console.error("An error occurred while creating the movie:", error);
+  } finally {
+    isSubmitting = false;
   }
 }
-
 // ----------------------------------------------------------------------------------------------------------------
 // Create Edit buttons
 
@@ -1050,3 +1065,19 @@ function closePopup() {
     popup.style.display = "none";
   }, 500);
 }
+
+// --------------------------------------------------------------------------------------------------------
+// modul image
+
+imageElement.onerror = function () {
+  this.src = defaultImage;
+};
+
+document.getElementById("cover-url").addEventListener("input", function () {
+  const newSrc = this.value.trim();
+  if (newSrc) {
+    imageElement.src = newSrc;
+  } else {
+    imageElement.src = defaultImage;
+  }
+});
