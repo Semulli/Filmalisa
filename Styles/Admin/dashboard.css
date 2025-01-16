@@ -156,7 +156,7 @@ body {
 
 .card-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 34px;
   padding: 80px 78px 0px 24px;
 }
@@ -189,12 +189,29 @@ body {
   color: #ffffff;
 }
 
-.card1 {
+.card1,
+.card5 {
   padding: 24px;
-  width: 288px;
-  height: 203px;
+  width: 210px;
+  height: 160px;
   top: 153px;
   left: 280px;
+  gap: 0px;
+  border-radius: 30px;
+  opacity: 0px;
+  background-color: var(--BG-color_7);
+}
+
+.card2,
+.card3,
+.card4,
+.card6,
+.card7 {
+  padding: 24px;
+  width: 190px;
+  height: 160px;
+  top: 153px;
+  left: 598px;
   gap: 0px;
   border-radius: 30px;
   opacity: 0px;
@@ -202,76 +219,7 @@ body {
 }
 
 .card2 {
-  padding: 24px;
-  width: 234px;
-  height: 203px;
-  top: 153px;
-  left: 598px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
   margin-right: 3px;
-  background-color: var(--BG-color_7);
-}
-
-.card3 {
-  padding: 24px;
-  width: 234px;
-  height: 203px;
-  top: 153px;
-  left: 865px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
-  background-color: var(--BG-color_7);
-}
-
-.card4 {
-  padding: 24px;
-  width: 234px;
-  height: 203px;
-  top: 153px;
-  left: 1129px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
-  background-color: var(--BG-color_7);
-}
-
-.card5 {
-  padding: 24px;
-  width: 288px;
-  height: 203px;
-  top: 390px;
-  left: 280px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
-  background-color: var(--BG-color_7);
-}
-
-.card6 {
-  padding: 24px;
-  width: 234px;
-  height: 203px;
-  top: 390px;
-  left: 598px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
-  background-color: var(--BG-color_7);
-}
-
-.card7 {
-  padding: 24px;
-  width: 234px;
-  height: 203px;
-  top: 390px;
-  left: 865px;
-  gap: 0px;
-  border-radius: 30px;
-  opacity: 0px;
-  background-color: var(--BG-color_7);
 }
 
 .profile-name {
