@@ -326,7 +326,8 @@ th {
 }
 
 .image-wrapper img {
-  max-width: 100%;
+  width: 203px;
+  height: 283px;
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   margin-left: 84px;
@@ -423,7 +424,7 @@ textarea.error::placeholder,
 
 .modal-content-2 {
   background-color: #171616;
-  padding: 30px;
+  padding: 40px;
   border-radius: 12px;
   width: 450px;
   max-width: 90%;
@@ -441,8 +442,8 @@ textarea.error::placeholder,
 
 .modal-buttons {
   display: flex;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
 }
 
 .modal-btn {
