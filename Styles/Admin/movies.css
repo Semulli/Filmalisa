@@ -331,6 +331,7 @@ th {
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   margin-left: 84px;
+  object-fit: cover;
 }
 
 .form-wrapper {
@@ -378,6 +379,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: 5px;
+  align-content: center;
 }
 
 .submit-btn {
@@ -396,7 +398,7 @@ textarea {
 
 .adult {
   color: #475069;
-  margin-right: 18px;
+  margin-right: 10px;
 }
 
 .error:focus {
