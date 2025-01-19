@@ -45,11 +45,9 @@ document
     let hasError = false;
     if (!isValidEmail(email)) {
       emailDiv.style.border = "1px solid red";
-      passwordDiv.style.border = "1px solid red";
       hasError = true;
     }
-    if (password !== "1234") {
-      emailDiv.style.border = "1px solid red";
+    if (!password) {
       passwordDiv.style.border = "1px solid red";
       hasError = true;
     }
@@ -66,6 +64,7 @@ document
       });
 
       const data = await response.json();
+
       if (response.ok && data.result === true) {
         sessionStorage.setItem("access_token", data.data.tokens.access_token);
         emailInput.value = "";
@@ -76,7 +75,8 @@ document
         passwordDiv.style.border = "2px solid red";
         setTimeout(resetBorders, 3000);
       }
-    } catch {
+    } catch (error) {
+      console.error("Login Error:", error);
       emailDiv.style.border = "2px solid red";
       passwordDiv.style.border = "2px solid red";
       setTimeout(resetBorders, 3000);
