@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" href="../../Styles/Admin/categories.css" />
     <link
       rel="icon"
@@ -123,7 +119,7 @@
         </div>
 
         <div class="profile">
-          <button class="button" id="create-btn" onclick="openModal()">
+          <button class="button" id="create-btn">
             <span class="button-span">Create</span>
           </button>
           <img
@@ -144,31 +140,9 @@
               <th class="th-border2">Remove</th>
             </tr>
           </thead>
-          <tbody class="tbody">
-            <tr>
-              <td>1</td>
-              <td>Action</td>
-              <td>
-                <img
-                  src="../../Assets/icons/categories/edit-icon.png
-                "
-                  alt="edit-icon"
-                  class="img-icon"
-                />
-              </td>
-              <td>
-                <img
-                  src="../../Assets/icons/categories/remove-icon.png
-                "
-                  alt="remove-icon"
-                  class="img-icon"
-                  id="create-btn2"
-                  onclick="openRemoveModal()"
-                />
-              </td>
-            </tr>
-          </tbody>
+          <tbody class="tbody"></tbody>
         </table>
+        <div id="pagination-container" class="pagination-container"></div>
       </div>
     </div>
 
@@ -180,7 +154,9 @@
           <input type="text" id="title" placeholder="Category name" />
         </div>
         <div class="form-group2 horizontal-group">
-          <button type="submit" class="submit-btn">Submit</button>
+          <button type="submit" class="submit-btn" id="action-btn">
+            Submit
+          </button>
         </div>
       </form>
     </div>
@@ -201,6 +177,13 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------->
+
+    <div class="popup" id="popup">
+      <p id="pop-p">Bu bir popup mesajıdır!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
 
     <script src="../../Scripts/Admin/categories.js"></script>

@@ -107,6 +107,7 @@ function displayTable(items, tableBody, rowsPerPage, page) {
           src="${movie.cover_url || "../../Assets/images/default.jpg"}"
           style="width: 29px; height: 39px"
           alt="Movie Poster"
+          class="image-default-1"
           onerror="this.onerror=null; this.src='../../Assets/images/default.jpg';"
         />
       </td>
