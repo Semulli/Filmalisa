@@ -334,6 +334,10 @@ th {
   object-fit: cover;
 }
 
+.image-default-1 {
+  object-fit: cover;
+}
+
 .form-wrapper {
   width: 60%;
   margin-top: 10px;
