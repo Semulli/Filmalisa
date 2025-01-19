@@ -5,12 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account</title>
     <link rel="stylesheet" href="../../Styles/Client/account.css" />
-    <link rel="icon" href="../../Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link
+      rel="icon"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
-  <body>
-    <h1>Account Page</h1>
+  <body class="bg-dark text-light">
+    <main class="account-body">
+      <div class="side-bar">
+        <figure>
+          <img
+            src="../../Assets/images/logo_with_uploaded_image (1).png"
+            alt=" filmalisaLogo"
+            class="main-logo"
+          />
+        </figure>
+
+        <nav class="logo_links">
+          <a href="./home.html" class="icon"
+            ><img src="../../Assets/icons/Client-login/home.svg" alt="" />
+          </a>
+          <a href="./search.html" class="icon"
+            ><img src="../../Assets/icons/Client-login/movie.svg" alt=""
+          /></a>
+          <a href="./account.html" class="icon"
+            ><img src="../../Assets/icons/Client-login/tv.svg" alt="" class="icon-img"
+          /></a>
+          <a href="./favorite.html" class="icon"
+            ><img src="../../Assets/icons/Client-login/favorite.svg" alt=""
+          /></a>
+        </nav>
+      </div>
+      <div class="right-part">
+        <figure>
+          <img src="../../Assets/icons/account/profile.svg" alt="" />
+        </figure>
+        <form>
+          <div class="form-group">
+            <img
+              src="../../Assets/icons/Client-login/left-icon.svg"
+              alt="fullname"
+              class="input-icon"
+            />
+            <input type="text" placeholder="profile image url" required />
+          </div>
+          <div class="form-group">
+            <img
+              src="../../Assets/icons/Client-login/left-icon.svg"
+              alt="fullname"
+              class="input-icon"
+            />
+            <input type="text" placeholder="fullname" required />
+          </div>
+          <div class="form-group">
+            <div>
+              <img
+                src="../../Assets/icons/login/login_messages.svg"
+                alt="username"
+                class="input-icon"
+              />
+            </div>
+            <input type="text" id="email" placeholder="rahimlisarkhan@gmail.com" readonly />
+          </div>
+          <div class="form-group">
+            <img
+              src="../../Assets/icons/Client-login/lpassword-icon.svg"
+              alt="password"
+              class="input-icon"
+            />
+            <input type="password" placeholder="password" required />
+            <img
+              src="../../Assets/icons/Client-login/right-icon.svg"
+              alt="password-right"
+              class="input-icon"
+            />
+          </div>
+
+          <button type="submit" class="register-btn">Save</button>
+        </form>
+      </div>
+    </main>
     <script src="../../Scripts/Client/account.js"></script>
   </body>
 </html>
