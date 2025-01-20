@@ -850,6 +850,14 @@ function fillFormWithMovieDetails(movie) {
   document.getElementById("runtime").value = movie.run_time_min || "";
   document.getElementById("adult").checked = movie.adult || false;
 
+  const imageElement = document.querySelector(".image-wrapper img");
+  if (imageElement) {
+    imageElement.src = movie.cover_url || defaultImage;
+    imageElement.onerror = function () {
+      this.src = defaultImage;
+    };
+  }
+
   const categoryToggle = document.querySelector(".category-toggle");
   if (categoryToggle) {
     categoryToggle.textContent = movie.category
