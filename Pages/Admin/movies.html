@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies</title>
-    <link rel="stylesheet" href="/Styles/Admin/movies.css" />
+    <link rel="stylesheet" href="../../Styles/Admin/movies.css" />
     <link
       rel="icon"
-      href="/Assets/images/logo_with_uploaded_image (1).png"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
       type="image/png"
     />
   </head>
@@ -15,65 +15,95 @@
     <div class="left">
       <div class="logo-div">
         <img
-          src="/Assets/icons/dashboard/dashboard-logo.svg"
+          src="../../Assets/icons/dashboard/dashboard-logo.svg"
           alt="Filmalisa Logo"
           class="logo-icon"
         />
         <span class="logo-left">filmalisa</span>
       </div>
       <ul class="menu">
-        <li class="menu-item menu-dashboard hover1">
+        <li
+          class="menu-item menu-dashboard hover1"
+          onclick="window.location.href='../../Pages/Admin/dashboard.html'"
+        >
           <img
-            src="/Assets/icons/movie/movie-icon3.svg"
+            src="../../Assets/icons/movie/movie-icon3.svg"
             alt="Dashboard Icon"
             class="menu-icon"
           />
           <span class="menu-text dashboard">Dashboard</span>
         </li>
-        <li class="menu-item menu-movies hover2">
+        <li
+          class="menu-item menu-movies hover2"
+          onclick="window.location.href='../../Pages/Admin/movies.html'"
+        >
           <img
-            src="/Assets/icons/movie/movie-icon2.svg"
+            src="../../Assets/icons/movie/movie-icon2.svg"
             alt="Movies Icon"
             class="menu-icon"
           />
           <span class="menu-text movie">Movies</span>
         </li>
-        <li class="menu-item hover1">
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/categories.html'"
+        >
           <img
-            src="/Assets/icons/dashboard/dashboard-star.svg"
+            src="../../Assets/icons/dashboard/dashboard-star.svg"
             alt="Categories Icon"
             class="menu-icon"
           />
           <span class="menu-text">Categories</span>
         </li>
-        <li class="menu-item hover1">
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/users.html'"
+        >
           <img
-            src="/Assets/icons/dashboard/dashboard-user.svg"
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
             alt="Users Icon"
             class="menu-icon"
           />
           <span class="menu-text">Users</span>
         </li>
-        <li class="menu-item hover1">
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/comments.html'"
+        >
           <img
-            src="/Assets/icons/dashboard/dashboard-comments.svg"
+            src="../../Assets/icons/dashboard/dashboard-comments.svg"
             alt="Comments Icon"
             class="menu-icon"
           />
           <span class="menu-text">Comments</span>
         </li>
-        <li class="menu-item hover1">
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/contactus.html'"
+        >
           <img
-            src="/Assets/icons/dashboard/dashboard-contacts.svg"
+            src="../../Assets/icons/dashboard/dashboard-contacts.svg"
             alt="Contact Icon"
             class="menu-icon"
           />
           <span class="menu-text">Contact us</span>
         </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/actors.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
+            alt="Actors Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Actors</span>
+        </li>
       </ul>
+
       <div class="logout-div">
         <img
-          src="/Assets/icons/dashboard/dashboard-logout.svg"
+          src="../../Assets/icons/dashboard/dashboard-logout.svg"
           alt="Logout Icon"
           class="logout-icon"
         />
@@ -89,11 +119,11 @@
         </div>
 
         <div class="profile">
-          <button class="button" id="create-btn" onclick="openModal()">
+          <button class="button" id="create-btn">
             <span class="button-span">Create</span>
           </button>
           <img
-            src="/Assets/images/profile.svg"
+            src="../../Assets/images/profile.svg"
             alt="Profile Picture"
             class="profile-pic"
           />
@@ -104,33 +134,39 @@
         <table>
           <thead>
             <tr>
-              <th class="th-border">ID</th>
+              <th>ID</th>
+              <th></th>
               <th>Title</th>
               <th>Overview</th>
               <th>Category</th>
-              <th class="th-border2">IMDB</th>
+              <th>IMDB</th>
+              <th>Edit</th>
+              <th>Remove</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td class="movie-title">
-                <img
-                  src="/Assets/icons/movie/movie-icon.svg"
-                  alt="Movie Poster"
-                /><br />
-                <p>Lost in Space</p>
-              </td>
-              <td>Lorem ipsum test...</td>
-              <td>Action</td>
-              <td>7.6</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
+        <div class="pagination-container"></div>
       </div>
     </div>
 
-    <!-- modal -->
+    <!-- modal 1 -->
+
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">Are you sure you want to remove this row?</p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal 2 -->
 
     <div class="modal" id="modal" style="display: none">
       <div class="modal-content">
@@ -157,34 +193,63 @@
                 <input type="text" id="watch-url" placeholder="watch url" />
               </div>
               <div class="form-group">
-                <input type="text" id="imdb" placeholder="imdb" />
+                <input type="text" id="imdb" placeholder="imdb" maxlength="3" />
               </div>
               <div class="form-group">
-                <input type="text" id="runtime" placeholder="run time minute" />
+                <input
+                  type="text"
+                  id="runtime"
+                  placeholder="run time minute"
+                  maxlength="4"
+                />
               </div>
               <div class="form-group">
-                <select id="category">
-                  <option value="">category</option>
-                  <option value="Action">Action</option>
-                  <option value="Drama">Drama</option>
-                </select>
+                <div class="dropdown">
+                  <div class="dropdown-togglee">
+                    actors <span id="actors-span"></span>
+                  </div>
+                  <div class="dropdown-items" id="dropdown-items">
+                    <div class="dropdown-item" data-value="Leonardo">
+                      Leonardo
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="category-dropdown">
+                  <div class="category-toggle">
+                    category <span id="category-span"></span>
+                  </div>
+                  <div class="category-items" id="category-items"></div>
+                </div>
               </div>
               <div class="form-group horizontal-group">
                 <div class="checkbox-group">
                   <label for="adult" class="adult">Adult</label>
                   <input type="checkbox" id="adult" />
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn" id="submit-btn">
+                  Submit
+                </button>
               </div>
             </form>
           </div>
 
           <div class="image-wrapper">
-            <img src="/Assets/images/modul-photos.svg" alt="Image" />
+            <img src="../../Assets/images/default.jpg" alt="Image" />
           </div>
         </div>
       </div>
     </div>
-    <script src="/Scripts/Admin/movies.js"></script>
+
+    <!-- ------------------------------------------------------>
+    <!-- test  -->
+
+    <div class="popup" id="popup">
+      <p id="pop-p">Bu bir popup mesajıdır!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <script src="../../Scripts/Admin/movies.js"></script>
   </body>
 </html>

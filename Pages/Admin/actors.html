@@ -1,18 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Actors</title>
-    <link rel="stylesheet" href="/Styles/Admin/actors.css">
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-</head>
-<body>
-    <h1>Actors Page</h1>
+    <link rel="stylesheet" href="../../Styles/Admin/actors.css" />
+    <link
+      rel="icon"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item menu-dashboard hover1"
+          onclick="window.location.href='../../Pages/Admin/dashboard.html'"
+        >
+          <img
+            src="../../Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/movies.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/categories.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-star.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Categories</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/users.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/comments.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/contactus.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+        <li
+          class="menu-item menu-movies hover2"
+          onclick="window.location.href='../../Pages/Admin/actors.html'"
+        >
+          <img
+            src="../../Assets/icons/users/user-icon.svg"
+            alt="Actors Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text movie">Actors</span>
+        </li>
+      </ul>
 
+      <div class="logout-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
 
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Actors</p>
+        </div>
 
-    
-    <script src="/Scripts/Admin/actors.js"></script>
-</body>
+        <div class="profile">
+          <button class="button" id="create-btn" onclick="openModal()">
+            <span class="button-span">Create</span>
+          </button>
+          <img
+            src="../../Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Edit</th>
+              <th class="th-border2">Remove</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr>
+              <td>1</td>
+              <td>Tony</td>
+              <td>Stark</td>
+              <td>
+                <img
+                  src="../../Assets/icons/categories/edit-icon.png
+                  "
+                  alt="edit-icon"
+                  class="img-icon"
+                />
+              </td>
+              <td>
+                <img
+                  src="../../Assets/icons/categories/remove-icon.png
+                "
+                  alt="remove-icon"
+                  class="img-icon"
+                  id="create-btn2"
+                  onclick="openRemoveModal()"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <form id="myForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="name" />
+          <input type="text" id="surname" placeholder="surname" />
+          <input type="text" id="imgURL" placeholder="img URL" />
+        </div>
+        <div class="form-group2 horizontal-group">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <!----------------------------------------------------------------------------------->
+
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">
+            Are you sure you want to remove this comment?
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../Scripts/Admin/actors.js"></script>
+  </body>
 </html>

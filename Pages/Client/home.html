@@ -4,13 +4,137 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="/Styles/Client/home.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link rel="stylesheet" href="../../Styles/Client/home.css" />
   </head>
   <body>
-    <h1>Home Page</h1>
-    <script src="/Scripts/Client/home.js"></script>
+    <div class="left">
+      <div class="logo-div">
+        <img src="../../Assets/icons/user-home/logo-user.svg" alt="Logo" />
+      </div>
+      <div class="sidebar">
+        <a href="#" class="icon">
+          <img src="../../Assets/icons/user-home/icon-1.svg" alt="Home" />
+        </a>
+        <a href="#" class="icon">
+          <img src="../../Assets/icons/user-home/icon-2.svg" alt="Movies" />
+        </a>
+        <a href="#" class="icon">
+          <img src="../../Assets/icons/user-home/icon-3.svg" alt="TV Shows" />
+        </a>
+        <a href="#" class="icon">
+          <img src="../../Assets/icons/user-home/icon-4.svg" alt="Favorites" />
+        </a>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="slide slide-1">
+            <div class="text-overlay">
+              <span class="category">Science Fiction</span>
+              <h1>Godzilla vs. Kong</h1>
+              <p>
+                In a time when monsters walk the Earth, humanity’s fight for its
+                future sets Godzilla and Kong on a collision course that will
+                see the two most powerful forces of nature collide.
+              </p>
+              <button class="watch-btn">Watch Now</button>
+            </div>
+          </div>
+          <div class="slide slide-2">
+            <div class="text-overlay">
+              <span class="category">Adventure</span>
+              <h1>Avatar: The Way of Water</h1>
+              <p>
+                Return to Pandora and witness a stunning tale of adventure and
+                family amidst the majestic oceans of the alien world.
+              </p>
+              <button class="watch-btn">Watch Now</button>
+            </div>
+          </div>
+          <div class="slide slide-3">
+            <div class="text-overlay">
+              <span class="category">Action</span>
+              <h1>The Dark Knight</h1>
+              <p>
+                Batman raises the stakes in his war on crime, facing a criminal
+                mastermind known as the Joker.
+              </p>
+              <button class="watch-btn">Watch Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-buttons">
+          <button class="dot active" data-slide="0"></button>
+          <button class="dot" data-slide="1"></button>
+          <button class="dot" data-slide="2"></button>
+        </div>
+      </div>
+
+      <div class="category-section">
+        <div class="category-header">
+          <p class="category-P">Action</p>
+          <div class="chevron-icon"></div>
+        </div>
+        <div class="category-card">
+          <div class="movie-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-1.svg"
+              alt="Wonder Woman 1984"
+              class="movie-image"
+            />
+            <div class="movie-details">
+              <span class="movie-category">Fantasy</span>
+              <p class="movie-title">Wonder Woman 1984</p>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-2.svg"
+              alt="Wonder Woman 1984"
+              class="movie-image"
+            />
+            <div class="movie-details">
+              <span class="movie-category">Fantasy</span>
+              <p class="movie-title">Zack Snyder's Justice League</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-container">
+        <div class="section-header">
+          <p class="section-title">Comedy</p>
+          <div class="direction-icon"></div>
+        </div>
+        <div class="content-container">
+          <div class="content-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-3.svg"
+              alt="Wonder Woman 1984"
+              class="content-image"
+            />
+            <div class="content-info">
+              <span class="content-category">Sci-Fi & Fantasy</span>
+              <p class="content-title">Game of thrones</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img
+              src="../../Assets/icons/user-home/image-film-4.svg"
+              alt="Zack Snyder's Justice League"
+              class="content-image"
+            />
+            <div class="content-info">
+              <span class="content-category">Sci-Fi & Fantasy</span>
+              <p class="content-title">The Falcon and the Winter Soldier</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../Scripts/Client/home.js"></script>
   </body>
 </html>

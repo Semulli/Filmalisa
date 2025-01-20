@@ -1,10 +1,8 @@
-@import url("/Global/global.css");
-@import url("/Global/reset.css");
-@import url("/Global/fonts.css");
-@import url("/Global/variable.css");
-@import url("/Global/bootstrap.css");
+@import url("../../Global/global.css");
+@import url("../../Global/reset.css");
+@import url("../../Global/font.css");
+@import url("../../Global/variable.css");
 @import url("../Responsive/Admin/login-responsive.css");
-
 
 body {
   background-color: var(--SideBar-color);
@@ -26,7 +24,7 @@ body {
 
 h1 {
   font-family: var(--Font_Numans);
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 400;
   line-height: 80px;
   letter-spacing: -0.02em;
@@ -40,6 +38,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
+  padding-bottom: 30px;
 }
 
 .form-group {
@@ -51,11 +50,11 @@ form {
   border: 1px solid var(--Border-color_1);
   border-radius: 12px;
 
-  width: 547px;
+  width: 500px;
   margin-bottom: 16px;
 }
 .form-group img {
-  margin: 20px 16px;
+  margin: 16px 12px;
 }
 
 .form-group input {
@@ -66,10 +65,23 @@ form {
   color: var(--Input-text-color);
   font-size: 16px;
   font-family: var(--Font_Poppins);
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#email {
+  max-width: 400px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--Admin-sidebar-color) inset;
+  -webkit-text-fill-color: var(--Input-text-color);
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .login-btn {
-  padding: 16px 32px 16px 32px;
+  padding: 16px 28px 16px 28px;
   gap: 8px;
   border-radius: 12px;
   opacity: 0px;
@@ -97,3 +109,20 @@ form {
   transition: 0.5s;
 }
 
+.show-icon {
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.show-icon:hover {
+  filter: brightness(0) invert(1);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+#password {
+  width: 100%;
+  padding-right: 40px;
+}

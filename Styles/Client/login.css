@@ -1,4 +1,4 @@
-@import url("/Global/global.css");
+@import url("../../Global/global.css");
 @import url("../Responsive/Client/login-responsive.css");
 
 .main-logo {
@@ -28,14 +28,17 @@ h1 {
   color: var(--Filmalisa-text-color);
 }
 
-h2 {
-  font-family: var(--Font_Poppins);
-  font-size: 40px;
-  font-weight: 500;
-  line-height: 80px;
-  letter-spacing: -0.02em;
-  text-align: center;
-  text-decoration-skip-ink: none;
+
+h2{
+font-family: var(--Font_Poppins);
+font-size: 40px;
+font-weight: 500;
+line-height: 80px;
+letter-spacing: -0.02em;
+text-align: center;
+text-decoration-skip-ink: none;
+
+
 }
 
 form {

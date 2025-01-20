@@ -4,13 +4,150 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Users</title>
-    <link rel="stylesheet" href="/Styles/Admin/users.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link rel="stylesheet" href="../../Styles/Admin/users.css" />
+    <link
+      rel="icon"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Users Page</h1>
-    <script src="/Scripts/Admin/users.js"></script>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item dashboard-margin hover1"
+          onclick="window.location.href='../../Pages/Admin/dashboard.html'"
+        >
+          <img
+            src="../../Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Dashboard</span>
+        </li>
+        <li
+          class="menu-item menu-movies hover1"
+          onclick="window.location.href='../../Pages/Admin/movies.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/categories.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-star.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Categories</span>
+        </li>
+        <li
+          class="menu-item menu-dashboard hover2"
+          onclick="window.location.href='../../Pages/Admin/users.html'"
+        >
+          <img
+            src="../../Assets/icons/users/user-icon.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Users</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/comments.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/contactus.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/actors.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
+            alt="Actors Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Actors</span>
+        </li>
+      </ul>
+
+      <div class="logout-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Users</p>
+        </div>
+        <div class="profile">
+          <img
+            src="../../Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th class="th-border2">Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td>johndoe@gmail.com</td>
+              <td>asdasd123321</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="../../Scripts/Admin/users.js"></script>
   </body>
 </html>

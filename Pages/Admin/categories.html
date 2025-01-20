@@ -4,13 +4,188 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
-    <link rel="stylesheet" href="/Styles/Admin/categories.css" />
-    <link rel="icon" href="/Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <link rel="stylesheet" href="../../Styles/Admin/categories.css" />
+    <link
+      rel="icon"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Categories Page</h1>
-    <script src="/Scripts/Admin/categories.js"></script>
+    <div class="left">
+      <div class="logo-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logo.svg"
+          alt="Filmalisa Logo"
+          class="logo-icon"
+        />
+        <span class="logo-left">filmalisa</span>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item menu-dashboard hover1"
+          onclick="window.location.href='../../Pages/Admin/dashboard.html'"
+        >
+          <img
+            src="../../Assets/icons/movie/movie-icon3.svg"
+            alt="Dashboard Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text dashboard">Dashboard</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/movies.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-movies.svg"
+            alt="Movies Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Movies</span>
+        </li>
+        <li
+          class="menu-item menu-movies hover2"
+          onclick="window.location.href='../../Pages/Admin/categories.html'"
+        >
+          <img
+            src="../../Assets/icons/categories/movie.svg"
+            alt="Categories Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text movie">Categories</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/users.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
+            alt="Users Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Users</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/comments.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-comments.svg"
+            alt="Comments Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Comments</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/contactus.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-contacts.svg"
+            alt="Contact Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Contact us</span>
+        </li>
+        <li
+          class="menu-item hover1"
+          onclick="window.location.href='../../Pages/Admin/actors.html'"
+        >
+          <img
+            src="../../Assets/icons/dashboard/dashboard-user.svg"
+            alt="Actors Icon"
+            class="menu-icon"
+          />
+          <span class="menu-text">Actors</span>
+        </li>
+      </ul>
+
+      <div class="logout-div">
+        <img
+          src="../../Assets/icons/dashboard/dashboard-logout.svg"
+          alt="Logout Icon"
+          class="logout-icon"
+        />
+        <span class="logout-left hover3">Logout</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="header">
+        <div>
+          <h1>Hi Admin</h1>
+          <p>Categories</p>
+        </div>
+
+        <div class="profile">
+          <button class="button" id="create-btn">
+            <span class="button-span">Create</span>
+          </button>
+          <img
+            src="../../Assets/images/profile.svg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <span class="profile-name">Admin</span>
+        </div>
+      </div>
+      <div class="table-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-border">ID</th>
+              <th>Name</th>
+              <th>Edit</th>
+              <th class="th-border2">Remove</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"></tbody>
+        </table>
+        <div id="pagination-container" class="pagination-container"></div>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <div class="modal" id="modal" style="display: none">
+      <form id="myForm">
+        <div class="form-group">
+          <input type="text" id="title" placeholder="Category name" />
+        </div>
+        <div class="form-group2 horizontal-group">
+          <button type="submit" class="submit-btn" id="action-btn">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!----------------------------------------------------------------------------------->
+
+    <div class="modal-remove" id="modal-remove" style="display: none">
+      <div class="modal-content-2">
+        <div class="comment-wrapper2">
+          <p id="modalComment-2">
+            Are you sure you want to remove this comment?
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button id="yes-btn" class="modal-btn">Yes</button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------->
+
+    <div class="popup" id="popup">
+      <p id="pop-p">Bu bir popup mesajıdır!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <script src="../../Scripts/Admin/categories.js"></script>
   </body>
 </html>

@@ -4,46 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="/Styles/Admin/login.css" />
+    <link rel="stylesheet" href="../../Styles/Admin/login.css" />
     <link
       rel="icon"
-      href="/Assets/images/logo_with_uploaded_image (1).png"
+      href="../../Assets/images/logo_with_uploaded_image (1).png"
       type="image/png"
     />
   </head>
   <body>
     <div class="login-container">
-      <img src="/Assets/images/Login_logo.svg" alt="Logo" />
+      <img src="../../Assets/images/Login_logo.svg" alt="Logo" />
       <h1>Admin</h1>
-      <form>
+      <form id="login-form">
         <div class="form-group">
           <div>
             <img
-              src="/Assets/icons/login/login_messages.svg"
+              src="../../Assets/icons/login/login_messages.svg"
               alt="username"
               class="input-icon"
             />
           </div>
-          <div>
-            <input type="text" placeholder="username" required />
-          </div>
+          <input type="text" id="email" placeholder="email" required />
         </div>
         <div class="form-group">
           <img
-            src="/Assets/icons/login/login_password.svg"
+            src="../../Assets/icons/login/login_password.svg"
             alt="password"
             class="input-icon"
           />
-          <input type="password" placeholder="password" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="password"
+            required
+          />
           <img
-            src="/Assets/icons/login/login_password_right.svg"
+            src="../../Assets/icons/login/login_password_right.svg"
             alt="password-right"
-            class="input-icon"
+            class="input-icon show-icon"
+            id="toggle-password"
           />
         </div>
         <button type="submit" class="login-btn">login</button>
       </form>
     </div>
-    <script src="/Scripts/Admin/login.js"></script>
+    <script src="../../Scripts/Admin/login.js"></script>
   </body>
 </html>
