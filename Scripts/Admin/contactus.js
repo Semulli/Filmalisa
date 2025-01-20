@@ -66,37 +66,6 @@ let currentPage = 1;
 const rowsPerPage = 7;
 let categories = [];
 
-// async function addSampleData() {
-//   try {
-//     const response = await fetch(
-//       "https://api.sarkhanrahimli.dev/api/filmalisa/contact",
-//       {
-//         method: "POST",
-//         headers: {
-//           Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           full_name: "John Doe",
-//           email: "john.doe@example.com",
-//           reason: "Sample reason",
-//         }),
-//       }
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.log("Error adding data:", error);
-//   }
-// }
-
-// addSampleData();
-
 async function deleteClientComplaint(id) {
   try {
     const response = await fetch(
@@ -220,30 +189,26 @@ const displayTable = (items, tableBody, rowsPerPage, page) => {
 };
 
 const setupPagination = (items, container, rowsPerPage) => {
-  container.innerHTML = ""; // Mevcut düğmeleri temizle
+  container.innerHTML = "";
 
   const pageCount = Math.ceil(items.length / rowsPerPage);
 
-  // Dinamik olarak başlangıç ve bitiş sayfa numaralarını hesapla
-  let startPage = Math.max(1, currentPage - 1); // Mevcut sayfadan bir önceki
-  let endPage = Math.min(pageCount, startPage + 2); // Maksimum 3 düğme göster
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = Math.min(pageCount, startPage + 2);
 
-  // Eğer toplam sayfa sayısı 3'ten azsa başlangıç ve bitiş sayfasını ayarla
   if (pageCount < 3) {
     startPage = 1;
     endPage = pageCount;
   }
 
-  // 3 düğmeyi oluştur ve her zaman sayfa numaralarını göster
   for (let i = 0; i < 3; i++) {
-    const pageNumber = startPage + i; // Sayfa numarası
+    const pageNumber = startPage + i;
 
     const button = document.createElement("button");
     button.classList.add("pagination-btn");
     button.textContent = pageNumber;
 
     if (pageNumber > pageCount) {
-      // Sayfa mevcut değilse devre dışı bırak
       button.disabled = true;
     } else {
       button.disabled = false;
@@ -263,7 +228,6 @@ const setupPagination = (items, container, rowsPerPage) => {
 function showPopup() {
   const popup = document.getElementById("popup");
   popup.classList.add("show");
- 
 
   setTimeout(() => {
     closePopup();

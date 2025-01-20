@@ -372,14 +372,7 @@ th:nth-child(6) {
   flex-direction: column;
 }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-}
+
 
 .comment-wrapper {
   max-height: 60vh;
