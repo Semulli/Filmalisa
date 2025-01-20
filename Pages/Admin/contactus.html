@@ -140,7 +140,7 @@
             </tr>
           </thead>
           <tbody class="tbody">
-            <tr>
+            <!-- <tr>
               <td>1</td>
               <td>JohnDoe</td>
               <td>johndoe@gmail.com</td>
@@ -176,9 +176,10 @@
                   onclick="openRemoveModal()"
                 />
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
+        <div id="pagination-container" class="pagination-container"></div>
       </div>
     </div>
 
@@ -203,13 +204,16 @@
         </div>
         <div class="modal-buttons">
           <button id="yes-btn" class="modal-btn">Yes</button>
-          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">
-            No
-          </button>
+          <button id="no-btn" class="modal-btn" onclick="closeRemoveModal()">No</button>
         </div>
       </div>
     </div>
 
+
+    <div class="popup" id="popup">
+      <p id="pop-p"></p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
     <script src="../../Scripts/Admin/contactus.js"></script>
   </body>
 </html>
