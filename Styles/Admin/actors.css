@@ -1,6 +1,6 @@
 @import url("../../Global/global.css");
 @import url("../../Global/reset.css");
-@import url("../../Global/fonts.css");
+@import url("../../Global/font.css");
 @import url("../../Global/variable.css");
 @import url("../Responsive/Admin/actors-responsive.css");
 @import url("../../Global/bootstrap.css");
@@ -169,7 +169,7 @@ body {
 }
 
 table {
-  width: 40%;
+  width: 60%;
   border-collapse: collapse;
   margin: 20px 0;
   background-color: #ffffff;
@@ -213,33 +213,39 @@ td img {
 td:first-child {
   align-content: center;
   text-align: center;
-  width: 94px;
+  width: 150px;
 }
 
 td,
 th:nth-child(2) {
   align-content: center;
   text-align: center;
-  width: 150px;
+  width: 20px;
 }
 
 td,
 th:nth-child(3) {
   align-content: center;
   text-align: center;
-  width: 200px;
+  width: 400px;
 }
 td,
 th:nth-child(4) {
   align-content: center;
   text-align: center;
-  width: 80px;
+  width: 400px;
 }
 td,
 th:nth-child(5) {
   align-content: center;
   text-align: center;
-  width: 80px;
+  width: 150px;
+}
+td,
+th:nth-child(6) {
+  align-content: center;
+  text-align: center;
+  width: 150px;
 }
 
 .button {
@@ -438,4 +444,51 @@ input[type="text"].error {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
+}
+
+/*--------------------------------------------------------------*/
+/* Test */
+
+.pagination-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.pagination-btn {
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-btn.active {
+  background-color: var(--Btn-color);
+  color: #fff;
+  border-color: var(--Btn-color);
+}
+
+.pagination-btn.disabled {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(.disabled) {
+  background-color: var(--Cards-bg-color);
+  color: #fff;
+}
+
+.image-default-1 {
+  object-fit: cover;
 }
