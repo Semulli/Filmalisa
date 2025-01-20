@@ -137,6 +137,8 @@ async function deleteClientComplaint(id) {
 document.getElementById("yes-btn").addEventListener("click", async () => {
   if (currentDeleteId) {
     await deleteClientComplaint(currentDeleteId);
+    document.getElementById("pop-p").textContent =
+      "ClientComplaint is removed successfully!";
     showPopup();
     closeRemoveModal();
   }
@@ -218,37 +220,54 @@ const displayTable = (items, tableBody, rowsPerPage, page) => {
 };
 
 const setupPagination = (items, container, rowsPerPage) => {
-  container.innerHTML = "";
+  container.innerHTML = ""; // Mevcut düğmeleri temizle
 
   const pageCount = Math.ceil(items.length / rowsPerPage);
 
-  for (let i = 1; i <= pageCount; i++) {
+  // Dinamik olarak başlangıç ve bitiş sayfa numaralarını hesapla
+  let startPage = Math.max(1, currentPage - 1); // Mevcut sayfadan bir önceki
+  let endPage = Math.min(pageCount, startPage + 2); // Maksimum 3 düğme göster
+
+  // Eğer toplam sayfa sayısı 3'ten azsa başlangıç ve bitiş sayfasını ayarla
+  if (pageCount < 3) {
+    startPage = 1;
+    endPage = pageCount;
+  }
+
+  // 3 düğmeyi oluştur ve her zaman sayfa numaralarını göster
+  for (let i = 0; i < 3; i++) {
+    const pageNumber = startPage + i; // Sayfa numarası
+
     const button = document.createElement("button");
     button.classList.add("pagination-btn");
-    button.textContent = i;
-    button.classList.toggle("active", currentPage === i);
+    button.textContent = pageNumber;
 
-    button.addEventListener("click", () => {
-      currentPage = i;
-      displayTable(items, tbody, rowsPerPage, currentPage);
-      setupPagination(items, container, rowsPerPage);
-    });
+    if (pageNumber > pageCount) {
+      // Sayfa mevcut değilse devre dışı bırak
+      button.disabled = true;
+    } else {
+      button.disabled = false;
+      button.classList.toggle("active", currentPage === pageNumber);
+
+      button.addEventListener("click", () => {
+        currentPage = pageNumber;
+        displayTable(items, tbody, rowsPerPage, currentPage);
+        setupPagination(items, container, rowsPerPage);
+      });
+    }
 
     container.appendChild(button);
   }
 };
+
 function showPopup() {
   const popup = document.getElementById("popup");
-  if (popup) {
-    popup.classList.remove("hide");
-    popup.classList.add("show");
-    setTimeout(() => {
-      popup.classList.remove("show");
-      popup.classList.add("hide");
-    }, 3000); 
-  } else {
-    console.error("Popup mesajı bulunamadı.");
-  }
+  popup.classList.add("show");
+ 
+
+  setTimeout(() => {
+    closePopup();
+  }, 2000);
 }
 
 function closePopup() {
