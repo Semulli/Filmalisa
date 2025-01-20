@@ -444,7 +444,6 @@ input[type="text"].error {
   transition: background-color 0.3s ease;
 }
 
-
 .pagination-container {
   position: fixed;
   bottom: 0;
@@ -486,24 +485,13 @@ input[type="text"].error {
 }
 
 @keyframes popupFadeIn {
-  from {
+  0% {
     opacity: 0;
     transform: translate(-50%, -60%);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes popupFadeOut {
-  from {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -60%);
   }
 }
 
