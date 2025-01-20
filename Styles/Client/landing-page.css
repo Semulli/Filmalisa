@@ -222,9 +222,9 @@ h4 {
 
 .kids-section {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 72px 90px;
+  align-items: center;
+  margin: 0 auto;
   gap: 12px;
 }
 
@@ -237,6 +237,7 @@ h5 {
 }
 
 .kids-text {
+  width: 546px;
   font-family: var(--Font_Roboto);
   font-size: 24px;
   line-height: 30px;
