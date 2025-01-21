@@ -13,14 +13,13 @@
   </head>
   <body class="bg-dark text-light">
     <main class="client-login">
-    
       <div class="right-part">
         <img src="../../Assets/icons/Client-login/mainlogo.svg" alt="" />
-        <h1>filmalisa</h1>
+        <h1>Filmalisa</h1>
 
-        <h2>login</h2>
+        <h2>Login</h2>
         <form>
-          <div class="form-group">
+          <div class="form-group" id="formGroup">
             <div>
               <img
                 src="../../Assets/icons/Client-login/left-icon.svg"
@@ -28,29 +27,38 @@
                 class="input-icon"
               />
             </div>
-            <div>
-              <input type="text" placeholder="username" required />
-            </div>
+
+            <input type="text" placeholder="email" id="email" required />
           </div>
-          <div class="form-group">
+          <div class="form-group" id="formGroup">
             <img
               src="../../Assets/icons/Client-login/lpassword-icon.svg"
               alt="password"
               class="input-icon"
             />
-            <input type="password" placeholder="password" required />
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              required
+            />
             <img
               src="../../Assets/icons/Client-login/right-icon.svg"
               alt="password-right"
               class="input-icon"
             />
           </div>
-          <nav >
+          <nav>
             <a href="./register.html">Register here</a>
           </nav>
 
-          <button type="submit" class="login-btn">login</button>
+          <button type="submit" class="login-btn" id="loginBtn">login</button>
         </form>
+      </div>
+
+      <div class="popup" id="popup">
+        <p id="pop-p"></p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
       </div>
     </main>
 
