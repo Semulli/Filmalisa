@@ -8,20 +8,33 @@ async function signUpSite() {
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
-
   formGroup.forEach(
     (group) => (group.style.border = "1px solid var(--Border-color_1)")
   );
-  if (!email || !password) {
-    if (!email) emailInput.parentElement.style.border = "1px solid red";
-    if (!password) passwordInput.parentElement.style.border = "1px solid red";
-    if (!name) nameInput.parentElement.style.border = "1px solid red";
+
+  let isValid = true;
+  if (!name) {
+    nameInput.parentElement.style.border = "1px solid red";
+    isValid = false;
+  }
+  if (!email) {
+    emailInput.parentElement.style.border = "1px solid red";
+    isValid = false;
+  }
+  if (!password) {
+    passwordInput.parentElement.style.border = "1px solid red";
+    isValid = false;
+  }
+
+  if (!isValid) {
+    showPopup("Please fill in all required fields.");
     return;
   }
+
   const bodyData = {
-    password: password,
     full_name: name,
     email: email,
+    password: password,
   };
 
   try {
@@ -37,31 +50,30 @@ async function signUpSite() {
     );
 
     let data = await response.json();
-    console.log(data);
+    console.log(data.data);
 
-    if (response.ok && data.result === true) {
-      localStorage.setItem("userRegistered", "true");
-      showPopup(
-        "Registration successful! You are being directed to the main page."
-      );
-      setTimeout(() => {
-        window.location.href = "../../index.html";
-      }, 2000);
+    if (response.ok && !data.message.includes("already registered")) {
+      sessionStorage.setItem("userRegistered", JSON.stringify(bodyData));
+      nameInput.value = "";
+      emailInput.value = "";
+      passwordInput.value = "";
+      window.location.href = "../../Pages/Client/login.html";
     } else {
-      if (data.message === "Internal server error") {
-        showPopup(
-          "This email is already registered. Redirecting to the login page..."
-        );
-        setTimeout(() => {
-          window.location.href = "../../Pages/Client/login.html"; //
-        }, 2000);
-      } else {
-        showPopup(data.message || "This email address is already registered.");
-      }
+      nameInput.value = "";
+      emailInput.value = "";
+      passwordInput.value = "";
+      showPopup("This email is already in use. Please try logging in.");
+
+      setTimeout(() => {
+        window.location.href = "../../Pages/Client/login.html";
+      }, 2000);
     }
   } catch (error) {
     showPopup("An error occurred. Please try again.");
-    console.log("Signup error:", error);
+    nameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
+    console.error("Signup error:", error);
   }
 }
 

@@ -37,19 +37,11 @@ async function signInSite() {
     console.log("Response status:", response.status);
 
     if (response.ok && data.result === true) {
-      localStorage.setItem("userRegistered", "true");
-      localStorage.setItem("access_token", data.access_token);
+      JSON.parse(sessionStorage.getItem("userRegistered"));
+
       window.location.href = "../../index.html";
-    } else if (
-      response.status === 500 ||
-      data.message === "Internal server error"
-    ) {
-      showPopup("This email is not registered. Redirecting to sign-up page...");
-      setTimeout(() => {
-        window.location.href = "../../Pages/Client/register.html";
-      }, 2000);
     } else {
-      showPopup(data.message || "Invalid email or password.");
+      passwordIn.parentElement.style.border = "1px solid red";
     }
   } catch (error) {
     console.error("Unexpected error happened:", error);
