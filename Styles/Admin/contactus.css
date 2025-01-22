@@ -282,9 +282,9 @@ th:nth-child(6) {
 
 .modal-content-2 {
   background-color: #171616;
-  padding: 30px;
+  padding: 40px;
   border-radius: 12px;
-  width: 400px;
+  width: 450px;
   max-width: 90%;
   text-align: center;
   position: relative;
@@ -300,12 +300,12 @@ th:nth-child(6) {
 
 .modal-buttons {
   display: flex;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
 }
 
 .modal-btn {
-  padding: 10px 20px;
+  padding: 10px 40px;
   border: none;
   border-radius: 8px;
   font-size: 14px;
