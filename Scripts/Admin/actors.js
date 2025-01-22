@@ -30,6 +30,8 @@ const accessToken = sessionStorage.getItem("access_token");
 
 const tbody = document.querySelector(".tbody");
 const paginationContainer = document.getElementById("pagination-container");
+const imgURLInput = document.getElementById("imgURL");
+const previewImage = document.getElementById("previewImage");
 const DEFAULT_IMAGE_URL = "../../Assets/images/default.jpg";
 const rowsPerPage = 7;
 let currentPage = 1;
@@ -181,7 +183,6 @@ const setupPagination = (items, container, rowsPerPage) => {
 const createBtn = document.getElementById("create-btn");
 const modal = document.getElementById("modal");
 const form = document.getElementById("myForm");
-const previewImage = document.getElementById("previewImage");
 
 if (createBtn) {
   createBtn.addEventListener("click", function () {
@@ -206,11 +207,15 @@ if (modal) {
   console.error("#modal element not found in DOM.");
 }
 
-const imgURLInput = document.getElementById("imgURL");
 if (imgURLInput) {
   imgURLInput.addEventListener("input", () => {
     const url = imgURLInput.value.trim();
     previewImage.src = url || DEFAULT_IMAGE_URL;
+
+    previewImage.onerror = () => {
+      previewImage.onerror = null;
+      previewImage.src = DEFAULT_IMAGE_URL;
+    };
   });
 }
 
@@ -243,9 +248,15 @@ function openEditModal(id, name, surname, imgURL) {
   document.getElementById("name").value = name;
   document.getElementById("surname").value = surname;
   document.getElementById("imgURL").value = imgURL;
-  previewImage.src = imgURL || DEFAULT_IMAGE_URL;
-  document.getElementById("submit-btn").textContent = "Edit";
 
+  previewImage.src = imgURL || DEFAULT_IMAGE_URL;
+
+  previewImage.onerror = () => {
+    previewImage.onerror = null;
+    previewImage.src = DEFAULT_IMAGE_URL;
+  };
+
+  document.getElementById("submit-btn").textContent = "Edit";
   modal.style.display = "flex";
 }
 
@@ -264,6 +275,20 @@ document.getElementById("yes-btn").addEventListener("click", () => {
 document.getElementById("no-btn").addEventListener("click", () => {
   closeRemoveModal();
 });
+
+function showPopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.add("show");
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.remove("show");
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 500);
+}
 
 // ---------------------------------------------------------------------------------------------------------
 // Post and Edit Api
@@ -291,8 +316,9 @@ async function handleFormSubmit(event) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
-      alert("Actor updated successfully!");
+      document.getElementById("pop-p").textContent =
+        "Actor updated successfully!";
+      showPopup();
     } else {
       const response = await fetch(API_URL2, {
         method: "POST",
@@ -306,8 +332,9 @@ async function handleFormSubmit(event) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
-      alert("Actor created successfully!");
+      document.getElementById("pop-p").textContent =
+        "Actor created successfully!";
+      showPopup();
     }
 
     modal.style.display = "none";
@@ -334,8 +361,9 @@ async function deleteActor(id) {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
-    alert("Actor deleted successfully!");
+    document.getElementById("pop-p").textContent =
+      "Actor deleted successfully!";
+    showPopup();
     fetchActorsWithPagination();
   } catch (error) {
     console.error("Error deleting actor:", error);
