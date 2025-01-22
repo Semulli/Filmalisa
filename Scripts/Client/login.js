@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const token = sessionStorage.getItem("access_token");
+
+  
+  if (token) {
+    window.location.href = "../../index.html"; 
+  }
+});
+
 async function signInSite() {
   const emailIn = document.querySelector("#email");
   const passwordIn = document.querySelector("#password");
@@ -37,8 +46,9 @@ async function signInSite() {
     console.log("Response status:", response.status);
 
     if (response.ok && data.result === true) {
-      JSON.parse(sessionStorage.getItem("userRegistered"));
-
+      sessionStorage.setItem("access_token", data.data.tokens.access_token);
+      emailIn.value = "";
+      passwordIn.value = "";
       window.location.href = "../../index.html";
     } else {
       passwordIn.parentElement.style.border = "1px solid red";

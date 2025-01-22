@@ -1,3 +1,6 @@
+
+
+
 function toggleAccordion(header) {
   const content = header.nextElementSibling;
   const isOpen = content.classList.contains("open");
@@ -14,7 +17,8 @@ const emailEl = document.querySelector("#emailInput");
 const btn = document.querySelector("#startBtn");
 
 if (emailEl && btn) {
-  const registerURL = "https://semulli.github.io/Filmalisa/Pages/Client/register.html";
+  const registerURL =
+    "https://semulli.github.io/Filmalisa/Pages/Client/register.html";
 
   function setEmailBorder(isValid) {
     emailEl.style.border = isValid ? "none" : "1px solid red";

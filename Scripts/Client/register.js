@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const token = sessionStorage.getItem("access_token");
+
+  
+  if (token) {
+    window.location.href = "../../index.html"; 
+  }
+});
+
+
+window.addEventListener("load", () => {
+  const mainToken = sessionStorage.getItem("access_token");
+
+  if (mainToken) {
+    // window.location.href = "../../index.html";
+  }
+});
+
 async function signUpSite() {
   const nameInput = document.querySelector("#fullName");
   const emailInput = document.querySelector("#email");
@@ -53,7 +71,7 @@ async function signUpSite() {
     console.log(data.data);
 
     if (response.ok && !data.message.includes("already registered")) {
-      sessionStorage.setItem("userRegistered", JSON.stringify(bodyData));
+      sessionStorage.setItem("userRegistered", JSON.stringify(bodyData.email));
       nameInput.value = "";
       emailInput.value = "";
       passwordInput.value = "";
