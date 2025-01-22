@@ -141,7 +141,7 @@
             </tr>
           </thead>
           <tbody class="tbody">
-            <tr>
+            <!-- <tr>
               <td>1</td>
               <td>JohnDoe</td>
               <td>johndoe@gmail.com</td>
@@ -178,9 +178,10 @@
                   onclick="openRemoveModal()"
                 />
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
+        <div id="pagination-container" class="pagination-container"></div>
       </div>
     </div>
 
@@ -210,6 +211,11 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <div class="popup" id="popup">
+      <p id="pop-p">Bu bir popup mesajıdır!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
 
     <script src="../../Scripts/Admin/comments.js"></script>
