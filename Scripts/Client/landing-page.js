@@ -14,8 +14,7 @@ const emailEl = document.querySelector("#emailInput");
 const btn = document.querySelector("#startBtn");
 
 if (emailEl && btn) {
-  const registerURL =
-    "https://semulli.github.io/Filmalisa/Pages/Client/register.html";
+  const loginURL = "../../Pages/Client/login.html";
 
   function setEmailBorder(isValid) {
     emailEl.style.border = isValid ? "none" : "1px solid red";
@@ -25,7 +24,7 @@ if (emailEl && btn) {
     if (emailEl.value.trim() === "") {
       setEmailBorder(false);
     } else {
-      location.href = registerURL;
+      location.href = loginURL;
       setEmailBorder(true);
       emailEl.value = "";
     }
@@ -68,18 +67,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((responseData) => {
         const data = responseData.data;
 
-        userImg.src = data.img_url || "/Assets/icons/default-avatar.svg";
+        userImg.src = data.img_url || "../Assets/images/default.jpg";
         userImg.onerror = function () {
-          this.src = "../../Assets/images/default.jpg";
+          this.src = "../Assets/images/default.jpg";
         };
 
         userName.textContent = data.full_name || "Kullanıcı Adı";
       })
       .catch((error) => {
         console.error("Kullanıcı bilgileri alınamadı:", error);
-        userImg.src = "/Assets/icons/default-avatar.svg";
+        userImg.src = "../Assets/images/default.jpg";
         userImg.onerror = function () {
-          this.src = "/Assets/icons/default-avatar.svg";
+          this.src = "../Assets/images/default.jpg";
         };
         userName.textContent = "Kullanıcı Adı Mevcut Değil";
       });
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clickedItem) {
       const action = clickedItem.textContent.trim();
       if (action.includes("Settings")) {
-        window.location.href = "../../Pages/Client/account.html";
+        window.location.href = "./Pages/Client/account.html";
       } else if (action.includes("Logout")) {
         sessionStorage.clear();
         location.reload();
