@@ -8,15 +8,21 @@ window.addEventListener("load", () => {
   }
 });
 
-document.querySelector(".logout-div").addEventListener("click", () => {
-  sessionStorage.removeItem("access_token");
-  window.location.href = "../../Pages/Admin/login.html";
-});
+const logoutDiv = document.querySelector(".logout-div");
+if (logoutDiv) {
+  logoutDiv.addEventListener("click", () => {
+    sessionStorage.removeItem("access_token");
+    window.location.href = "../../Pages/Admin/login.html";
+  });
+} else {
+  console.error(".logout-div element not found");
+}
 
 // -------------------------------------------------------------------------------------------------
 // Url And Token Api
 
 const API_URL = "https://api.sarkhanrahimli.dev/api/filmalisa/admin/actors";
+const API_URL2 = "https://api.sarkhanrahimli.dev/api/filmalisa/admin/actor";
 const accessToken = sessionStorage.getItem("access_token");
 
 // -------------------------------------------------------------------------------------------------
@@ -24,11 +30,14 @@ const accessToken = sessionStorage.getItem("access_token");
 
 const tbody = document.querySelector(".tbody");
 const paginationContainer = document.getElementById("pagination-container");
-let currentPage = 1;
+const DEFAULT_IMAGE_URL = "../../Assets/images/default.jpg";
 const rowsPerPage = 7;
+let currentPage = 1;
+let isEditMode = false;
+let editActorId = null;
 
 // ------------------------------------------------------------------------------------------------------------
-// Get Api
+// GET Api
 
 async function fetchActorsWithPagination() {
   try {
@@ -36,7 +45,7 @@ async function fetchActorsWithPagination() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
@@ -45,7 +54,9 @@ async function fetchActorsWithPagination() {
     }
 
     const result = await response.json();
-    const actors = result.data || [];
+    let actors = result.data || [];
+
+    actors.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     displayTableWithPagination(actors, tbody, rowsPerPage, currentPage);
     setupPagination(actors, paginationContainer, rowsPerPage);
@@ -55,7 +66,9 @@ async function fetchActorsWithPagination() {
 }
 
 const displayTableWithPagination = (items, tableBody, rowsPerPage, page) => {
+  if (!tableBody) return;
   tableBody.innerHTML = "";
+
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
   const paginatedItems = items.slice(startIndex, endIndex);
@@ -67,11 +80,11 @@ const displayTableWithPagination = (items, tableBody, rowsPerPage, page) => {
       <td>${startIndex + index + 1}</td>
       <td>
         <img
-          src="${actor.img_url || "../../Assets/images/default.jpg"}"
+          src="${actor.img_url || DEFAULT_IMAGE_URL}"
           style="width: 29px; height: 39px"
           alt="Actor Image"
           class="image-default-1"
-          onerror="this.onerror=null; this.src='../../Assets/images/default.jpg';"
+          onerror="this.onerror=null; this.src='${DEFAULT_IMAGE_URL}';"
         />
       </td>
       <td>${actor.name}</td>
@@ -81,6 +94,9 @@ const displayTableWithPagination = (items, tableBody, rowsPerPage, page) => {
           src="../../Assets/icons/categories/edit-icon.png"
           alt="Edit Icon"
           class="img-icon"
+          onclick="openEditModal(${actor.id}, '${actor.name}', '${
+      actor.surname
+    }', '${actor.img_url}')"
         />
       </td>
       <td>
@@ -97,12 +113,17 @@ const displayTableWithPagination = (items, tableBody, rowsPerPage, page) => {
   });
 };
 
-document.addEventListener("DOMContentLoaded", fetchActorsWithPagination);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", fetchActorsWithPagination);
+} else {
+  fetchActorsWithPagination();
+}
 
 // ------------------------------------------------------------------------------------------------------------
 // Page Button
 
 const setupPagination = (items, container, rowsPerPage) => {
+  if (!container) return;
   container.innerHTML = "";
   const pageCount = Math.ceil(items.length / rowsPerPage);
 
@@ -155,75 +176,168 @@ const setupPagination = (items, container, rowsPerPage) => {
 };
 
 // -------------------------------------------------------------------------------------------------
+// Create Modal
 
-document.getElementById("create-btn").addEventListener("click", function () {
-  document.getElementById("modal").style.display = "flex";
-});
+const createBtn = document.getElementById("create-btn");
+const modal = document.getElementById("modal");
+const form = document.getElementById("myForm");
+const previewImage = document.getElementById("previewImage");
 
-document.getElementById("modal").addEventListener("click", function (event) {
-  if (event.target === this) {
-    document.getElementById("modal").style.display = "none";
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const nameInput = document.getElementById("name");
-  const surnameInput = document.getElementById("surname");
-  const imgURLInput = document.getElementById("imgURL");
-  const form = document.getElementById("myForm");
-
-  const validateInputs = () => {
-    let allFilled = true;
-
-    [nameInput, surnameInput, imgURLInput].forEach((input) => {
-      if (input.value.trim() === "") {
-        input.style.border = "1px solid red";
-        input.style.backgroundColor = "#ffe6e6";
-        allFilled = false;
-      } else {
-        input.style.border = "1px solid #323b54";
-        input.style.backgroundColor = "#0000001a";
-      }
-    });
-
-    return allFilled;
-  };
-
-  [nameInput, surnameInput, imgURLInput].forEach((input) => {
-    input.addEventListener("input", () => {
-      input.style.border = "1px solid #323b54";
-      input.style.backgroundColor = "#0000001a";
-    });
+if (createBtn) {
+  createBtn.addEventListener("click", function () {
+    isEditMode = false;
+    editActorId = null;
+    document.getElementById("submit-btn").textContent = "Create";
+    form.reset();
+    previewImage.src = DEFAULT_IMAGE_URL;
+    if (modal) modal.style.display = "flex";
   });
+} else {
+  console.error("#create-btn element not found in DOM.");
+}
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    if (validateInputs()) {
-      console.log("Name:", nameInput.value);
-      console.log("Surname:", surnameInput.value);
-      console.log("Image URL:", imgURLInput.value);
-
-      resetModal();
-      document.getElementById("modal").style.display = "none";
+if (modal) {
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
     }
   });
+} else {
+  console.error("#modal element not found in DOM.");
+}
 
-  const resetModal = () => {
-    form.reset();
-    [nameInput, surnameInput, imgURLInput].forEach((input) => {
-      input.style.border = "1px solid #323b54";
-      input.style.backgroundColor = "#0000001a";
-    });
-  };
-});
+const imgURLInput = document.getElementById("imgURL");
+if (imgURLInput) {
+  imgURLInput.addEventListener("input", () => {
+    const url = imgURLInput.value.trim();
+    previewImage.src = url || DEFAULT_IMAGE_URL;
+  });
+}
 
-function openRemoveModal() {
-  const modal = document.getElementById("modal-remove");
-  modal.style.display = "flex";
+// ---------------------------------------------------------------------------------------------------------
+// Modal
+
+function openRemoveModal(id) {
+  const removeModal = document.getElementById("modal-remove");
+  if (!removeModal) {
+    console.error("#modal-remove element not found in DOM.");
+    return;
+  }
+
+  removeModal.setAttribute("data-actor-id", id);
+  removeModal.style.display = "flex";
 }
 
 function closeRemoveModal() {
-  const modal = document.getElementById("modal-remove");
-  modal.style.display = "none";
+  const removeModal = document.getElementById("modal-remove");
+  if (!removeModal) return;
+
+  removeModal.style.display = "none";
+  removeModal.removeAttribute("data-actor-id");
+}
+
+function openEditModal(id, name, surname, imgURL) {
+  isEditMode = true;
+  editActorId = id;
+
+  document.getElementById("name").value = name;
+  document.getElementById("surname").value = surname;
+  document.getElementById("imgURL").value = imgURL;
+  previewImage.src = imgURL || DEFAULT_IMAGE_URL;
+  document.getElementById("submit-btn").textContent = "Edit";
+
+  modal.style.display = "flex";
+}
+
+document.getElementById("yes-btn").addEventListener("click", () => {
+  const removeModal = document.getElementById("modal-remove");
+  if (!removeModal) return;
+
+  const actorId = removeModal.getAttribute("data-actor-id");
+  if (actorId) {
+    deleteActor(actorId);
+  }
+
+  closeRemoveModal();
+});
+
+document.getElementById("no-btn").addEventListener("click", () => {
+  closeRemoveModal();
+});
+
+// ---------------------------------------------------------------------------------------------------------
+// Post and Edit Api
+
+async function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const surname = document.getElementById("surname").value.trim();
+  const imgURL = document.getElementById("imgURL").value.trim();
+
+  const actorData = { name, surname, img_url: imgURL };
+
+  try {
+    if (isEditMode) {
+      const response = await fetch(`${API_URL2}/${editActorId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(actorData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      alert("Actor updated successfully!");
+    } else {
+      const response = await fetch(API_URL2, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(actorData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      alert("Actor created successfully!");
+    }
+
+    modal.style.display = "none";
+    fetchActorsWithPagination();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+form.addEventListener("submit", handleFormSubmit);
+
+// ---------------------------------------------------------------------------------------------------------
+// DELETE Api
+
+async function deleteActor(id) {
+  try {
+    const response = await fetch(`${API_URL2}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    alert("Actor deleted successfully!");
+    fetchActorsWithPagination();
+  } catch (error) {
+    console.error("Error deleting actor:", error);
+  }
 }
