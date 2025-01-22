@@ -92,7 +92,7 @@ body {
   margin-top: auto;
   display: flex;
   align-items: center;
-  margin-left: 48px;
+  padding: 11px 48px;
   margin-bottom: 44px;
   cursor: pointer;
   border-color: red;
