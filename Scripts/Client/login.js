@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("access_token");
 
-  
   if (token) {
-    window.location.href = "../../index.html"; 
+    window.location.href = "../../index.html";
+  }
+
+  const savedEmail = sessionStorage.getItem("userRegistered");
+  if (savedEmail) {
+    const emailIn = document.querySelector("#email");
+    emailIn.value = savedEmail.replace(/^"|"$/g, '');
   }
 });
 
