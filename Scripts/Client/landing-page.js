@@ -123,4 +123,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+  userModal.addEventListener("click", function (event) {
+    const clickedItem = event.target.closest("li");
+    if (clickedItem) {
+      const action = clickedItem.textContent.trim();
+      if (action.includes("Settings")) {
+        window.location.href = "../../Pages/Client/account.html";
+      } else if (action.includes("Logout")) {
+        sessionStorage.clear();
+        location.reload();
+      }
+    }
+  });
 });
