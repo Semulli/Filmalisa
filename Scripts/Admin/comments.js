@@ -118,7 +118,7 @@ function displayComments(items, tableBody, rowsPerPage, page) {
     const emptyRow = document.createElement("tr");
     emptyRow.innerHTML = `
       <td colspan="6" style="text-align:center; padding: 20px;">
-      Şu anda görüntülenecek yorum yok.
+  There are currently no comments to display.
       </td>
     `;
     tableBody.appendChild(emptyRow);
