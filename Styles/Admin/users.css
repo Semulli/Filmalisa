@@ -402,3 +402,41 @@ th:nth-child(4) {
   background-color: var(--Cards-bg-color);
   transition: background-color 0.3s;
 }
+.pagination-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pagination-btn {
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-btn.active {
+  background-color: var(--Btn-color);
+  color: #fff;
+  border-color: var(--Btn-color);
+}
+
+.pagination-btn:disabled {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: var(--Cards-bg-color);
+  color: #fff;
+}

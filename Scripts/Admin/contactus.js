@@ -64,7 +64,7 @@ const tbody = document.querySelector(".tbody");
 const paginationContainer = document.getElementById("pagination-container");
 let currentPage = 1;
 const rowsPerPage = 7;
-let categories = [];
+let contacts = [];
 
 async function deleteClientComplaint(id) {
   try {
