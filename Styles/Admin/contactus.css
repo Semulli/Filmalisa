@@ -372,7 +372,6 @@ th:nth-child(6) {
   flex-direction: column;
 }
 
-
 .comment-wrapper {
   max-height: 60vh;
   overflow-y: auto;
@@ -441,7 +440,6 @@ input[type="text"].error {
   bottom: 0;
   left: 0;
   width: 100%;
-
   padding: 10px 0;
   display: flex;
   justify-content: center;
@@ -464,14 +462,14 @@ input[type="text"].error {
   border-color: var(--Btn-color);
 }
 
-.pagination-btn.disabled {
+.pagination-btn:disabled {
   background-color: #e0e0e0;
   color: #a0a0a0;
   border-color: #ccc;
   cursor: not-allowed;
 }
 
-.pagination-btn:hover:not(.disabled) {
+.pagination-btn:hover:not(:disabled) {
   background-color: var(--Cards-bg-color);
   color: #fff;
 }
