@@ -67,18 +67,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((responseData) => {
         const data = responseData.data;
 
-        userImg.src = data.img_url || "./Assets/images/default.jpg";
+        userImg.src = data.img_url || "../../Assets/images/default.jpg";
         userImg.onerror = function () {
-          this.src = "./Assets/images/default.jpg";
+          this.src = "../../Assets/images/default.jpg";
         };
 
         userName.textContent = data.full_name || "Kullanıcı Adı";
       })
       .catch((error) => {
         console.error("Kullanıcı bilgileri alınamadı:", error);
-        userImg.src = "./Assets/images/default.jpg";
+        userImg.src = "../../Assets/images/default.jpg";
         userImg.onerror = function () {
-          this.src = "./Assets/images/default.jpg";
+          this.src = "../../Assets/images/default.jpg";
         };
         userName.textContent = "Kullanıcı Adı Mevcut Değil";
       });
