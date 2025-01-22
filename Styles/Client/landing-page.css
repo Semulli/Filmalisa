@@ -44,12 +44,6 @@ h1 {
   text-align: center;
 }
 
-.header-btn {
-  background-color: var(--Btn-color);
-  padding: 4px 16px;
-  border-radius: 4px;
-}
-
 .header-btn:hover,
 .started-btn:hover,
 .send-btn:hover {
@@ -457,4 +451,97 @@ input:-webkit-autofill:focus {
   top: 34%;
   left: 49%;
   transform: translate(-50%, -50%);
+}
+
+/* --------------------------------------------------------------------------------- */
+/* test */
+
+.user-login {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.user-div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-p {
+  font-size: 18px;
+  position: relative;
+}
+
+.header-btn {
+  background-color: var(--Btn-color);
+  padding: 4px 16px;
+  border-radius: 4px;
+  width: 78px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-btn {
+  position: absolute;
+  top: -22px;
+  right: 0;
+}
+
+.user-modal {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 45px;
+  width: 130px;
+  max-height: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 5px;
+  color: #fff;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 3s ease, opacity 3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-modal.show {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.user-modal.hide {
+  max-height: 0;
+  opacity: 0;
+}
+
+.user-modal ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-modal li {
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.user-modal li:hover {
+  background-color: rgba(240, 240, 240, 0.2);
+  border-radius: 4px;
 }

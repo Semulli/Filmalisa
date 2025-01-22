@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedEmail = sessionStorage.getItem("userRegistered");
   if (savedEmail) {
     const emailIn = document.querySelector("#email");
-    emailIn.value = savedEmail.replace(/^"|"$/g, '');
+    emailIn.value = savedEmail.replace(/^"|"$/g, "");
   }
 });
 

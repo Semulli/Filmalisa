@@ -1,3 +1,4 @@
+
 window.addEventListener("load", () => {
     const mainToken = sessionStorage.getItem("user_token");
   
@@ -5,3 +6,4 @@ window.addEventListener("load", () => {
       window.location.href = "../../Pages/Client/register.html";
     }
   });
+
