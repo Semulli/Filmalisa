@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const closeBtn = document.getElementById("closePopup");
       if (closeBtn) {
         closeBtn.addEventListener("click", () => {
-          window.location.href = "../../Pages/Client/login.html";
+          window.location.href = "./Pages/Client/login.html";
         });
       }
 
