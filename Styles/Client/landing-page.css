@@ -192,7 +192,8 @@ h3 {
   align-items: center;
   justify-content: space-around;
   gap: 12px;
-  margin: 72px 110px;
+  
+  border-bottom: 8px solid #232323;
 }
 
 h4 {
@@ -219,6 +220,9 @@ h4 {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  border-bottom: 8px solid #232323;
+padding: 76px 0;
+
   gap: 12px;
 }
 
@@ -243,6 +247,7 @@ h5 {
   text-align: center;
   align-items: center;
   justify-content: center;
+  padding-top: 60px;
   padding-bottom: 139px;
   border-bottom: 8px solid #232323;
 }
@@ -346,16 +351,17 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  gap: 40px;
-  margin: 72px 168px;
+  text-align: center;
+  gap: 60px;
+  margin: 72px 170px;
 }
 
 .footer nav {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 600px;
+  width: 700px;
+  padding-left: 40px;
 }
 
 .footer nav a {
