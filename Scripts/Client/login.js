@@ -1,7 +1,10 @@
 function handlePageLoad() {
   const token = sessionStorage.getItem("user_token");
+
   if (token) {
+    console.log("User token found, redirecting to index.html...");
     window.location.href = "../../index.html";
+    return;
   }
 
   const savedEmail = sessionStorage.getItem("userRegistered");
