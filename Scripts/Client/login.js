@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("user_token");
 
   if (token) {
-    window.location.href = "./index.html";
+    window.location.href = "../Client/index.html";
   }
 
   const savedEmail = sessionStorage.getItem("userRegistered");
