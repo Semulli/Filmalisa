@@ -547,12 +547,11 @@ input:-webkit-autofill:focus {
 }
 
 .user-modal li {
-  padding: 8px 10px;
+  padding: 8px 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
 }
 
 .user-modal li:hover {
