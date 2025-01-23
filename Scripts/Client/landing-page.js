@@ -14,19 +14,22 @@ const emailEl = document.querySelector("#emailInput");
 const btn = document.querySelector("#startBtn");
 
 if (emailEl && btn) {
-  const loginURL = "../../Pages/Client/login.html";
+  const loginURL = "./Pages/Client/register.html";
 
   function setEmailBorder(isValid) {
     emailEl.style.border = isValid ? "none" : "1px solid red";
   }
 
   btn.addEventListener("click", () => {
-    if (emailEl.value.trim() === "") {
+    const emailValue = emailEl.value.trim();
+    if (emailValue === "") {
       setEmailBorder(false);
     } else {
-      location.href = loginURL;
+      const encodedEmail = encodeURIComponent(emailValue);
+      const redirectURL = `${loginURL}?email=${encodedEmail}`;
       setEmailBorder(true);
       emailEl.value = "";
+      location.href = redirectURL;
     }
   });
 } else {

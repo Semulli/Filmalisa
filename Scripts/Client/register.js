@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("user_token");
 
-  
   if (token) {
-    window.location.href = "../../index.html"; 
+    window.location.href = "../../index.html";
   }
 });
-
 
 window.addEventListener("load", () => {
   const mainToken = sessionStorage.getItem("access_token");
@@ -131,3 +129,14 @@ document.querySelector(".register-btn").addEventListener("click", (event) => {
   event.preventDefault();
   signUpSite();
 });
+
+const emailInputOnLoginPage = document.querySelector("#emailInput");
+
+if (emailInputOnLoginPage) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const emailValue = urlParams.get("email");
+
+  if (emailValue) {
+    emailInputOnLoginPage.value = decodeURIComponent(emailValue);
+  }
+}
