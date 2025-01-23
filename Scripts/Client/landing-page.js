@@ -20,17 +20,32 @@ if (emailEl && btn) {
     emailEl.style.border = isValid ? "none" : "1px solid red";
   }
 
-  btn.addEventListener("click", () => {
-    const emailValue = emailEl.value.trim();
-    if (emailValue === "") {
-      setEmailBorder(false);
-    } else {
-      sessionStorage.setItem("email", emailValue);
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|org|edu|gov)$/i;
+    return emailRegex.test(email);
+  }
 
-      setEmailBorder(true);
-      emailEl.value = "";
-      location.href = registerURL;
-    }
+  const userToken = sessionStorage.getItem("user_token");
+  if (userToken) {
+    btn.disabled = true;
+  } else {
+    btn.addEventListener("click", () => {
+      const emailValue = emailEl.value.trim();
+
+      if (emailValue === "" || !isValidEmail(emailValue)) {
+        setEmailBorder(false);
+      } else {
+        sessionStorage.setItem("email", emailValue);
+
+        setEmailBorder(true);
+        emailEl.value = "";
+        location.href = registerURL;
+      }
+    });
+  }
+
+  emailEl.addEventListener("input", () => {
+    setEmailBorder(true);
   });
 } else {
   console.error("Email input veya buton bulunamadı.");
@@ -45,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const userDiv = document.querySelector(".user-div");
   const userImg = document.querySelector("#user-id-image");
   const userName = document.querySelector("#user-id-name");
+  const userEmail = document.querySelector("#emailInput");
+  const userFullname = document.querySelector("#fullname");
+  const userEmail2 = document.querySelector("#email");
   const userBtn = document.querySelector(".user-btn");
 
   if (accessToken) {
@@ -76,6 +94,14 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         userName.textContent = data.full_name || "Kullanıcı Adı";
+        if (userEmail2) {
+          userEmail2.value = data.email || "";
+          userEmail2.setAttribute("readonly", true);
+        }
+        if (userFullname) {
+          userFullname.value = data.full_name || "";
+          userFullname.setAttribute("readonly", true);
+        }
       })
       .catch((error) => {
         console.error("Kullanıcı bilgileri alınamadı:", error);
@@ -89,6 +115,114 @@ document.addEventListener("DOMContentLoaded", function () {
     userBtn.style.display = "flex";
     userDiv.style.display = "none";
   }
+});
+
+// -----------------------------------------------------------------------------------------------------------
+// Contactus Post Api
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const fullnameInput = document.getElementById("fullname");
+  const emailInput = document.getElementById("email");
+  const reasonInput = document.getElementById("reason");
+
+  function setInputBorder(input, isValid) {
+    input.style.border = isValid ? "1px solid #ccc" : "1px solid red";
+  }
+
+  function validateInputs() {
+    let isValid = true;
+
+    if (fullnameInput.value.trim() === "") {
+      setInputBorder(fullnameInput, false);
+      isValid = false;
+    } else {
+      setInputBorder(fullnameInput, true);
+    }
+
+    if (
+      emailInput.value.trim() === "" ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)
+    ) {
+      setInputBorder(emailInput, false);
+      isValid = false;
+    } else {
+      setInputBorder(emailInput, true);
+    }
+
+    if (reasonInput.value.trim() === "") {
+      setInputBorder(reasonInput, false);
+      isValid = false;
+    } else {
+      setInputBorder(reasonInput, true);
+    }
+
+    return isValid;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const userToken = sessionStorage.getItem("user_token");
+    if (!userToken) {
+      document.getElementById("pop-p").textContent =
+        "Please log in before contacting us";
+      showPopup();
+
+      const closeBtn = document.getElementById("closePopup");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          location.href = "../../Pages/Client/login.html";
+        });
+      }
+
+      return;
+    }
+
+    if (!validateInputs()) {
+      return;
+    }
+
+    const formData = {
+      full_name: fullnameInput.value.trim(),
+      email: emailInput.value.trim(),
+      reason: reasonInput.value.trim(),
+    };
+
+    console.log("Sending Data:", formData);
+
+    try {
+      const response = await fetch(
+        "https://api.sarkhanrahimli.dev/api/filmalisa/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userToken}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        document.getElementById("pop-p").textContent =
+          "Your message has been sent successfully!";
+        showPopup();
+        reasonInput.value = "";
+      } else {
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+    }
+  });
+
+  [fullnameInput, emailInput, reasonInput].forEach((input) => {
+    input.addEventListener("input", () => {
+      setInputBorder(input, true);
+    });
+  });
 });
 
 // ------------------------------------------------------------------------------------------------------------------------
@@ -138,3 +272,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+function showPopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.add("show");
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.remove("show");
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 500);
+}
