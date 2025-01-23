@@ -4,13 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (token) {
     window.location.href = "../../index.html";
   }
+
+  const emailInput = document.querySelector("#email");
+  if (emailInput) {
+    const emailValue = sessionStorage.getItem("email");
+    if (emailValue) {
+      emailInput.value = emailValue;
+    }
+  }
 });
 
 window.addEventListener("load", () => {
   const mainToken = sessionStorage.getItem("access_token");
 
   if (mainToken) {
-    // window.location.href = "../../index.html";
+    window.location.href = "../../index.html";
   }
 });
 
@@ -54,7 +62,7 @@ async function signUpSite() {
   };
 
   try {
-    let response = await fetch(
+    const response = await fetch(
       "https://api.sarkhanrahimli.dev/api/filmalisa/auth/signup",
       {
         method: "POST",
@@ -65,19 +73,17 @@ async function signUpSite() {
       }
     );
 
-    let data = await response.json();
-    console.log(data.data);
+    const data = await response.json();
 
     if (response.ok && !data.message.includes("already registered")) {
-      sessionStorage.setItem("userRegistered", JSON.stringify(bodyData.email));
+      sessionStorage.setItem("userRegistered", bodyData.email);
+
       nameInput.value = "";
       emailInput.value = "";
       passwordInput.value = "";
+
       window.location.href = "../../Pages/Client/login.html";
     } else {
-      nameInput.value = "";
-      emailInput.value = "";
-      passwordInput.value = "";
       showPopup("This email is already in use. Please try logging in.");
 
       setTimeout(() => {
@@ -129,14 +135,3 @@ document.querySelector(".register-btn").addEventListener("click", (event) => {
   event.preventDefault();
   signUpSite();
 });
-
-const emailInputOnLoginPage = document.querySelector("#emailInput");
-
-if (emailInputOnLoginPage) {
-  const urlParams = new URLSearchParams(window.location.search);
-  const emailValue = urlParams.get("email");
-
-  if (emailValue) {
-    emailInputOnLoginPage.value = decodeURIComponent(emailValue);
-  }
-}

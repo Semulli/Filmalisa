@@ -14,7 +14,7 @@ const emailEl = document.querySelector("#emailInput");
 const btn = document.querySelector("#startBtn");
 
 if (emailEl && btn) {
-  const loginURL = "./Pages/Client/register.html";
+  const registerURL = "./Pages/Client/register.html";
 
   function setEmailBorder(isValid) {
     emailEl.style.border = isValid ? "none" : "1px solid red";
@@ -25,11 +25,11 @@ if (emailEl && btn) {
     if (emailValue === "") {
       setEmailBorder(false);
     } else {
-      const encodedEmail = encodeURIComponent(emailValue);
-      const redirectURL = `${loginURL}?email=${encodedEmail}`;
+      sessionStorage.setItem("email", emailValue);
+
       setEmailBorder(true);
       emailEl.value = "";
-      location.href = redirectURL;
+      location.href = registerURL;
     }
   });
 } else {
@@ -70,18 +70,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((responseData) => {
         const data = responseData.data;
 
-        userImg.src = data.img_url || "./Assets/images/default.jpg";
+        userImg.src = data.img_url || "./Assets/images/user-image.png";
         userImg.onerror = function () {
-          this.src = "./Assets/images/default.jpg";
+          this.src = "./Assets/images/user-image.png";
         };
 
         userName.textContent = data.full_name || "Kullanıcı Adı";
       })
       .catch((error) => {
         console.error("Kullanıcı bilgileri alınamadı:", error);
-        userImg.src = "./Assets/images/default.jpg";
+        userImg.src = "./Assets/images/user-image.png";
         userImg.onerror = function () {
-          this.src = "./Assets/images/default.jpg";
+          this.src = "./Assets/images/user-image.png";
         };
         userName.textContent = "Kullanıcı Adı Mevcut Değil";
       });
