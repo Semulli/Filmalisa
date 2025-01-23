@@ -1,15 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("user_token");
 
-
-
-
   if (token) {
     window.location.href = "../../index.html";
   }
-
-
-
 
   const emailInput = document.querySelector("#email");
   if (emailInput) {
@@ -17,14 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (emailValue) {
       emailInput.value = emailValue;
     }
-  }
-});
-
-window.addEventListener("load", () => {
-  const mainToken = sessionStorage.getItem("access_token");
-
-  if (mainToken) {
-    window.location.href = "../../index.html";
   }
 });
 
