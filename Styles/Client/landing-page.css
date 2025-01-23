@@ -1,6 +1,13 @@
 @import url("../../Global/global.css");
 @import url("../Responsive/Client/landing-page-responsive.css");
 
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: #fff;
   background-color: #000;
@@ -165,7 +172,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  /* gap: 12px; */
+  gap: 12px;
   border-bottom: 8px solid #232323;
 }
 
@@ -190,9 +197,9 @@ h3 {
 .stream-part {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 12px;
-  
+  margin: 0;
   border-bottom: 8px solid #232323;
 }
 
@@ -221,7 +228,7 @@ h4 {
   align-items: center;
   margin: 0 auto;
   border-bottom: 8px solid #232323;
-padding: 76px 0;
+  padding: 76px 0;
 
   gap: 12px;
 }
@@ -388,7 +395,6 @@ input:-webkit-autofill:focus {
 }
 
 /* --------------------------------------------------------------------------------- */
-/* test */
 
 .loading-tv-main {
   display: flex;
@@ -424,15 +430,15 @@ input:-webkit-autofill:focus {
 }
 
 /* --------------------------------------------------------------------------------- */
-/* test */
 
 .loading-tv-main-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
   background-color: #000;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .loading-tv-2 {
@@ -440,12 +446,15 @@ input:-webkit-autofill:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .loading-tv-frame-2 {
   z-index: 2;
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -455,12 +464,11 @@ input:-webkit-autofill:focus {
   width: 65%;
   height: auto;
   top: 34%;
-  left: 49%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 /* --------------------------------------------------------------------------------- */
-/* test */
 
 .user-login {
   position: relative;
