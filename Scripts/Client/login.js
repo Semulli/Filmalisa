@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function handlePageLoad() {
   const token = sessionStorage.getItem("user_token");
   if (token) {
     window.location.href = "../../index.html";
@@ -7,9 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedEmail = sessionStorage.getItem("userRegistered");
   if (savedEmail) {
     const emailIn = document.querySelector("#email");
-    emailIn.value = savedEmail.replace(/^"|"$/g, "");
+    if (emailIn) {
+      emailIn.value = savedEmail.replace(/^"|"$/g, "");
+    }
   }
-});
+}
+
+document.addEventListener("DOMContentLoaded", handlePageLoad);
+window.addEventListener("pageshow", handlePageLoad);
 
 async function signInSite() {
   const emailIn = document.querySelector("#email");
