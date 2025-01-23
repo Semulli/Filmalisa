@@ -143,13 +143,20 @@
 
       <section class="contact_us-section">
         <h6>Contact us</h6>
-        <form action="" class="contact_us-input">
-          <input type="text" placeholder="Fullname" />
-          <input type="email" placeholder="Email address" />
-          <textarea name="reason" id="" placeholder="Reason"></textarea>
-          <button class="send-btn">Send</button>
+        <form id="contactForm" class="contact_us-input">
+          <input type="text" id="fullname" placeholder="Fullname" />
+          <input type="email" id="email" placeholder="Email address" />
+          <textarea id="reason" placeholder="Reason"></textarea>
+          <button type="submit" class="send-btn">Send</button>
         </form>
       </section>
+
+      <div class="popup" id="popup">
+        <p id="pop-p">Bu bir popup mesajıdır!</p>
+        <button class="close-btn" onclick="closePopup()" id="closePopup">
+          Close
+        </button>
+      </div>
 
       <section class="question-section">
         <h1 class="question-text">Frequently Asked Questions</h1>
