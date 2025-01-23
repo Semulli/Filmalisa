@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (token) {
-    window.location.href = "";
+    window.location.href = "../../index.html";
   }
 
 
