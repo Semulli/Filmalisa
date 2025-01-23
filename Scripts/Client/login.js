@@ -1,8 +1,14 @@
 function handlePageLoad() {
-  const token = sessionStorage.getItem("user_token");
+  if ("caches" in window) {
+    caches.keys().then((cacheNames) => {
+      cacheNames.forEach((cacheName) => {
+        caches.delete(cacheName);
+      });
+    });
+  }
 
+  const token = sessionStorage.getItem("user_token");
   if (token) {
-    console.log("User token found, redirecting to index.html...");
     window.location.href = "../../index.html";
     return;
   }
@@ -17,7 +23,20 @@ function handlePageLoad() {
 }
 
 document.addEventListener("DOMContentLoaded", handlePageLoad);
-window.addEventListener("pageshow", handlePageLoad);
+
+window.addEventListener("pageshow", (event) => {
+  const token = sessionStorage.getItem("user_token");
+  if (token) {
+    window.location.href = "../../index.html";
+    return;
+  }
+
+  if (event.persisted) {
+    window.location.reload();
+  } else {
+    handlePageLoad();
+  }
+});
 
 async function signInSite() {
   const emailIn = document.querySelector("#email");
@@ -30,6 +49,7 @@ async function signInSite() {
   formGroup.forEach(
     (group) => (group.style.border = "1px solid var(--Border-color_1)")
   );
+
   if (!email || !password) {
     if (!email) emailIn.parentElement.style.border = "1px solid red";
     if (!password) passwordIn.parentElement.style.border = "1px solid red";
@@ -54,14 +74,13 @@ async function signInSite() {
     );
 
     let data = await response.json();
-    console.log(data);
-    console.log("Response status:", response.status);
 
     if (response.ok && data.result === true) {
       sessionStorage.setItem("user_token", data.data.tokens.access_token);
+
       emailIn.value = "";
       passwordIn.value = "";
-      window.location.href = "../../index.html";
+      window.location.replace("../../index.html");
     } else {
       passwordIn.parentElement.style.border = "1px solid red";
     }
