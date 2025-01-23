@@ -10,7 +10,7 @@
 
 .right-part {
   margin: 0 auto;
-  margin-top: 93px;
+  margin-top: 50px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -20,25 +20,22 @@
 }
 
 h1 {
-  margin-top: 23px;
-  font-size: 70px;
+  margin-top: 15px;
+  font-size: 50px;
   font-weight: 400;
   line-height: 80px;
   font-family: var(--Font_Numans);
   color: var(--Filmalisa-text-color);
 }
 
-
-h2{
-font-family: var(--Font_Poppins);
-font-size: 40px;
-font-weight: 500;
-line-height: 80px;
-letter-spacing: -0.02em;
-text-align: center;
-text-decoration-skip-ink: none;
-
-
+h2 {
+  font-family: var(--Font_Poppins);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-decoration-skip-ink: none;
 }
 
 form {
@@ -59,7 +56,7 @@ form {
   margin-bottom: 16px;
 }
 .form-group img {
-  margin: 20px 16px;
+  margin: 16px 12px;
 }
 
 .form-group input {
@@ -73,7 +70,7 @@ form {
 }
 
 .login-btn {
-  padding: 16px 32px 16px 32px;
+  padding: 16px 28px 16px 28px;
   gap: 8px;
   border-radius: 12px;
   opacity: 0px;
@@ -89,7 +86,7 @@ form {
   margin-top: 24px;
 }
 
-.input-icon{
+.input-icon {
   cursor: pointer;
 }
 
@@ -120,10 +117,7 @@ input:-webkit-autofill:focus {
   color: var(--Input-text-color) !important;
   box-shadow: 0 0 0px 1000px var(--Admin-sidebar-color) inset !important;
   -webkit-text-fill-color: #fff !important;
- 
 }
-
-
 
 @keyframes popupFadeIn {
   0% {
