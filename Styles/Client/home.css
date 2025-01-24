@@ -1,6 +1,6 @@
 @import url("../../Global/global.css");
 @import url("../../Global/reset.css");
-@import url("../../Global/fonts.css");
+@import url("../../Global/font.css");
 @import url("../../Global/variable.css");
 @import url("../Responsive/Client/home-responsive.css");
 
@@ -206,14 +206,17 @@ p {
   width: 100%;
   flex-shrink: 0;
   position: relative;
+  background-color: #000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
   opacity: 0.8;
   transition: opacity 0.3s ease;
+  aspect-ratio: 16 / 9;
 }
 
-.slide-1 {
+/* .slide-1 {
   background-image: url("../../Assets/images/home-background.svg");
 }
 
@@ -223,7 +226,7 @@ p {
 
 .slide-3 {
   background-image: url("../../Assets/images/batman.jpg");
-}
+} */
 
 .carousel-buttons {
   position: absolute;
@@ -283,8 +286,15 @@ p {
 }
 
 .category-P {
-  font-size: 35px;
+ 
+  font-family: var(--Font_Roboto);
+  font-size: 24px;
   font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
   margin: 0;
 }
 
@@ -342,9 +352,15 @@ p {
 .movie-title {
   margin: 0;
   color: white;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
+ 
+font-family: var(--Font_Roboto);
+font-size: 24px;
+font-weight: 500;
+line-height: 32px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
   padding-top: 16px;
 }
 
@@ -440,8 +456,93 @@ p {
 .content-title {
   margin: 0;
   color: white;
+
+  font-family: var(--Font_Roboto);
   font-size: 32px;
   font-weight: 500;
   line-height: 40px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
   padding-top: 16px;
+}
+/* .main-container {
+  padding: 20px;
+}
+
+.category-section {
+  margin-bottom: 40px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category-P {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.chevron-icon {
+  width: 20px;
+  height: 20px;
+  background: url("../../Assets/icons/chevron-icon.svg") no-repeat center center;
+  background-size: contain;
+}
+
+.category-card {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  width: 200px;
+  cursor: pointer;
+}
+
+.movie-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-details {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.movie-category {
+  font-size: 14px;
+  color: gray;
+}
+
+.movie-title {
+  font-size: 16px;
+  font-weight: bold;
+} */
+
+/* Yıldızların genel görünümü */
+.star {
+  color: #ccc; /* Boş yıldız rengi */
+  font-size: 18px;
+  margin-right: 2px;
+  display: inline-block;
+  position: relative;
+}
+
+/* Tam dolu yıldız */
+.star.filled {
+  color: gold;
+}
+
+/* Yarım yıldız */
+.star.half {
+  background: linear-gradient(90deg, gold 50%, #ccc 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
