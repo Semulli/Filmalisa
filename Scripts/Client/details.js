@@ -125,6 +125,7 @@ svgFilmInfoDOM.addEventListener("click", function () {
 
 const textarea = document.querySelector(".auto-break"),
   alertComment = document.querySelector(".alert-comment");
+
 textarea.addEventListener("input", function () {
   if (this.value.length > 2999) {
     this.style.color = "red";
@@ -132,10 +133,11 @@ textarea.addEventListener("input", function () {
   } else {
     this.style.color = "#fff";
     alertComment.style.display = "none";
-    if (this.scrollHeight < 200) {
-      this.style.height = "auto";
-      this.style.height = this.scrollHeight + "px";
+    this.style.height = "auto";
+    if (this.scrollHeight > 200) {
+      this.style.height = "200px";
     } else {
+      this.style.height = this.scrollHeight + "px";
     }
   }
 });
