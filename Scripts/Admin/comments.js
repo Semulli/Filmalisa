@@ -80,7 +80,8 @@ async function deleteComments(movieId, commentId) {
     comments = comments.filter((comment) => comment.id !== commentId);
     displayComments(comments, tbody, rowsPerPage, currentPage);
     setupPagination(comments, paginationContainer, rowsPerPage);
-    document.getElementById("pop-p").textContent = "Comment deleted successfully!";
+    document.getElementById("pop-p").textContent =
+      "Comment deleted successfully!";
     showPopup();
   } catch (error) {
     console.error("Beklenmeyen hata:", error.message);
@@ -132,8 +133,8 @@ function displayComments(items, tableBody, rowsPerPage, page) {
     row.dataset.id = comment.id;
     row.innerHTML = `
       <td>${startIndex + index + 1}</td>
-      <td>${comment.full_name}</td>
-      <td>${comment.email}</td>
+      <td>anonymous</td>
+      <td>anonymous</td>
       <td>${comment.movie.title}</td>
       <td id="reason-${comment.id}">${
       comment.comment || "Sebep belirtilmedi."
@@ -159,22 +160,58 @@ function displayComments(items, tableBody, rowsPerPage, page) {
     tableBody.appendChild(row);
   });
 }
-function setupPagination(items, container, rowsPerPage) {
+const setupPagination = (items, container, rowsPerPage) => {
+  if (!container) return;
   container.innerHTML = "";
   const pageCount = Math.ceil(items.length / rowsPerPage);
-  for (let pageNumber = 1; pageNumber <= pageCount; pageNumber++) {
+
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = Math.min(pageCount, startPage + 2);
+
+  if (endPage - startPage + 1 < 3) {
+    startPage = Math.max(1, endPage - 2);
+  }
+
+  const buttons = [];
+  for (let i = startPage; i <= endPage; i++) {
+    buttons.push(i);
+  }
+
+  while (buttons.length < 3) {
+    if (buttons[0] > 1) {
+      buttons.unshift(buttons[0] - 1);
+    } else if (buttons[buttons.length - 1] < pageCount) {
+      buttons.push(buttons[buttons.length - 1] + 1);
+    } else {
+      buttons.push(buttons.length + 1);
+    }
+  }
+
+  buttons.forEach((i) => {
     const button = document.createElement("button");
     button.classList.add("pagination-btn");
-    button.textContent = pageNumber;
-    button.disabled = currentPage === pageNumber;
+    button.textContent = i;
+
+    if (i > pageCount) {
+      button.disabled = true;
+      button.classList.add("disabled");
+    }
+
+    if (i === currentPage) {
+      button.classList.add("active");
+    }
+
     button.addEventListener("click", () => {
-      currentPage = pageNumber;
-      displayComments(items, tbody, rowsPerPage, currentPage);
-      setupPagination(items, container, rowsPerPage);
+      if (!button.disabled) {
+        currentPage = i;
+        displayTableWithPagination(items, tbody, rowsPerPage, currentPage);
+        setupPagination(items, container, rowsPerPage);
+      }
     });
+
     container.appendChild(button);
-  }
-}
+  });
+};
 function showPopup() {
   const popup = document.getElementById("popup");
   popup.classList.add("show");
