@@ -23,7 +23,7 @@ setInterval(() => {
   showSlide(currentIndex);
 }, 5000);
 
-async function fetchMovies() {
+async function getMovies() {
   try {
     const response = await fetch(
       "https://api.sarkhanrahimli.dev/api/filmalisa/movies",
@@ -85,7 +85,7 @@ function populateCarousel(movies) {
   });
 }
 //--------------------------------------------------
-async function loadMoviesByCategory() {
+async function getMoviesByCategory() {
   try {
     const response = await fetch(
       "https://api.sarkhanrahimli.dev/api/filmalisa/categories",
@@ -170,15 +170,15 @@ async function loadMoviesByCategory() {
         const movieRating = document.createElement("div");
         movieRating.className = "movie-rating";
 
-        const starCount = Math.floor(movie.imdb / 2); 
-        const hasHalfStar = (movie.imdb / 2) % 1 !== 0; 
+        const starCount = Math.floor(movie.imdb / 2);
+        const hasHalfStar = (movie.imdb / 2) % 1 !== 0;
 
         for (let i = 1; i <= 5; i++) {
           const star = document.createElement("span");
           if (i <= starCount) {
-            star.className = "star filled"; 
+            star.className = "star filled";
           } else if (i === starCount + 1 && hasHalfStar) {
-            star.className = "star half"; 
+            star.className = "star half";
           } else {
             star.className = "star";
           }
@@ -186,11 +186,11 @@ async function loadMoviesByCategory() {
           movieRating.appendChild(star);
         }
 
-        movieDetails.appendChild(movieRating); 
+        movieDetails.appendChild(movieRating);
 
         movieDetails.appendChild(movieCategory);
         movieDetails.appendChild(movieTitle);
-        movieDetails.appendChild(movieRating); 
+        movieDetails.appendChild(movieRating);
 
         movieCard.appendChild(movieImage);
         movieCard.appendChild(movieDetails);
@@ -212,6 +212,6 @@ async function loadMoviesByCategory() {
   }
 }
 
-loadMoviesByCategory();
+getMoviesByCategory();
 
-fetchMovies();
+getMovies();
