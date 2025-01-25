@@ -163,22 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const userToken = sessionStorage.getItem("user_token");
-    if (!userToken) {
-      document.getElementById("pop-p").textContent =
-        "Please log in before contacting us";
-      showPopup();
-
-      const closeBtn = document.getElementById("closePopup");
-      if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-          window.location.href = "./Pages/Client/login.html";
-        });
-      }
-
-      return;
-    }
-
     if (!validateInputs()) {
       return;
     }
@@ -189,8 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       reason: reasonInput.value.trim(),
     };
 
-    console.log("Sending Data:", formData);
-
     try {
       const response = await fetch(
         "https://api.sarkhanrahimli.dev/api/filmalisa/contact",
@@ -198,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${userToken}`,
           },
           body: JSON.stringify(formData),
         }

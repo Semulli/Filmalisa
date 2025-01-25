@@ -17,7 +17,6 @@ dots.forEach((dot, idx) => {
   });
 });
 
-
 setInterval(() => {
   currentIndex = (currentIndex + 1) % 3;
   showSlide(currentIndex);
@@ -101,7 +100,6 @@ async function getMoviesByCategory() {
     }
 
     const categories = await response.json();
-    console.log(categories);
 
     const mainContainer = document.querySelector(".main-container");
     mainContainer.innerHTML = "";

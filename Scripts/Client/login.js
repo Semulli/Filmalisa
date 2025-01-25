@@ -9,7 +9,7 @@ function handlePageLoad() {
 
   const token = sessionStorage.getItem("user_token");
   if (token) {
-    window.location.href = "../../index.html";
+    window.location.href = "../../Pages/Client/home.html";
     return;
   }
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", handlePageLoad);
 window.addEventListener("pageshow", (event) => {
   const token = sessionStorage.getItem("user_token");
   if (token) {
-    window.location.href = "../../index.html";
+    window.location.href = "../../Pages/Client/home.html";
     return;
   }
 
@@ -80,7 +80,7 @@ async function signInSite() {
 
       emailIn.value = "";
       passwordIn.value = "";
-      window.location.replace("../../index.html");
+      window.location.replace("../../Pages/Client/home.html");
     } else {
       passwordIn.parentElement.style.border = "1px solid red";
     }
