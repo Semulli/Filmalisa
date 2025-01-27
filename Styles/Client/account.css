@@ -153,6 +153,7 @@ a {
   align-items: center;
   background: linear-gradient(45deg, #1ab952, #65af67);
   padding: 7px;
+  object-fit: cover;
 }
 
 #image {
