@@ -65,10 +65,10 @@ function showProfile(info) {
       const passwordInput = document.getElementById("password");
       if (passwordInput.type === "password") {
         passwordInput.type = "text";
-        togglePassword.src = "../../Assets/icons/Client-login/eye-open-icon.svg"; 
+        togglePassword.src = "../../Assets/icons/Client-login/right-icon.svg";
       } else {
         passwordInput.type = "password";
-        togglePassword.src = "../../Assets/icons/Client-login/right-icon.svg"; 
+        togglePassword.src = "../../Assets/icons/Client-login/right-icon.svg";
       }
     });
   } else {
@@ -105,7 +105,7 @@ async function updateProfileInfo(newProfileData) {
       let updatedData = await response.json();
       console.log("Profile updated successfully:", updatedData);
 
-      showPopup("Profile updated successfully!"); 
+      showPopup("Profile updated successfully!");
     } else {
       console.log("Failed to update profile");
       showPopup("Failed to update profile");
@@ -145,7 +145,7 @@ function showPopup(message) {
 
   setTimeout(() => {
     closePopup();
-    getProfileInfo();  
+    getProfileInfo();
   }, 3000);
 }
 

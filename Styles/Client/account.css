@@ -9,19 +9,16 @@
   height: 56px;
 }
 
-/* sidebar */
 .side-bar {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 56px;
-  /* height: 670px; */
   margin-left: 20px;
   padding-top: 40px;
   backdrop-filter: blur(24px);
   box-shadow: 0px 40px 40px 8px #00000029;
   gap: 64px;
-  /* background-color: var(--SideBar-color); */
 }
 
 .logo_links {
@@ -70,8 +67,8 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding-top: 100px;
-  padding-bottom: 284px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 form {
@@ -142,26 +139,26 @@ a {
   color: var(--Link-color);
 }
 
-#email::placeholder {
+#email {
   color: #fff;
+  cursor: default !important;
 }
+
 .image-frame {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #1ab952, #65af67); 
-  padding: 7px; 
+  background: linear-gradient(45deg, #1ab952, #65af67);
+  padding: 7px;
 }
 
 #image {
   width: 100%;
   height: 100%;
-  border-radius: 50%; 
- 
- 
+  border-radius: 50%;
 }
 
 input:-webkit-autofill,
