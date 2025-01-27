@@ -216,8 +216,8 @@ async function getMoviesByCategory() {
         }
 
         movieDetails.appendChild(movieCategory);
-        movieDetails.appendChild(movieTitle);
         movieDetails.appendChild(movieRating);
+        movieDetails.appendChild(movieTitle);
 
         movieCard.appendChild(movieImage);
         movieCard.appendChild(movieDetails);
