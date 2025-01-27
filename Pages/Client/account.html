@@ -38,11 +38,11 @@
         </nav>
       </div>
       <div class="right-part">
-        <figure>
-          <img src="../../Assets/icons/account/profile.svg" alt="" />
+        <figure id="image-frame" class="image-frame">
+          <img src="../../Assets/images/user-image.png" id="image" />
         </figure>
-        <form>
-          <div class="form-group">
+        <form id="form">
+          <!-- <div class="form-group">
             <img
               src="../../Assets/icons/Client-login/left-icon.svg"
               alt="fullname"
@@ -82,8 +82,12 @@
             />
           </div>
 
-          <button type="submit" class="register-btn">Save</button>
+          <button type="submit" class="register-btn">Save</button> -->
         </form>
+      </div>
+      <div class="popup" id="popup">
+        <p id="pop-p"></p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
       </div>
     </main>
     <script src="../../Scripts/Client/account.js"></script>
