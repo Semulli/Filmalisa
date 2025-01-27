@@ -261,8 +261,25 @@ p {
 
 .category-card {
   display: flex;
-  flex-wrap: wrap;
   gap: 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.category-card::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card .movie-card {
+  flex-shrink: 0;
+}
+
+.category-card.active {
+  cursor: grabbing;
 }
 
 .movie-card {
@@ -286,7 +303,6 @@ p {
 }
 
 .category-P {
- 
   font-family: var(--Font_Roboto);
   font-size: 24px;
   font-weight: 500;
@@ -294,7 +310,7 @@ p {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  
+
   margin: 0;
 }
 
@@ -352,14 +368,14 @@ p {
 .movie-title {
   margin: 0;
   color: white;
- 
-font-family: var(--Font_Roboto);
-font-size: 24px;
-font-weight: 500;
-line-height: 32px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
+
+  font-family: var(--Font_Roboto);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 
   padding-top: 16px;
 }
@@ -464,85 +480,41 @@ text-decoration-skip-ink: none;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  
+
   padding-top: 16px;
 }
-/* .main-container {
-  padding: 20px;
-}
 
-.category-section {
-  margin-bottom: 40px;
-}
-
-.category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.category-P {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.chevron-icon {
-  width: 20px;
-  height: 20px;
-  background: url("../../Assets/icons/chevron-icon.svg") no-repeat center center;
-  background-size: contain;
-}
-
-.category-card {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.movie-card {
-  width: 200px;
-  cursor: pointer;
-}
-
-.movie-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-.movie-details {
-  padding: 10px 0;
-  text-align: center;
-}
-
-.movie-category {
-  font-size: 14px;
-  color: gray;
-}
-
-.movie-title {
-  font-size: 16px;
-  font-weight: bold;
-} */
-
-/* Yıldızların genel görünümü */
 .star {
-  color: #ccc; /* Boş yıldız rengi */
+  color: #ccc;
   font-size: 18px;
   margin-right: 2px;
   display: inline-block;
   position: relative;
 }
 
-/* Tam dolu yıldız */
 .star.filled {
   color: gold;
 }
 
-/* Yarım yıldız */
 .star.half {
   background: linear-gradient(90deg, gold 50%, #ccc 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
 }
