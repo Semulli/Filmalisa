@@ -216,18 +216,6 @@ p {
   aspect-ratio: 16 / 9;
 }
 
-/* .slide-1 {
-  background-image: url("../../Assets/images/home-background.svg");
-}
-
-.slide-2 {
-  background-image: url("../../Assets/images/avatar.jpg");
-}
-
-.slide-3 {
-  background-image: url("../../Assets/images/batman.jpg");
-} */
-
 .carousel-buttons {
   position: absolute;
   bottom: 20px;
@@ -377,7 +365,7 @@ p {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 
-  padding-top: 16px;
+  padding-top: 12px;
 }
 
 .section-container {
@@ -490,6 +478,7 @@ p {
   margin-right: 2px;
   display: inline-block;
   position: relative;
+  padding-top: 12px;
 }
 
 .star.filled {
