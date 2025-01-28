@@ -132,22 +132,29 @@ async function getMoviesByCategory() {
       let isDown = false;
       let startX;
       let scrollLeft;
+      let isDrag = false;
+      let clickTimeout;
 
       categoryCardContainer.addEventListener("mousedown", (e) => {
         isDown = true;
+        isDrag = false;
         categoryCardContainer.classList.add("active");
         startX = e.pageX - categoryCardContainer.offsetLeft;
         scrollLeft = categoryCardContainer.scrollLeft;
 
-        categoryCardContainer
-          .querySelectorAll(".movie-card")
-          .forEach((card) => {
-            card.style.pointerEvents = "none";
-          });
+        clickTimeout = setTimeout(() => {
+          isDrag = true;
+          categoryCardContainer
+            .querySelectorAll(".movie-card")
+            .forEach((card) => {
+              card.style.pointerEvents = "none";
+            });
+        }, 150);
       });
 
       categoryCardContainer.addEventListener("mouseleave", () => {
         isDown = false;
+        clearTimeout(clickTimeout);
         categoryCardContainer.classList.remove("active");
 
         categoryCardContainer
@@ -159,6 +166,7 @@ async function getMoviesByCategory() {
 
       categoryCardContainer.addEventListener("mouseup", () => {
         isDown = false;
+        clearTimeout(clickTimeout);
         categoryCardContainer.classList.remove("active");
 
         categoryCardContainer
@@ -169,7 +177,7 @@ async function getMoviesByCategory() {
       });
 
       categoryCardContainer.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
+        if (!isDown || !isDrag) return;
         e.preventDefault();
         const x = e.pageX - categoryCardContainer.offsetLeft;
         const walk = (x - startX) * 2;
@@ -184,6 +192,8 @@ async function getMoviesByCategory() {
         movieImage.src = movie.cover_url;
         movieImage.alt = movie.title;
         movieImage.className = "movie-image";
+
+        movieImage.ondragstart = (e) => e.preventDefault();
 
         const movieDetails = document.createElement("div");
         movieDetails.className = "movie-details";
@@ -222,8 +232,10 @@ async function getMoviesByCategory() {
         movieCard.appendChild(movieImage);
         movieCard.appendChild(movieDetails);
 
-        movieCard.addEventListener("click", () => {
-          window.location.href = `../../Pages/Client/details-1.html?id=${movie.id}`;
+        movieCard.addEventListener("click", (e) => {
+          if (!isDrag) {
+            window.location.href = `../../Pages/Client/details-1.html?${movie.id}`;
+          }
         });
 
         categoryCardContainer.appendChild(movieCard);

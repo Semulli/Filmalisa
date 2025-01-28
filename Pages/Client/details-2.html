@@ -3,14 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Details-2</title>
-    <link rel="stylesheet" href="../../Styles/Client/details.css" />
-    <link rel="icon" href="../../Assets/images/logo_with_uploaded_image (1).png" type="image/png">
-
-
+    <title>Filmalisa</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../Styles/Client/details2.css" />
   </head>
   <body>
-    <h1>Details-2 Page</h1>
-    <script src="../../Scripts/Client/details.js"></script>
+    <div class="video-container" id="video-container">
+      <button class="back-button" onclick="window.history.back();">
+        <i
+          class="fas fa-arrow-left"
+          id="back-button"
+          style="cursor: pointer"
+        ></i>
+      </button>
+
+      <iframe
+        id="youtube-player"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        src=""
+      ></iframe>
+
+      <div class="controls-container">
+        <div class="progress-bar" id="progress-bar">
+          <div class="fill" id="progress-fill"></div>
+          <div class="thumb" id="progress-thumb"></div>
+        </div>
+
+        <div class="controls-bar">
+          <div class="controls-section">
+            <i class="fas fa-play icon" id="play-pause"></i>
+            <div class="custom-icon" id="replay">
+              <i class="fas fa-undo-alt"></i>
+            </div>
+            <div class="custom-icon" id="forward">
+              <i class="fas fa-redo-alt"></i>
+            </div>
+            <i class="fas fa-volume-up icon" id="volume"></i>
+          </div>
+
+          <div class="title-bar">The 8 Show E1 Episode 1</div>
+
+          <div class="controls-section">
+            <i class="fas fa-step-forward icon"></i>
+            <i class="fas fa-bars icon"></i>
+            <i class="fas fa-cogs icon" id="speed-button"></i>
+            <i class="fas fa-expand icon" id="fullscreen-toggle"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="speed-menu" id="speed-menu">
+        <button onclick="setPlaybackRate(0.5)">0.5x</button>
+        <button onclick="setPlaybackRate(1)">Normal</button>
+        <button onclick="setPlaybackRate(1.5)">1.5x</button>
+        <button onclick="setPlaybackRate(2)">2x</button>
+      </div>
+    </div>
+
+    <script src="../../Scripts/Client/details2.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
   </body>
 </html>

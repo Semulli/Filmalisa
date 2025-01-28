@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #111;
+  font-family: Arial, sans-serif;
+  cursor: default;
+}
+
+.hide-cursor {
+  cursor: none;
+}
+
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.controls-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.video-container.show-controls .controls-container {
+  opacity: 1;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.progress-bar .fill {
+  background: red;
+  height: 100%;
+  width: 0;
+  position: absolute;
+}
+
+.progress-bar .thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.custom-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  position: relative;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.custom-icon:hover {
+  transform: scale(1.2);
+}
+
+.custom-icon i {
+  font-size: 24px;
+}
+
+.title-bar {
+  flex-grow: 2;
+  text-align: center;
+  font-size: 16px;
+}
+
+.duration {
+  font-size: 14px;
+}
+
+.controls-section i {
+  min-width: 30px;
+  text-align: center;
+}
+
+.speed-menu {
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+}
+
+.speed-menu button {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.speed-menu button:hover {
+  text-decoration: underline;
+}
