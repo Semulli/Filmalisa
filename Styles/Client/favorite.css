@@ -1,6 +1,14 @@
 @import url("../../Global/global.css");
 @import url("../Responsive/Client/favorite-responsive.css");
 
+
+body, html{
+  overflow-x: hidden;
+  margin: 0;
+  
+}
+
+
 .client-login {
   display: flex;
   gap: 10px;
@@ -16,6 +24,7 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 56px;
+  
   position: absolute;
   left: 0;
   top: 0;
@@ -88,10 +97,16 @@
 
 .content-container {
   display: flex;
-  flex-wrap: wrap;
   padding-top: 48px;
+  gap: 5px;
+  overflow-x:auto;
+ 
+  cursor: grab;
 }
 
+.content-container.active {
+  cursor: grabbing;
+}
 .content-card {
   overflow: hidden;
   width: 404px;
@@ -161,4 +176,27 @@
   font-size: 35px;
   font-weight: 500;
   line-height: 40px;
+}
+
+
+.star {
+  font-size: 20px;
+  margin-right: 2px;
+  display: inline-block;
+  color: #ccc; /* Boş yıldız */
+  position: relative;
+}
+
+.star::before {
+  content: "★"; /* Boş yıldız */
+}
+
+.star.filled {
+  color: gold; /* Dolu yıldız */
+}
+
+.star.half {
+  background: linear-gradient(90deg, gold 50%, #ccc 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
