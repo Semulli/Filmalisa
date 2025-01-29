@@ -1,5 +1,4 @@
 @import url("../../Global/global.css");
-@import url("../Responsive/Client/landing-page-responsive.css");
 
 html,
 body {
@@ -133,6 +132,7 @@ form {
 input,
 textarea {
   padding-left: 16px;
+  font-size: 16px;
   width: 368px;
   height: 55px;
   border-radius: 4px;
@@ -142,10 +142,7 @@ textarea {
   box-shadow: none;
   backdrop-filter: blur(5px);
   color: #bcbcbc;
-}
-
-input {
-  padding-left: 16px;
+  box-sizing: border-box;
 }
 
 input:focus {
@@ -236,6 +233,11 @@ h4 {
   gap: 12px;
 }
 
+.kids-section figure img {
+  width: 500px;
+  height: 350px
+}
+
 h5 {
   font-family: var(--Font_Roboto);
   font-size: 48px;
@@ -293,6 +295,7 @@ textarea {
   color: #fff;
   border: none;
 }
+
 .question-section {
   padding: 72px 0;
   border-bottom: 8px solid #232323;
@@ -311,6 +314,7 @@ textarea {
   border: none;
   max-width: 1104px;
 }
+
 .accordion {
   width: 100%;
   max-width: 600px;
@@ -319,14 +323,17 @@ textarea {
   border-radius: 5px;
   overflow: hidden;
 }
+
 .accordion-item {
   border: none;
   padding-bottom: 8px;
   background-color: #000;
 }
+
 .accordion-item:last-child {
   border: none;
 }
+
 .accordion-header {
   display: flex;
   justify-content: space-between;
@@ -337,16 +344,20 @@ textarea {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .accordion-header:hover {
   background-color: #444;
 }
+
 .accordion-header span {
   font-size: 20px;
   transition: transform 0.3s;
 }
+
 .accordion-header span.rotate {
   transform: rotate(45deg);
 }
+
 .accordion-content {
   max-height: 0;
   overflow: hidden;
@@ -355,6 +366,7 @@ textarea {
   opacity: 0.8;
   transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
 }
+
 .accordion-content.open {
   max-height: 200px;
   padding: 15px;
@@ -422,8 +434,8 @@ input:-webkit-autofill:focus {
 .loading-tv-frame {
   z-index: 2;
   position: relative;
-  width: 100%;
-  height: auto;
+  width: 500px;
+  height: 350px
 }
 
 .loading-tv-content {
@@ -455,14 +467,14 @@ input:-webkit-autofill:focus {
   align-items: center;
   max-width: 100%;
   overflow: hidden;
+
 }
 
 .loading-tv-frame-2 {
   z-index: 2;
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  width: 500px;
+  height: 350px
 }
 
 .loading-tv-content-2 {
@@ -561,6 +573,12 @@ input:-webkit-autofill:focus {
   justify-content: space-between;
 }
 
+.user-modal li img {
+  width: 20px;
+  height: 20px;
+  margin: 0 2px
+}
+
 .user-modal li:hover {
   background-color: rgba(240, 240, 240, 0.2);
   border-radius: 4px;
@@ -571,6 +589,7 @@ input:-webkit-autofill:focus {
     opacity: 0;
     transform: translate(-50%, -60%);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -616,7 +635,6 @@ input:-webkit-autofill:focus {
 }
 
 .close-btn {
-  width: 80px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
