@@ -29,7 +29,7 @@ function showCommentModal(commentId) {
     modalComment.textContent = commentText;
     modal.style.display = "flex";
   } else {
-    console.error(`Comment elementi bulunamadı: ${commentId}`);
+    console.error(`Comment element not found: ${commentId}`);
   }
 }
 
