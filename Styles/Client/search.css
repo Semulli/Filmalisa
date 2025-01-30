@@ -79,6 +79,7 @@
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+
 .search-bar {
   width: 281px;
   padding: 8px;
@@ -87,6 +88,25 @@
   background-color: #1e1e1e;
   color: white;
   outline: none;
+}
+
+.search-bar:hover,
+.search-bar:focus {
+  border-color: var(--Btn-color); 
+
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-bar:active {
+  transform: scale(1.05);
+}
+
+.search-header img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 input::placeholder {
@@ -124,7 +144,7 @@ input::placeholder {
 
 .movie-card:hover .movie-poster img {
   filter: brightness(0.8);
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .movie-info {
@@ -151,14 +171,14 @@ input::placeholder {
   background-color: #1D1D1D80;
   padding: 4px 8px;
   height: 24px;
-  width: 65px;
+  width: 75px;
   border-top-right-radius: 8px;
   border-bottom-left-radius: 8px;
   font-family: var(--Font_Roboto);
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  text-align: left;
+  text-align: center;
 }
 
 form {
@@ -188,4 +208,56 @@ form {
 .movie-card:hover .movie-info {
   opacity: 1;
   transform: translateY(0);
+}
+.star {
+  font-size: 20px;
+  margin-right: 2px;
+  display: inline-block;
+  color: #ccc; 
+  position: relative;
+}
+
+.star::before {
+  content: "★"; 
+}
+
+.star.filled {
+  color: gold; 
+}
+
+.star.half {
+  background: linear-gradient(90deg, gold 50%, #ccc 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#loadingIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index:  10;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.filmMessage{
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: transparent !important;
+  color: var(--Input-text-color) !important;
+  box-shadow: 0 0 0px 1000px var(--Admin-sidebar-color) inset !important;
+  -webkit-text-fill-color: #fff !important;
 }
