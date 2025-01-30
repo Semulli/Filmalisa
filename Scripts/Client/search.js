@@ -1,6 +1,6 @@
 async function getAllMovies() {
   try {
-    // Show loading indicator
+    
     document.getElementById("loadingIndicator").style.display = "block";
 
     let response = await fetch(
@@ -25,7 +25,7 @@ async function getAllMovies() {
     document.getElementById("loadingIndicator").style.display = "none";
   } catch (error) {
     console.log("Unexpected error happened:", error);
-    document.getElementById("loadingIndicator").style.display = "none"; // Hide if error occurs
+    document.getElementById("loadingIndicator").style.display = "none"; 
   }
 }
 
@@ -60,7 +60,7 @@ let searchButton = document.querySelector(".search-header img");
 searchButton.addEventListener("click", () => {
   // Hide movie cards and show loading text
   document.getElementById("loadingIndicator").style.display = "block";
-  card.innerHTML = "<p class='loadingMessage'>Loading...</p>"; // Show loading message
+  card.innerHTML = "<p class='loadingMessage'>Loading...</p>"; 
 
   searchMovies(searchInput.value);
   searchInput.value = "";
