@@ -121,7 +121,6 @@ function displayFavoriteMovies(element) {
 
   applyStarRatings();
 
-  // Add click event to each movie card
   container.querySelectorAll(".content-card").forEach((card) => {
     card.addEventListener("click", (e) => {
       const movieId = e.currentTarget.getAttribute("data-id");
