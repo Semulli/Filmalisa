@@ -70,7 +70,6 @@ main {
 #film-bg-image .user-profile-photo {
   width: 40px;
   display: flex;
-  background: linear-gradient(to bottom, #72f435 50%, #027981 100%);
   padding: 1px;
   border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -392,30 +391,27 @@ main {
 }
 
 .film-text-header-right button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
-  font-size: 25px;
-  padding: 10px 16px;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.film-text-header-right button svg {
+  width: 16px;
+  height: 16px;
 }
 
 .film-text-header-right button:hover {
-  background-color: #fff;
-
-  path {
-    fill: #000;
-  }
+  background-color: #999696;
 }
 
 .film-text {
@@ -584,7 +580,6 @@ main {
 .user-comment-photo img {
   width: 40px;
   display: flex;
-  background: linear-gradient(to bottom, #72f435 50%, #027981 100%);
   padding: 1px;
   border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -817,3 +812,14 @@ main {
 }
 
 /* ------------------------------------------------------------------  */
+
+.movies-slider .movie {
+  pointer-events: auto; /* Kartların tıklanabilir olduğundan emin olun */
+  cursor: pointer; /* Tıklanabilirlik için cursor pointer */
+}
+
+.movies-slider .movie img,
+.movies-slider .movie-desc,
+.movies-slider .movie-overlay {
+  pointer-events: none; /* Kartın içindeki elemanlar tıklama olayını maskelemesin */
+}
