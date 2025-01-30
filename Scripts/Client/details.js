@@ -230,7 +230,7 @@ async function fetchFilmDetails() {
           )}`;
           sessionStorage.setItem("movie.name", filmData.title);
         } else {
-          window.location.href = filmData.watch_url;
+          window.open(filmData.watch_url, "_blank");
         }
       } else {
         console.error("Geçerli bir URL bulunamadı!");
@@ -327,8 +327,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const loadMoreContainer = document.createElement("div");
   loadMoreContainer.classList.add("load-more");
   loadMoreContainer.innerHTML = `
-    <button class="load-more-btn">Load more</button>
-  `;
+      <button class="load-more-btn">Load more</button>
+    `;
   commentsContainer.insertAdjacentElement("afterend", loadMoreContainer);
 
   const userPhotoDiv = document.getElementById("user-photo");
@@ -343,20 +343,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const urlSearch = window.location.search.substring(1);
   const movieId = urlSearch.match(/^\d+$/) ? urlSearch : null;
 
-  if (!movieId) {
-    alert("Geçersiz URL! Film ID bulunamadı.");
-    return;
-  }
-
   const apiCommentsUrl = `https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}/comments`;
   const apiProfileUrl = "https://api.sarkhanrahimli.dev/api/filmalisa/profile";
   const defaultImageUrl = "../../Assets/images/sarkhan-teacher.jpeg";
   const userToken = sessionStorage.getItem("user_token");
-
-  if (!userToken) {
-    alert("Yorum yapmak için giriş yapmanız gerekiyor!");
-    return;
-  }
 
   let allComments = [];
   let visibleCommentsCount = 3;
@@ -385,10 +375,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         const fullName = profileData.data.full_name || "Default User";
 
         userPhotoDiv.innerHTML = `
-          <a href="../Client/account.html" class="user-profile-photo">
-            <img src="${userPhotoUrl}" alt="${fullName}" />
-          </a>
-        `;
+            <a href="../Client/account.html" class="user-profile-photo">
+              <img src="${userPhotoUrl}" alt="${fullName}" />
+            </a>
+          `;
 
         if (userCommentPhotoImg) {
           userCommentPhotoImg.src = userPhotoUrl;
@@ -406,7 +396,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         observeNewComments(userPhotoUrl, fullName);
 
-        allComments = commentsData.data;
+        allComments = commentsData.data.reverse();
         renderComments(userPhotoUrl, fullName);
 
         if (allComments.length > visibleCommentsCount) {
@@ -437,21 +427,91 @@ document.addEventListener("DOMContentLoaded", async () => {
       const commentElement = document.createElement("div");
       commentElement.classList.add("comment");
 
+      commentElement.setAttribute("data-comment-id", comment.id);
+
       const createdAt = new Date(comment.created_at);
       const hours = createdAt.getHours().toString().padStart(2, "0");
       const minutes = createdAt.getMinutes().toString().padStart(2, "0");
       const timeAgo = calculateTimeAgo(createdAt);
 
       commentElement.innerHTML = `
-        <div class="user-info">
+        <div class="user-info" style="position: relative;">
           <div class="user">
             <img src="${photoUrl}" alt="${fullName}" />
             <span>${fullName}</span>
           </div>
           <p>${hours}:${minutes} ${timeAgo}</p>
+          <div class="menu-icon" style="position: absolute; top: -16px; right: -10px; cursor: pointer; display: none;">
+            <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
+            <span style="display: block; margin: 8px 0; font-size: 20px; line-height: 0;">•</span>
+            <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
+          </div>
+          <div class="side-menu" style="display: none; position: absolute; top: -25px; right: -90px; background-color: #333; color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: all 0.3s ease-in-out;">
+            <button class="delete-button" style="background: none; color: white; border: none; cursor: pointer;">Delete</button>
+          </div>
         </div>
         <p>${comment.comment}</p>
       `;
+      const commentsToShow = allComments
+        .slice(0, visibleCommentsCount)
+        .reverse();
+
+      commentElement.addEventListener("mouseenter", () => {
+        const menuIcon = commentElement.querySelector(".menu-icon");
+        menuIcon.style.display = "block";
+      });
+
+      commentElement.addEventListener("mouseleave", () => {
+        const menuIcon = commentElement.querySelector(".menu-icon");
+        menuIcon.style.display = "none";
+      });
+
+      const menuIcon = commentElement.querySelector(".menu-icon");
+      menuIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeAllSideMenus();
+
+        const sideMenu = commentElement.querySelector(".side-menu");
+        sideMenu.style.display =
+          sideMenu.style.display === "block" ? "none" : "block";
+
+        document.addEventListener("click", closeSideMenuOnClickOutside);
+      });
+
+      const deleteButton = commentElement.querySelector(".delete-button");
+      deleteButton.addEventListener("click", () => {
+        const sideMenu = commentElement.querySelector(".side-menu");
+        sideMenu.style.display = "none";
+
+        const commentId = commentElement.getAttribute("data-comment-id");
+        if (commentId) {
+          openRemoveModal(commentId);
+        } else {
+          console.error("Yorum ID'si bulunamadı!");
+        }
+      });
+
+      function closeSideMenuOnClickOutside(e) {
+        const sideMenu = commentElement.querySelector(".side-menu");
+        const menuIcon = commentElement.querySelector(".menu-icon");
+
+        if (
+          sideMenu &&
+          !sideMenu.contains(e.target) &&
+          !menuIcon.contains(e.target)
+        ) {
+          sideMenu.style.display = "none";
+          document.removeEventListener("click", closeSideMenuOnClickOutside);
+        }
+      }
+
+      function closeAllSideMenus() {
+        const allSideMenus = document.querySelectorAll(".side-menu");
+        allSideMenus.forEach((menu) => {
+          menu.style.display = "none";
+        });
+      }
+
       commentsContainer.appendChild(commentElement);
     });
 
@@ -510,6 +570,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fullName = userNameSpans[0]?.textContent || "Default User";
       renderComments(userPhotoUrl, fullName);
     });
+
+  window.fetchCommentsAndProfile = fetchCommentsAndProfile;
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    await fetchCommentsAndProfile();
+  });
 
   await fetchCommentsAndProfile();
 });
@@ -651,10 +717,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const commentText = commentTextarea.value.trim();
 
-    if (!commentText) {
-      alert("Yorum alanı boş olamaz!");
-      return;
-    }
     try {
       const response = await fetch(commentApiUrl, {
         method: "POST",
@@ -669,17 +731,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log("Yorum başarıyla gönderildi:", result);
-        alert("Yorumunuz başarıyla gönderildi!");
+        document.getElementById("pop-p").textContent =
+          "Your comment has been sent successfully.";
+        showPopup();
+        fetchCommentsAndProfile();
 
         commentTextarea.value = "";
       } else {
         console.error("Yorum gönderme hatası:", response.statusText);
-        alert("Yorum gönderilirken hata oluştu.");
       }
     } catch (error) {
       console.error("Yorum API çağrısında hata:", error);
-      alert("Bağlantı hatası! Lütfen daha sonra tekrar deneyin.");
     }
   }
 
@@ -776,9 +838,9 @@ async function fetchAndDisplayCategoryMovies() {
 }
 
 function generateStars(imdbScore) {
-  const fullStars = Math.floor(imdbScore / 2); // Tam yıldız sayısı
-  const halfStar = imdbScore % 2 >= 1 ? 1 : 0; // Yarım yıldız kontrolü
-  const emptyStars = 5 - fullStars - halfStar; // Boş yıldız sayısı
+  const fullStars = Math.floor(imdbScore / 2);
+  const halfStar = imdbScore % 2 >= 1 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
 
   const stars = [
     ...Array(fullStars).fill(
@@ -810,3 +872,111 @@ function generateStars(imdbScore) {
 }
 
 fetchAndDisplayCategoryMovies();
+
+// ----------------------------------------------------------------------------------------------------------------
+// Remove Comment Api
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yesButton = document.getElementById("yes-btn");
+
+  if (!yesButton) {
+    console.error("#yes-btn element not found in DOM.");
+    return;
+  }
+
+  yesButton.addEventListener("click", async () => {
+    const removeModal = document.getElementById("modal-remove");
+    if (!removeModal) {
+      console.error("#modal-remove element not found in DOM.");
+      return;
+    }
+
+    const commentId = removeModal.getAttribute("data-actor-id");
+    if (!commentId) {
+      console.error("Comment ID not found in modal.");
+      return;
+    }
+
+    const urlSearch = window.location.search.substring(1);
+    const movieId = urlSearch.match(/^\d+$/) ? urlSearch : null;
+
+    if (!movieId) {
+      console.error("Invalid URL! Movie ID not found.");
+      return;
+    }
+
+    const apiUrl = `https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}/comment/${commentId}`;
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("user_token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        document.getElementById("pop-p").textContent =
+          "Your comment has been successfully deleted.";
+        showPopup();
+        removeModal.style.display = "none";
+        removeModal.removeAttribute("data-actor-id");
+        fetchCommentsAndProfile();
+      } else if (response.status === 400) {
+        document.getElementById("pop-p").textContent =
+          "You can't delete someone else's message.";
+        showPopup();
+        removeModal.style.display = "none";
+        removeModal.removeAttribute("data-actor-id");
+      } else {
+        document.getElementById("pop-p").textContent =
+          "An error occurred while deleting the comment.";
+        showPopup();
+      }
+    } catch (error) {
+      console.error("Error deleting the comment:", error);
+      document.getElementById("pop-p").textContent =
+        "An error occurred. Please try again.";
+      showPopup();
+      removeModal.style.display = "none";
+    }
+  });
+});
+
+// ----------------------------------------------------------------------------------------------------------------
+
+function openRemoveModal(id) {
+  const removeModal = document.getElementById("modal-remove");
+  if (!removeModal) {
+    console.error("#modal-remove element not found in DOM.");
+    return;
+  }
+
+  removeModal.setAttribute("data-actor-id", id);
+  removeModal.style.display = "flex";
+}
+
+function closeRemoveModal(commentId) {
+  const removeModal = document.getElementById("modal-remove");
+  if (!removeModal) return;
+  removeModal.style.display = "none";
+  removeModal.removeAttribute("data-actor-id");
+}
+
+// ----------------------------------------------------------------------------------------------------------------
+// PopUp
+
+function showPopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.add("show");
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.remove("show");
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 500);
+}
