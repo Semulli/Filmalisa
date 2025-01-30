@@ -200,3 +200,11 @@ body, html{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.empty-message {
+  font-size: 1.2rem;
+  color: #bcbcbc;
+  text-align: center;
+  margin: 0 auto;
+  
+}
