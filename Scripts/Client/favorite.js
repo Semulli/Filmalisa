@@ -58,7 +58,6 @@ window.addEventListener("load", () => {
   getFavoriteMovies();
 });
 
-
 async function getFavoriteMovies() {
   try {
     let response = await fetch(
@@ -93,6 +92,11 @@ function displayFavoriteMovies(element) {
 
   if (!container) {
     console.error("Container element not found!");
+    return;
+  }
+
+  if (element.data.length === 0) {
+    container.innerHTML = "<p class='empty-message'>No favorite movies added yet.</p>";
     return;
   }
 
@@ -146,5 +150,3 @@ function applyStarRatings() {
     }
   });
 }
-
-getFavoriteMovies();
