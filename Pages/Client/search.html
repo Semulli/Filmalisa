@@ -40,7 +40,8 @@
           /></a>
         </nav>
       </div>
-
+    </main>
+    <div>
       <div class="search-panel">
         <div class="search-header">
           <div class="text-part">
@@ -49,126 +50,22 @@
           </div>
 
           <form action="">
-            <input type="text" class="search-bar" placeholder="Search..." />
+            <input
+              type="text"
+              class="search-bar"
+              id="searchBar"
+              placeholder="Search..."
+            />
             <img src="../../Assets/icons/search/button.svg" alt="" />
           </form>
         </div>
-        <div class="movie-part">
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/women.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Wonder Woman 1984</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/batman.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Zack Snyder's Justice League</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/kombat.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Mortal Kombat</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/courier.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Drama</h1>
-              <p class="movie-title">The Courier</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/women.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Wonder Woman 1984</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/batman.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Zack Snyder's Justice League</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/kombat.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Mortal Kombat</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/courier.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Drama</h1>
-              <p class="movie-title">The Courier</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/women.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Wonder Woman 1984</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/batman.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Zack Snyder's Justice League</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/kombat.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Fantasy</h1>
-              <p class="movie-title">Mortal Kombat</p>
-            </div>
-          </div>
-          <div class="movie-card">
-            <div class="movie-poster">
-              <img src="../../Assets/images/courier.png" alt="" />
-            </div>
-            <div class="movie-info">
-              <h1 class="movie-genre">Drama</h1>
-              <p class="movie-title">The Courier</p>
-            </div>
-          </div>
-        
-          
-         
-        
+        <div id="loadingIndicator" style="display:none;">
+          <p>Loading...</p>
         </div>
+        <div class="movie-part" id="moviePart"></div>
       </div>
-    </main>
+    </div>
+
     <script src="../../Scripts/Client/search.js"></script>
   </body>
 </html>
