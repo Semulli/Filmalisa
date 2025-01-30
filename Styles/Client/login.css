@@ -1,22 +1,18 @@
 @import url("../../Global/global.css");
-@import url("../Responsive/Client/login-responsive.css");
+/* ? right part */
 
-.main-logo {
-  width: 56px;
-  height: 56px;
+.login-logo {
+  width: 200px;
 }
-
-/* right part */
 
 .right-part {
   margin: 0 auto;
-  margin-top: 50px;
+  margin: 50px 0 92px 0;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 92px;
 }
 
 h1 {
@@ -46,15 +42,13 @@ form {
 .form-group {
   display: flex;
   align-items: center;
-
   background-color: var(--Admin-sidebar-color);
-
   border: 1px solid var(--Border-color_1);
   border-radius: 12px;
-
   width: 547px;
   margin-bottom: 16px;
 }
+
 .form-group img {
   margin: 16px 12px;
 }
@@ -73,7 +67,6 @@ form {
   padding: 16px 28px 16px 28px;
   gap: 8px;
   border-radius: 12px;
-  opacity: 0px;
   background: var(--Btn-color);
   border: none;
   font-family: var(--Font_Poppins);
@@ -106,7 +99,9 @@ nav {
   display: flex;
   justify-content: flex-start;
 }
+
 a {
+  font-size: 14px;
   color: var(--Link-color);
 }
 
@@ -124,12 +119,16 @@ input:-webkit-autofill:focus {
     opacity: 0;
     transform: translate(-50%, -60%);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
 }
 
+/* ? right part */
+
+/* ? Pop-up */
 .popup {
   display: none;
   flex-direction: column;
@@ -161,14 +160,7 @@ input:-webkit-autofill:focus {
   font-size: 18px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
 .close-btn {
-  width: 80px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -182,3 +174,5 @@ input:-webkit-autofill:focus {
 .close-btn:hover {
   opacity: 0.9;
 }
+
+/* ? Pop-up */
