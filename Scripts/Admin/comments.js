@@ -5,6 +5,7 @@ const rowsPerPage = 7;
 let comments = [];
 let currentMovieId = null;
 let currentDeleteId = null;
+
 window.addEventListener("load", () => {
   const accessToken = sessionStorage.getItem("access_token");
   if (!accessToken) {
@@ -13,10 +14,12 @@ window.addEventListener("load", () => {
     getComments();
   }
 });
+
 document.querySelector(".logout-div").addEventListener("click", () => {
   sessionStorage.removeItem("access_token");
   window.location.href = "../../Pages/Admin/login.html";
 });
+
 function showCommentModal(commentId) {
   const commentElement = document.getElementById(commentId);
   if (commentElement) {
@@ -29,11 +32,13 @@ function showCommentModal(commentId) {
     console.error(`Comment elementi bulunamadı: ${commentId}`);
   }
 }
+
 document.getElementById("modal").addEventListener("click", function (event) {
   if (event.target === this) {
     this.style.display = "none";
   }
 });
+
 function openRemoveModal(movieId, commentId) {
   const modal = document.getElementById("modal-remove");
   if (modal) {
@@ -44,6 +49,7 @@ function openRemoveModal(movieId, commentId) {
     console.error("Delete modal not found..");
   }
 }
+
 function closeRemoveModal() {
   const modal = document.getElementById("modal-remove");
   if (modal) {
@@ -54,12 +60,14 @@ function closeRemoveModal() {
     console.error("Delete modal not found.");
   }
 }
+
 document.getElementById("yes-btn").addEventListener("click", async () => {
   if (currentMovieId && currentDeleteId) {
     await deleteComments(currentMovieId, currentDeleteId);
     closeRemoveModal();
   }
 });
+
 async function deleteComments(movieId, commentId) {
   try {
     const response = await fetch(
@@ -74,7 +82,7 @@ async function deleteComments(movieId, commentId) {
     );
     if (!response.ok) {
       const errorData = await response.json();
-      console.error("Silme Hatası:", errorData);
+      console.error("error:", errorData);
       throw new Error(errorData.message || "Deletion failed.");
     }
     comments = comments.filter((comment) => comment.id !== commentId);
@@ -84,9 +92,10 @@ async function deleteComments(movieId, commentId) {
       "Comment deleted successfully!";
     showPopup();
   } catch (error) {
-    console.error("Beklenmeyen hata:", error.message);
+    console.error("Unexpected error:", error.message);
   }
 }
+
 async function getComments() {
   try {
     const response = await fetch(
@@ -100,7 +109,7 @@ async function getComments() {
     );
     if (!response.ok) {
       const errorData = await response.json();
-      console.error("Yorum Getirme Hatası:", errorData);
+      console.error("Error in Submitting Comments:", errorData);
       throw new Error(errorData.message || `Hata kodu: ${response.status}`);
     }
     const data = await response.json();
@@ -110,16 +119,17 @@ async function getComments() {
     displayComments(comments, tbody, rowsPerPage, currentPage);
     setupPagination(comments, paginationContainer, rowsPerPage);
   } catch (error) {
-    console.error("Yorumları alırken hata oluştu:", error.message);
+    console.error("An error occurred while retrieving comments:", error.message);
   }
 }
+
 function displayComments(items, tableBody, rowsPerPage, page) {
   tableBody.innerHTML = "";
   if (items.length === 0) {
     const emptyRow = document.createElement("tr");
     emptyRow.innerHTML = `
       <td colspan="6" style="text-align:center; padding: 20px;">
-  There are currently no comments to display.
+        There are currently no comments to display.
       </td>
     `;
     tableBody.appendChild(emptyRow);
@@ -160,6 +170,7 @@ function displayComments(items, tableBody, rowsPerPage, page) {
     tableBody.appendChild(row);
   });
 }
+
 const setupPagination = (items, container, rowsPerPage) => {
   if (!container) return;
   container.innerHTML = "";
@@ -204,7 +215,7 @@ const setupPagination = (items, container, rowsPerPage) => {
     button.addEventListener("click", () => {
       if (!button.disabled) {
         currentPage = i;
-        displayTableWithPagination(items, tbody, rowsPerPage, currentPage);
+        displayComments(items, tbody, rowsPerPage, currentPage);
         setupPagination(items, container, rowsPerPage);
       }
     });
@@ -212,6 +223,7 @@ const setupPagination = (items, container, rowsPerPage) => {
     container.appendChild(button);
   });
 };
+
 function showPopup() {
   const popup = document.getElementById("popup");
   popup.classList.add("show");
@@ -219,6 +231,7 @@ function showPopup() {
     closePopup();
   }, 2000);
 }
+
 function closePopup() {
   const popup = document.getElementById("popup");
   popup.classList.remove("show");
