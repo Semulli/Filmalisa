@@ -76,7 +76,7 @@ function displayUser(items, tableBody, rowsPerPage, page) {
       <td>${startIndex + index + 1}</td>
       <td>${user.full_name}</td>
       <td>${user.email}</td>
-      <td>********</td> 
+     
     `;
     tableBody.appendChild(row);
   });
