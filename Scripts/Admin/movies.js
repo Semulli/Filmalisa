@@ -15,7 +15,7 @@ document.querySelector(".logout-div").addEventListener("click", () => {
 // Modal
 const apiURLCategories =
   "https://api.sarkhanrahimli.dev/api/filmalisa/admin/categories";
-const apiURLMovie = "https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies";
+const apiURLMovie = "https://api.sarkhanrahimli.dev/api/filmalisa/movies";
 const apiURLActors =
   "https://api.sarkhanrahimli.dev/api/filmalisa/admin/actors";
 const apiURLMovieCreate =
