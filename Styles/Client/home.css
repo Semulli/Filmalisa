@@ -117,7 +117,6 @@ body {
   color: var(--Link-hover-color);
 }
 
-
 h1 {
   font-family: var(--Font_Roboto);
   font-size: 56px;
@@ -162,10 +161,12 @@ p {
   bottom: 0;
   border-radius: 40px;
   padding: 2px;
-  background: linear-gradient(135.87deg,
-      #0feffd 1.25%,
-      #ff00f5 51.73%,
-      rgba(15, 239, 253, 0.22) 77.22%);
+  background: linear-gradient(
+    135.87deg,
+    #0feffd 1.25%,
+    #ff00f5 51.73%,
+    rgba(15, 239, 253, 0.22) 77.22%
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
@@ -173,9 +174,11 @@ p {
 }
 
 .watch-btn:hover {
-  background: linear-gradient(135.87deg,
-      rgba(15, 239, 253, 0.1),
-      rgba(255, 0, 245, 0.1));
+  background: linear-gradient(
+    135.87deg,
+    rgba(15, 239, 253, 0.1),
+    rgba(255, 0, 245, 0.1)
+  );
   color: #0feffd;
 }
 
