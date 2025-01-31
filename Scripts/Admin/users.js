@@ -58,7 +58,7 @@ function displayUser(items, tableBody, rowsPerPage, page) {
     const emptyRow = document.createElement("tr");
     emptyRow.innerHTML = `
       <td colspan="6" style="text-align:center; padding: 20px;">
-      There are currently no users to be made.
+      There are currently no users available.
       </td>
     `;
     tableBody.appendChild(emptyRow);
@@ -76,11 +76,11 @@ function displayUser(items, tableBody, rowsPerPage, page) {
       <td>${startIndex + index + 1}</td>
       <td>${user.full_name}</td>
       <td>${user.email}</td>
-     
     `;
     tableBody.appendChild(row);
   });
 }
+
 const setupPagination = (items, container, rowsPerPage) => {
   if (!container) return;
   container.innerHTML = "";
@@ -125,7 +125,7 @@ const setupPagination = (items, container, rowsPerPage) => {
     button.addEventListener("click", () => {
       if (!button.disabled) {
         currentPage = i;
-        displayTableWithPagination(items, tbody, rowsPerPage, currentPage);
+        displayUser(items, tbody, rowsPerPage, currentPage);
         setupPagination(items, container, rowsPerPage);
       }
     });
