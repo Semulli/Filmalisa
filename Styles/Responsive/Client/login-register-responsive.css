@@ -1,10 +1,9 @@
-/* ? Responsive styles for Login */
+/* ? Responsive styles for Login & Register */
 @media only screen and (max-width:1200px) {
 
     /* ? right part */
     .right-part {
-        margin: 40px 0 80px 0;
-
+        margin-block: 70px 20px;
     }
 
     h1 {
@@ -31,6 +30,12 @@
         font-size: 14px;
     }
 
+    .register-logo,
+    .login-logo {
+        width: 150px;
+    }
+
+    .register-btn,
     .login-btn {
         padding: 14px 26px;
         font-size: 14px;
@@ -40,12 +45,12 @@
 
     /* ? right part */
 
-
     /* ? Pop-up */
     .popup {
         gap: 18px;
         width: 360px;
         height: 180px;
+        padding-inline: 20px;
     }
 
     .popup p {
@@ -66,13 +71,14 @@
 
     /* ? right part */
     .right-part {
-        margin: 20px 0 60px 0;
-
+        margin-block: 70px 20px;
     }
 
+    .register-logo,
     .login-logo {
-        width: 130px;
+        width: 100px;
     }
+
 
     h1 {
         font-size: 30px;
@@ -97,6 +103,7 @@
         font-size: 10px;
     }
 
+    .register-btn,
     .login-btn {
         padding: 8px 15px;
         font-size: 14px;
@@ -108,15 +115,14 @@
         font-size: 10px;
     }
 
-    /* ? right part */
 
+    /* ? right part */
 
     /* ? Pop-up */
     .popup {
         gap: 8px;
         width: 250px;
         height: 140px;
-        padding-inline: 20px;
     }
 
     .popup p {
