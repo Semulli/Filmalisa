@@ -143,8 +143,8 @@ function displayComments(items, tableBody, rowsPerPage, page) {
     row.dataset.id = comment.id;
     row.innerHTML = `
       <td>${startIndex + index + 1}</td>
-      <td>anonymous</td>
-      <td>anonymous</td>
+      <td>${comment.user.full_name}</td>
+      <td>${comment.user.email}</td>
       <td>${comment.movie.title}</td>
       <td id="reason-${comment.id}">${
       comment.comment || "Sebep belirtilmedi."
