@@ -81,36 +81,57 @@ function displayUser(items, tableBody, rowsPerPage, page) {
     tableBody.appendChild(row);
   });
 }
-
 const setupPagination = (items, container, rowsPerPage) => {
+  if (!container) return;
   container.innerHTML = "";
-
   const pageCount = Math.ceil(items.length / rowsPerPage);
+
   let startPage = Math.max(1, currentPage - 1);
   let endPage = Math.min(pageCount, startPage + 2);
 
-  if (pageCount < 3) {
-    startPage = 1;
-    endPage = pageCount;
+  if (endPage - startPage + 1 < 3) {
+    startPage = Math.max(1, endPage - 2);
   }
 
-  for (let i = 0; i < 3; i++) {
-    const pageNumber = startPage + i;
-    if (pageNumber > pageCount) break;
+  const buttons = [];
+  for (let i = startPage; i <= endPage; i++) {
+    buttons.push(i);
+  }
 
+  while (buttons.length < 3) {
+    if (buttons[0] > 1) {
+      buttons.unshift(buttons[0] - 1);
+    } else if (buttons[buttons.length - 1] < pageCount) {
+      buttons.push(buttons[buttons.length - 1] + 1);
+    } else {
+      buttons.push(buttons.length + 1);
+    }
+  }
+
+  buttons.forEach((i) => {
     const button = document.createElement("button");
     button.classList.add("pagination-btn");
-    button.textContent = pageNumber;
-    button.classList.toggle("active", currentPage === pageNumber);
+    button.textContent = i;
+
+    if (i > pageCount) {
+      button.disabled = true;
+      button.classList.add("disabled");
+    }
+
+    if (i === currentPage) {
+      button.classList.add("active");
+    }
 
     button.addEventListener("click", () => {
-      currentPage = pageNumber;
-      displayUser(items, tbody, rowsPerPage, currentPage);
-      setupPagination(items, container, rowsPerPage);
+      if (!button.disabled) {
+        currentPage = i;
+        displayTableWithPagination(items, tbody, rowsPerPage, currentPage);
+        setupPagination(items, container, rowsPerPage);
+      }
     });
 
     container.appendChild(button);
-  }
+  });
 };
 
 window.addEventListener("load", getUser);
