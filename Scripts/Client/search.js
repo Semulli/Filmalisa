@@ -58,9 +58,9 @@ let searchInput = document.querySelector("#searchBar");
 let searchButton = document.querySelector(".search-header img");
 
 searchButton.addEventListener("click", () => {
-  // Hide movie cards and show loading text
+ 
   document.getElementById("loadingIndicator").style.display = "block";
-  card.innerHTML = "<p class='loadingMessage'>Loading...</p>"; 
+  card.innerHTML = "<p class='loadingMessage'></p>"; 
 
   searchMovies(searchInput.value);
   searchInput.value = "";
