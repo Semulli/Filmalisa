@@ -110,7 +110,7 @@ function displayFavoriteMovies(element) {
             class="content-image"
           />
           <div class="content-info">
-            <span class="content-category">${el.category}</span>
+            <span class="content-category">${el.category.name}</span>
             <div class="movie-rating" data-rating="${el.imdb}"></div>
             <p class="content-title">${el.title}</p>
           </div>
