@@ -139,6 +139,7 @@ textarea.addEventListener("input", function () {
 });
 
 // ---------------------------------------------------------------------------------------------------
+// Movie Film İD Api
 
 const urlParams = window.location.search.substring(1);
 const filmId = urlParams;
@@ -331,102 +332,71 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
   commentsContainer.insertAdjacentElement("afterend", loadMoreContainer);
 
-  const userPhotoDiv = document.getElementById("user-photo");
-  const userCommentPhotoImg = document.querySelector(".user-comment-photo img");
-  const userCommentImgs = document.querySelectorAll(
-    ".film-comments .comment .user img"
-  );
-  const userNameSpans = document.querySelectorAll(
-    ".film-comments .comment .user span"
-  );
-
   const urlSearch = window.location.search.substring(1);
-  const movieId = urlSearch.match(/^\d+$/) ? urlSearch : null;
+  const movieId = urlSearch.match(/\d+/) ? urlSearch.match(/\d+/)[0] : null;
 
   const apiCommentsUrl = `https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}/comments`;
-  const apiProfileUrl = "https://api.sarkhanrahimli.dev/api/filmalisa/profile";
-  const defaultImageUrl = "../../Assets/images/sarkhan-teacher.jpeg";
-  const userToken = sessionStorage.getItem("user_token");
+  const defaultImageUrl = "../../Assets/images/default-profile.jpg";
+
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    console.error(
+      "userId localStorage'de bulunamadı. Lütfen giriş yapmayı kontrol edin."
+    );
+    return;
+  }
 
   let allComments = [];
   let visibleCommentsCount = 3;
 
-  async function fetchCommentsAndProfile() {
+  async function fetchComments() {
     try {
-      const [profileResponse, commentsResponse] = await Promise.all([
-        fetch(apiProfileUrl, {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-            "Content-Type": "application/json",
-          },
-        }),
-        fetch(apiCommentsUrl, {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }),
-      ]);
+      const commentsResponse = await fetch(apiCommentsUrl, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+          "Content-Type": "application/json",
+        },
+      });
 
-      if (profileResponse.ok && commentsResponse.ok) {
-        const profileData = await profileResponse.json();
+      if (commentsResponse.ok) {
         const commentsData = await commentsResponse.json();
 
-        const userPhotoUrl = profileData.data.img_url || defaultImageUrl;
-        const fullName = profileData.data.full_name || "Default User";
-
-        userPhotoDiv.innerHTML = `
-            <a href="../Client/account.html" class="user-profile-photo">
-              <img src="${userPhotoUrl}" alt="${fullName}" />
-            </a>
-          `;
-
-        if (userCommentPhotoImg) {
-          userCommentPhotoImg.src = userPhotoUrl;
-          userCommentPhotoImg.alt = fullName;
-        }
-
-        userCommentImgs.forEach((img) => {
-          img.src = userPhotoUrl;
-          img.alt = fullName;
-        });
-
-        userNameSpans.forEach((span) => {
-          span.textContent = fullName;
-        });
-
-        observeNewComments(userPhotoUrl, fullName);
-
         allComments = commentsData.data.reverse();
-        renderComments(userPhotoUrl, fullName);
+        renderComments();
 
         if (allComments.length > visibleCommentsCount) {
           loadMoreContainer.style.display = "block";
         }
       } else {
         console.error(
-          "API Hatası: Profil veya Yorumlar Alınamadı.",
-          profileResponse.statusText,
+          "API Hatası: Yorumlar Alınamadı.",
           commentsResponse.statusText
         );
         commentsContainer.innerHTML =
-          "<p>Profil veya yorumlar yüklenirken bir hata oluştu.</p>";
+          "<p>Yorumlar yüklenirken bir hata oluştu.</p>";
       }
     } catch (error) {
       console.error("API çağrılarında hata oluştu:", error);
       commentsContainer.innerHTML =
-        "<p>Profil veya yorumlar yüklenirken bir hata oluştu.</p>";
+        "<p>Yorumlar yüklenirken bir hata oluştu.</p>";
     }
   }
 
-  function renderComments(photoUrl, fullName) {
+  function renderComments() {
     commentsContainer.innerHTML = "";
 
-    const commentsToShow = allComments.slice(0, visibleCommentsCount);
+    const sortedComments = [...allComments].sort((a, b) => {
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return dateB - dateA;
+    });
+
+    const commentsToShow = sortedComments.slice(0, visibleCommentsCount);
 
     commentsToShow.forEach((comment) => {
       const commentElement = document.createElement("div");
       commentElement.classList.add("comment");
-
       commentElement.setAttribute("data-comment-id", comment.id);
 
       const createdAt = new Date(comment.created_at);
@@ -434,81 +404,77 @@ document.addEventListener("DOMContentLoaded", async () => {
       const minutes = createdAt.getMinutes().toString().padStart(2, "0");
       const timeAgo = calculateTimeAgo(createdAt);
 
+      const userImage = comment.user?.img_url || defaultImageUrl;
+      const userName = comment.user?.full_name || "User";
+      const isUserComment = parseInt(comment.user?.id) === parseInt(userId);
+
       commentElement.innerHTML = `
-        <div class="user-info" style="position: relative;">
-          <div class="user">
-            <img src="${photoUrl}" alt="${fullName}" />
-            <span>${fullName}</span>
+          <div class="user-info" style="position: relative;">
+            <div class="user">
+              <img src="${userImage}" alt="${userName}" />
+              <span>${userName}</span>
+            </div>
+            <p>${hours}:${minutes} ${timeAgo}</p>
+            ${
+              isUserComment
+                ? `
+            <div class="menu-icon" style="position: absolute; top: -16px; right: -10px; cursor: pointer; display: none;">
+              <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
+              <span style="display: block; margin: 8px 0; font-size: 20px; line-height: 0;">•</span>
+              <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
+            </div>
+            <div class="side-menu" style="display: none; position: absolute; top: -25px; right: -90px; background-color: #333; color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: all 0.3s ease-in-out;">
+              <button class="delete-button" style="background: none; color: white; border: none; cursor: pointer;">Delete</button>
+            </div>
+            `
+                : ""
+            }
           </div>
-          <p>${hours}:${minutes} ${timeAgo}</p>
-          <div class="menu-icon" style="position: absolute; top: -16px; right: -10px; cursor: pointer; display: none;">
-            <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
-            <span style="display: block; margin: 8px 0; font-size: 20px; line-height: 0;">•</span>
-            <span style="display: block; margin: 1px 0; font-size: 20px; line-height: 0;">•</span>
-          </div>
-          <div class="side-menu" style="display: none; position: absolute; top: -25px; right: -90px; background-color: #333; color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: all 0.3s ease-in-out;">
-            <button class="delete-button" style="background: none; color: white; border: none; cursor: pointer;">Delete</button>
-          </div>
-        </div>
-        <p>${comment.comment}</p>
-      `;
-      const commentsToShow = allComments
-        .slice(0, visibleCommentsCount)
-        .reverse();
+          <p>${comment.comment}</p>
+        `;
 
-      commentElement.addEventListener("mouseenter", () => {
+      if (isUserComment) {
         const menuIcon = commentElement.querySelector(".menu-icon");
-        menuIcon.style.display = "block";
-      });
-
-      commentElement.addEventListener("mouseleave", () => {
-        const menuIcon = commentElement.querySelector(".menu-icon");
-        menuIcon.style.display = "none";
-      });
-
-      const menuIcon = commentElement.querySelector(".menu-icon");
-      menuIcon.addEventListener("click", (e) => {
-        e.stopPropagation();
-        closeAllSideMenus();
-
         const sideMenu = commentElement.querySelector(".side-menu");
-        sideMenu.style.display =
-          sideMenu.style.display === "block" ? "none" : "block";
 
-        document.addEventListener("click", closeSideMenuOnClickOutside);
-      });
+        commentElement.addEventListener("mouseenter", () => {
+          menuIcon.style.display = "block";
+        });
 
-      const deleteButton = commentElement.querySelector(".delete-button");
-      deleteButton.addEventListener("click", () => {
-        const sideMenu = commentElement.querySelector(".side-menu");
-        sideMenu.style.display = "none";
+        commentElement.addEventListener("mouseleave", () => {
+          menuIcon.style.display = "none";
+        });
 
-        const commentId = commentElement.getAttribute("data-comment-id");
-        if (commentId) {
-          openRemoveModal(commentId);
-        } else {
-          console.error("Yorum ID'si bulunamadı!");
-        }
-      });
+        menuIcon.addEventListener("click", (e) => {
+          e.stopPropagation();
+          closeAllSideMenus();
+          sideMenu.style.display =
+            sideMenu.style.display === "block" ? "none" : "block";
+        });
 
-      function closeSideMenuOnClickOutside(e) {
-        const sideMenu = commentElement.querySelector(".side-menu");
-        const menuIcon = commentElement.querySelector(".menu-icon");
-
-        if (
-          sideMenu &&
-          !sideMenu.contains(e.target) &&
-          !menuIcon.contains(e.target)
-        ) {
+        const deleteButton = commentElement.querySelector(".delete-button");
+        deleteButton.addEventListener("click", () => {
           sideMenu.style.display = "none";
-          document.removeEventListener("click", closeSideMenuOnClickOutside);
-        }
-      }
 
-      function closeAllSideMenus() {
-        const allSideMenus = document.querySelectorAll(".side-menu");
-        allSideMenus.forEach((menu) => {
-          menu.style.display = "none";
+          const commentId = commentElement.getAttribute("data-comment-id");
+          if (commentId) {
+            openRemoveModal(commentId);
+          } else {
+            console.error("Yorum ID'si bulunamadı!");
+          }
+        });
+
+        function closeAllSideMenus() {
+          const allSideMenus = document.querySelectorAll(".side-menu");
+          allSideMenus.forEach((menu) => {
+            menu.style.display = "none";
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          if (!sideMenu.contains(e.target) && !menuIcon.contains(e.target)) {
+            sideMenu.style.display = "none";
+          }
         });
       }
 
@@ -522,7 +488,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function calculateTimeAgo(date) {
     const now = new Date();
-    const diffInMs = now - date;
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const givenDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
+
+    const diffInMs = today - givenDate;
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
     if (diffInDays === 0) {
@@ -534,54 +507,100 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  function observeNewComments(photoUrl, fullName) {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1 && node.classList.contains("comment")) {
-            const newImg = node.querySelector(".user img");
-            const newSpan = node.querySelector(".user span");
-            if (newImg) {
-              newImg.src = photoUrl;
-              newImg.alt = fullName;
-            }
-            if (newSpan) {
-              newSpan.textContent = fullName;
-            }
-          }
-        });
-      });
-    });
-
-    const filmCommentsContainer = document.querySelector(".film-comments");
-    if (filmCommentsContainer) {
-      observer.observe(filmCommentsContainer, {
-        childList: true,
-        subtree: true,
-      });
-    }
-  }
-
   loadMoreContainer
     .querySelector(".load-more-btn")
     .addEventListener("click", () => {
       visibleCommentsCount += 5;
-      const userPhotoUrl = userCommentImgs[0]?.src || defaultImageUrl;
-      const fullName = userNameSpans[0]?.textContent || "Default User";
-      renderComments(userPhotoUrl, fullName);
+      renderComments();
     });
 
-  window.fetchCommentsAndProfile = fetchCommentsAndProfile;
+  window.fetchComments = fetchComments;
 
-  document.addEventListener("DOMContentLoaded", async () => {
-    await fetchCommentsAndProfile();
-  });
-
-  await fetchCommentsAndProfile();
+  await fetchComments();
 });
 
 // ---------------------------------------------------------------------------------------------------
 // Favorite Api
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const favoriteButton = document.getElementById("favorite-btn");
+
+  if (!favoriteButton) {
+    console.error("Favorite button not found.");
+    return;
+  }
+
+  const userToken = sessionStorage.getItem("user_token");
+  if (!userToken) {
+    console.error("User token not found in sessionStorage.");
+    return;
+  }
+
+  const url = window.location.href;
+  const movieId = url.split("?")[1];
+  if (!movieId) {
+    console.error("Movie ID not found in URL.");
+    return;
+  }
+
+  const apiUrlBase = "https://api.sarkhanrahimli.dev/api/filmalisa/movies";
+  const movieApiUrl = `${apiUrlBase}/${movieId}`;
+
+  try {
+    const response = await fetch(movieApiUrl, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const movieData = await response.json();
+
+    const isFavorite = movieData.data.is_favorite;
+
+    if (isFavorite) {
+      favoriteButton.classList.add("active");
+      favoriteButton.style.border = "2px solid #00FF00";
+      favoriteButton.innerHTML = `
+        <svg
+          viewBox="8 8 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 16L14 20L22 12"
+            stroke="#00FF00"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>`;
+    } else {
+      favoriteButton.classList.remove("active");
+      favoriteButton.style.border = "2px solid #fff";
+      favoriteButton.innerHTML = `
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7.2 7.2L7.2 0H8.8L8.8 7.2L16 7.2V8.8L8.8 8.8L8.8 16H7.2L7.2 8.8L0 8.8V7.2L7.2 7.2Z"
+            fill="white"
+          />
+        </svg>`;
+    }
+  } catch (error) {
+    console.error("Error fetching movie data:", error);
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const favoriteButton = document.getElementById("favorite-btn");
@@ -589,8 +608,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   favoriteButton.addEventListener("click", async () => {
     const movieId = favoriteButton.getAttribute("data-movie-id");
-    const movieTitle = favoriteButton.getAttribute("data-movie-title");
-    const localStorageKey = `favorite_${movieId}`;
     const apiUrlFavorite = `${apiUrlBase}/${movieId}/favorite`;
 
     try {
@@ -609,22 +626,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (favoriteButton.classList.contains("active")) {
           favoriteButton.style.border = "2px solid #00FF00";
-
           favoriteButton.innerHTML = `
-      <svg
-        viewBox="8 8 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10 16L14 20L22 12"
-          stroke="#00FF00"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>`;
-          localStorage.setItem(localStorageKey, "true");
+        <svg
+          viewBox="8 8 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 16L14 20L22 12"
+            stroke="#00FF00"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>`;
         } else {
           favoriteButton.style.border = "2px solid #fff";
           favoriteButton.innerHTML = `
@@ -641,9 +656,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 d="M7.2 7.2L7.2 0H8.8L8.8 7.2L16 7.2V8.8L8.8 8.8L8.8 16H7.2L7.2 8.8L0 8.8V7.2L7.2 7.2Z"
                 fill="white"
               />
-            </svg>
-          `;
-          localStorage.removeItem(localStorageKey);
+            </svg>`;
         }
       } else {
         console.error("Failed to toggle favorite:", response.statusText);
@@ -652,46 +665,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error toggling favorite:", error);
     }
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const favoriteButton = document.getElementById("favorite-btn");
-
-  if (!favoriteButton) {
-    console.error("Favorite button not found.");
-    return;
-  }
-
-  const url = new URL(window.location.href);
-  const movieId = url.search.substring(1);
-
-  if (!movieId) {
-    console.error("Movie ID not found in URL.");
-    return;
-  }
-
-  const localStorageKey = `favorite_${movieId}`;
-
-  if (localStorage.getItem(localStorageKey) === "true") {
-    favoriteButton.classList.add("active");
-
-    favoriteButton.style.border = "2px solid #00FF00";
-
-    favoriteButton.innerHTML = `
-      <svg
-        viewBox="8 8 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10 16L14 20L22 12"
-          stroke="#00FF00"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>`;
-  }
 });
 
 // ---------------------------------------------------------------------------------------------------
@@ -734,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("pop-p").textContent =
           "Your comment has been sent successfully.";
         showPopup();
-        fetchCommentsAndProfile();
+        fetchComments();
 
         commentTextarea.value = "";
       } else {
@@ -922,7 +895,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showPopup();
         removeModal.style.display = "none";
         removeModal.removeAttribute("data-actor-id");
-        fetchCommentsAndProfile();
+        fetchComments();
       } else if (response.status === 400) {
         document.getElementById("pop-p").textContent =
           "You can't delete someone else's message.";
@@ -945,6 +918,56 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ----------------------------------------------------------------------------------------------------------------
+// Profile Get Api
+
+async function fetchUserProfile() {
+  try {
+    const token = sessionStorage.getItem("user_token");
+    if (!token) {
+      throw new Error("Yetkilendirme hatası: Token bulunamadı");
+    }
+
+    const response = await fetch(
+      "https://api.sarkhanrahimli.dev/api/filmalisa/profile",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Kullanıcı bilgileri alınamadı");
+    }
+
+    const responseData = await response.json();
+    const userData = responseData.data;
+
+    const defaultImageUrl = "../../Assets/images/default-profile.jpg";
+    const userPhotoUrl = userData?.img_url || defaultImageUrl;
+    const userId = userData.id;
+
+    const mainUserPhoto = document.querySelector(".user-profile-photo img");
+    if (mainUserPhoto) {
+      mainUserPhoto.src = userPhotoUrl;
+    }
+
+    const commentUserPhoto = document.querySelector(".user-comment-photo img");
+    if (commentUserPhoto) {
+      commentUserPhoto.src = userPhotoUrl;
+    }
+
+    localStorage.setItem("userId", userId);
+  } catch (error) {
+    console.error("Hata:", error);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", fetchUserProfile);
+
+// ----------------------------------------------------------------------------------------------------------------
+// Modals
 
 function openRemoveModal(id) {
   const removeModal = document.getElementById("modal-remove");
