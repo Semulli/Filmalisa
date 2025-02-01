@@ -48,11 +48,27 @@ window.addEventListener("load", () => {
   });
 
   container.addEventListener("mousemove", (e) => {
-    if (!isDown || !isDrag) return;
+    if (!isDown) return;
     e.preventDefault();
+    isDrag = true;
+
     const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 1.5;
     container.scrollLeft = scrollLeft - walk;
+  });
+
+  container.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+
+  document.querySelectorAll(".content-card img").forEach((img) => {
+    img.addEventListener("dragstart", (e) => {
+      e.preventDefault();
+    });
+  });
+
+  document.addEventListener("dragstart", (e) => {
+    e.preventDefault();
   });
 
   getFavoriteMovies();
@@ -96,7 +112,8 @@ function displayFavoriteMovies(element) {
   }
 
   if (element.data.length === 0) {
-    container.innerHTML = "<p class='empty-message'>No favorite movies added yet.</p>";
+    container.innerHTML =
+      "<p class='empty-message'>No favorite movies added yet.</p>";
     return;
   }
 

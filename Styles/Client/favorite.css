@@ -1,13 +1,11 @@
 @import url("../../Global/global.css");
 @import url("../Responsive/Client/favorite-responsive.css");
 
-
-body, html{
+body,
+html {
   overflow-x: hidden;
   margin: 0;
-  
 }
-
 
 .client-login {
   display: flex;
@@ -24,7 +22,7 @@ body, html{
   flex-direction: column;
   justify-content: flex-start;
   width: 56px;
-  
+
   position: absolute;
   left: 0;
   top: 0;
@@ -56,21 +54,21 @@ body, html{
 
 .icon:hover {
   color: #1d1d1d;
-  transform: scale(1.2); 
-  filter: brightness(2); 
-  z-index: 20; 
+  transform: scale(1.2);
+  filter: brightness(2);
+  z-index: 20;
 }
 
 .icon-img {
   filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-  hue-rotate(160deg) brightness(101%) contrast(102%);
+    hue-rotate(160deg) brightness(101%) contrast(102%);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .icon:hover .icon-img {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-  hue-rotate(160deg) brightness(101%) contrast(102%);
+    hue-rotate(160deg) brightness(101%) contrast(102%);
 }
 
 .section-container {
@@ -99,9 +97,34 @@ body, html{
   display: flex;
   padding-top: 48px;
   gap: 5px;
-  overflow-x:auto;
- 
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
   cursor: grab;
+  scrollbar-width: none;
+}
+
+.content-container::-webkit-scrollbar {
+  display: none;
+}
+.content-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.content-container::-webkit-scrollbar-track {
+  background-color: #222;
+}
+
+.content-card {
+  flex: 0 0 auto;
+  width: 404px;
+  height: 636px;
+}
+
+.section-container {
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 .content-container.active {
@@ -178,21 +201,20 @@ body, html{
   line-height: 40px;
 }
 
-
 .star {
   font-size: 20px;
   margin-right: 2px;
   display: inline-block;
-  color: #ccc; /* Boş yıldız */
+  color: #ccc;
   position: relative;
 }
 
 .star::before {
-  content: "★"; /* Boş yıldız */
+  content: "★";
 }
 
 .star.filled {
-  color: gold; /* Dolu yıldız */
+  color: gold;
 }
 
 .star.half {
@@ -206,5 +228,4 @@ body, html{
   color: #bcbcbc;
   text-align: center;
   margin: 0 auto;
-  
 }
