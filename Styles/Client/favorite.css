@@ -17,58 +17,61 @@ html {
   height: 56px;
 }
 
-.side-bar {
+.left {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 56px;
-
   position: absolute;
+  z-index: 999;
   left: 0;
-  top: 0;
-  z-index: 10;
-  margin-top: 8px;
+  flex-direction: column;
+  align-items: center;
+  width: 56px;
+  background: #1d1d1d80;
   padding-top: 40px;
   backdrop-filter: blur(24px);
-  gap: 64px;
+  box-shadow: 0px 40px 40px 8px #00000029;
 }
 
-.logo_links {
+.logo-div {
+  margin-bottom: 64px;
+}
+
+.sidebar {
+  width: 32px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 80px;
-  padding: 0 12px;
+  align-items: center;
 }
 
-.logos {
-  filter: brightness(1.8);
-  scroll-behavior: smooth;
-}
 .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  cursor: pointer;
+  margin-bottom: 80px;
+  display: block;
+  text-align: center;
+}
+
+.icon img {
+  width: 32px;
+  height: 32px;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.icon img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
 
 .icon:hover {
-  color: #1d1d1d;
-  transform: scale(1.2);
-  filter: brightness(2);
-  z-index: 20;
+  cursor: pointer;
 }
 
 .icon-img {
-  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-    hue-rotate(160deg) brightness(101%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .icon:hover .icon-img {
   transform: scale(1.2);
-  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-    hue-rotate(160deg) brightness(101%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
 }
 
 .section-container {
@@ -107,6 +110,7 @@ html {
 .content-container::-webkit-scrollbar {
   display: none;
 }
+
 .content-container::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 4px;
@@ -130,6 +134,7 @@ html {
 .content-container.active {
   cursor: grabbing;
 }
+
 .content-card {
   overflow: hidden;
   width: 404px;

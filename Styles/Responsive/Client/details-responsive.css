@@ -300,6 +300,7 @@
         position: fixed;
         bottom: 0;
         left: 0;
+        height: 45px;
         width: 100%;
         height: auto;
         flex-direction: row;
@@ -367,7 +368,9 @@
         gap: 20px;
         padding-block: 30px;
     }
-
+    .film-information .film-image{
+        height: 400px;
+    }
     .film-information .film-image img {
         object-fit: cover;
         width: 90%;
@@ -578,6 +581,7 @@
     }
     .movies-slider{
         padding-bottom: 50px;
+        height: 450px;
     }
     .movie-desc {
         z-index: 3;

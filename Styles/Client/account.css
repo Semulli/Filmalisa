@@ -1,63 +1,69 @@
 @import url("../../Global/global.css");
-@import url("../Responsive/Client/account-responsive.css");
 
 .account-body {
   display: flex;
 }
+
 .main-logo {
   width: 56px;
   height: 56px;
 }
 
-.side-bar {
+.left {
   display: flex;
+  position: absolute;
+  z-index: 999;
+  left: 0;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
   width: 56px;
-  
+  background: #1d1d1d80;
   padding-top: 40px;
   backdrop-filter: blur(24px);
   box-shadow: 0px 40px 40px 8px #00000029;
-  gap: 64px;
 }
 
-.logo_links {
+.logo-div {
+  margin-bottom: 64px;
+}
+
+.sidebar {
+  width: 32px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 80px;
-  padding: 0 12px;
-}
-
-.logos {
-  filter: brightness(1.8);
-  scroll-behavior: smooth;
+  align-items: center;
 }
 
 .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  cursor: pointer;
+  margin-bottom: 80px;
+  display: block;
+  text-align: center;
+}
+
+.icon img {
+  width: 32px;
+  height: 32px;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.icon img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
 
 .icon:hover {
-  color: #1d1d1d;
-  transform: scale(1.2);
-  filter: brightness(2);
-  z-index: 20;
+  cursor: pointer;
 }
 
 .icon-img {
-  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-    hue-rotate(160deg) brightness(101%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .icon:hover .icon-img {
   transform: scale(1.2);
-  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%)
-    hue-rotate(160deg) brightness(101%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
 }
 
 .right-part {
@@ -88,6 +94,7 @@ form {
   width: 547px;
   margin-bottom: 16px;
 }
+
 .form-group img {
   margin: 20px 16px;
 }
@@ -135,6 +142,7 @@ nav {
   display: flex;
   justify-content: flex-start;
 }
+
 a {
   color: var(--Link-color);
 }
@@ -180,6 +188,7 @@ input:-webkit-autofill:focus {
     opacity: 0;
     transform: translate(-50%, -60%);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, -50%);
