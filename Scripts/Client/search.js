@@ -1,6 +1,5 @@
 async function getAllMovies() {
   try {
-    
     document.getElementById("loadingIndicator").style.display = "block";
 
     let response = await fetch(
@@ -25,13 +24,30 @@ async function getAllMovies() {
     document.getElementById("loadingIndicator").style.display = "none";
   } catch (error) {
     console.log("Unexpected error happened:", error);
-    document.getElementById("loadingIndicator").style.display = "none"; 
+    document.getElementById("loadingIndicator").style.display = "none";
   }
 }
 
 let card = document.querySelector("#moviePart");
 
 function displayAllMovies(movie) {
+  if (movie.data.length === 0) {
+    card.innerHTML = `
+        <div class="right-part">
+          <figure>
+            <img src="../../Assets/icons/404/filmrolls.svg" alt="" />
+          </figure>
+          <h1>Lost your way?</h1>
+          <p>
+            Oops! This is awkward. You are looking for something that doesn't
+            actually exist.
+          </p>
+          <a href="./home.html" class="btn">Go Home</a>
+        </div>
+      `;
+    return;
+  }
+
   card.innerHTML = movie.data
     .map((el) => {
       return `
@@ -58,9 +74,8 @@ let searchInput = document.querySelector("#searchBar");
 let searchButton = document.querySelector(".search-header img");
 
 searchButton.addEventListener("click", () => {
- 
   document.getElementById("loadingIndicator").style.display = "block";
-  card.innerHTML = "<p class='loadingMessage'></p>"; 
+  card.innerHTML = "<p class='loadingMessage'></p>";
 
   searchMovies(searchInput.value);
   searchInput.value = "";
@@ -98,10 +113,21 @@ async function searchMovies(movieName) {
 
 function displaySearchResult(result) {
   if (result.data.length === 0) {
-    card.innerHTML = "<p class='filmMessage'>This film doesn't exist.</p>";
+    card.innerHTML = `
+      <div class="right-part">
+        <figure>
+          <img src="../../Assets/icons/404/filmrolls.svg" alt="" />
+        </figure>
+        <h1>Lost your way?</h1>
+        <p>
+          Oops! This is awkward. You are looking for something that doesn't
+          actually exist.
+        </p>
+        <a href="./home.html" class="btn">Go Home</a>
+      </div>
+    `;
     return;
   }
-
   card.innerHTML = result.data
     .map((el) => {
       return `
