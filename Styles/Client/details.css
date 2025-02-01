@@ -1,12 +1,10 @@
 @import url("../../Global/reset.css");
 @import url("../../Global//font.css");
-@import url("../Responsive/Client/details-responsive.css");
 
 .left {
   display: flex;
-  position: fixed;
-  z-index: 13;
-  top: 0;
+  position: absolute;
+  z-index: 999;
   left: 0;
   flex-direction: column;
   align-items: center;
@@ -45,6 +43,21 @@
   filter: grayscale(0%);
   transform: scale(1.1);
 }
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.icon-img {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.icon:hover .icon-img {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(696%) hue-rotate(160deg) brightness(101%) contrast(102%);
+}
+
 
 .icon:hover {
   cursor: pointer;
@@ -96,13 +109,11 @@ main {
   right: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(
-    to bottom,
-    #362c9258 20%,
-    #362c92a0 40%,
-    #1262977b 60%,
-    #126297
-  );
+  background: linear-gradient(to bottom,
+      #362c9258 20%,
+      #362c92a0 40%,
+      #1262977b 60%,
+      #126297);
 }
 
 #film-bg-image .film-bg {
@@ -345,6 +356,7 @@ main {
 .film-modal-info.hide {
   opacity: 0;
 }
+
 /* ? MODAL */
 
 .film-description {
@@ -760,16 +772,18 @@ main {
 
 .movie-overlay {
   position: absolute;
-  background: linear-gradient(
-    180deg,
-    rgba(29, 29, 29, 0) 0%,
-    rgba(29, 29, 29, 0.8) 80%
-  );
+  background: linear-gradient(180deg,
+      rgba(29, 29, 29, 0) 0%,
+      rgba(29, 29, 29, 0.8) 80%);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
+}
+
+.film-actors {
+  font-family: var(--Font_Roboto);
 }
 
 .movie img {

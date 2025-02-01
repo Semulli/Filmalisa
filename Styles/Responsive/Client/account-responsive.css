@@ -1,1 +1,208 @@
 /* Responsive styles for Account */
+
+@media only screen and (max-width:1200px) {
+
+    /* ? Navbar */
+    .left {
+        width: 54px;
+    }
+
+    .logo-div {
+        margin-bottom: 60px;
+    }
+
+    .icon {
+        margin-bottom: 60px;
+    }
+
+    .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ? Navbar */
+
+    .right-part {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .form-group {
+
+        width: 500px;
+        margin-bottom: 14px;
+    }
+
+    .form-group img {
+        margin: 15px 10px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+    }
+
+    .register-btn {
+        padding: 14px 28px 14px 28px;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 20px;
+    }
+
+    .image-frame {
+        width: 170px;
+        height: 170px;
+    }
+
+    #image {
+        object-fit: cover;
+    }
+
+    .popup {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 150px;
+        background-color: #1e1e1e;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .popup p {
+        margin: 15px 0;
+        font-size: 16px;
+    }
+
+    .button-container {
+        gap: 14px;
+    }
+
+    .close-btn {
+        width: 70px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+
+    /* ? Navbar */
+    .left {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: #1d1d1d;
+    }
+
+    .logo-div {
+        display: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .icon {
+        margin-bottom: 0;
+    }
+
+    .icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* ? Navbar */
+
+    .right-part {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+
+    .form-group {
+
+        width: 300px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .form-group img {
+        margin: 10px 8px;
+    }
+
+    .form-group input {
+        font-size: 10px;
+    }
+
+    .register-btn {
+        padding: 6px 15px 6px 15px;
+        font-size: 10px;
+        line-height: 20px;
+        margin-top: 10px;
+    }
+
+    .image-frame {
+        width: 120px;
+        height: 120px;
+    }
+
+    .popup {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        padding: 10px;
+        height: 100px;
+        background-color: #1e1e1e;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .popup p {
+        margin: 15px 0;
+        font-size: 16px;
+    }
+
+    .button-container {
+        gap: 14px;
+    }
+
+    .close-btn {
+        width: 70px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+}

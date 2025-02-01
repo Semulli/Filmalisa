@@ -1,1 +1,167 @@
 /* Responsive styles for Favorite */
+
+
+@media only screen and (max-width:1200px) {
+
+    /* ? Navbar */
+    .left {
+        width: 54px;
+    }
+
+    .logo-div {
+        margin-bottom: 60px;
+    }
+
+    .icon {
+        margin-bottom: 60px;
+    }
+
+    .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ? Navbar */
+
+    .section-container {
+        margin-bottom: 120px;
+        margin-left: 56px;
+    }
+
+    .section-header {
+        margin-left: 10px;
+    }
+
+    .section-title {
+        font-size: 30px;
+        padding-top: 130px;
+    }
+
+    .content-container {
+        padding-top: 40px;
+    }
+
+    .content-card {
+        width: 350px;
+        height: 500px;
+    }
+
+    .direction-icon {
+        margin-top: 135px;
+        margin-left: 10px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .content-image {
+        height: 100%;
+        width: 100%;
+    }
+
+    .content-info {
+        padding: 14px;
+    }
+
+    .content-category {
+        font-size: 12px;
+    }
+
+    .content-title {
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 30px;
+    }
+
+    .star {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+
+    /* ? Navbar */
+    .left {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: #1d1d1d;
+    }
+
+    .logo-div {
+        display: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .icon {
+        margin-bottom: 0;
+    }
+
+    .icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* ? Navbar */
+
+
+    .section-container {
+        margin-bottom: 100px;
+        margin-left: 10px;
+    }
+
+    .section-header {
+        margin-left: 0;
+    }
+
+    .section-title {
+        font-size: 20px;
+        padding-top: 80px;
+    }
+
+    .content-container {
+        padding-top: 30px;
+    }
+
+    .content-card {
+        width: 250px;
+        height: 350px;
+    }
+
+    .direction-icon {
+        margin-top: 80px;
+        margin-left: 5px;
+        width: 8px;
+        height: 8px;
+    }
+
+
+    .content-info {
+        padding: 10px;
+    }
+
+    .content-category {
+        font-size: 10px;
+    }
+
+    .content-title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .star {
+        font-size: 10px;
+    }
+}
