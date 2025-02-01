@@ -185,6 +185,7 @@ main {
   -moz-transition: all 0.3 ease-in;
   -ms-transition: all 0.3 ease-in;
   -o-transition: all 0.3 ease-in;
+  object-fit: cover;
 }
 
 .film-information .film-image .overlay {
@@ -218,6 +219,11 @@ main {
   -moz-border-radius: 25px;
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
+  object-fit: cover;
+}
+
+.film-image {
+  height: 786px;
 }
 
 .film-overlay {
@@ -370,7 +376,6 @@ main {
   font-size: 30px;
   font-weight: 700;
   color: #ebeef5;
-  letter-spacing: 1.5px;
   line-height: 32px;
 }
 
@@ -413,11 +418,15 @@ main {
 }
 
 .film-text {
+  max-height: 190px;
   font-weight: 400;
   font-size: 22px;
   line-height: 32px;
   color: #8e95a9;
   padding-block: 24px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  margin-bottom: 10px;
 }
 
 .film-score {
@@ -744,6 +753,7 @@ main {
 
 .movie {
   position: relative;
+  margin-bottom: 132px;
 }
 
 .movie-overlay {
@@ -762,6 +772,20 @@ main {
 
 .movie img {
   width: 504px;
+  height: 708px;
+  object-fit: cover;
+}
+
+.movie:hover img {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.movie:hover .movie-desc {
+  transform: translateY(-20%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .movie-desc {
