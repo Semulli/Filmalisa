@@ -1,1 +1,186 @@
 /* Responsive styles for Search */
+
+@media only screen and (max-width:1200px) {
+
+    /* ? Navbar */
+    .left {
+        width: 54px;
+    }
+
+    .logo-div {
+        margin-bottom: 60px;
+    }
+
+    .icon {
+        margin-bottom: 60px;
+    }
+
+    .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ? Navbar */
+
+    .search-panel {
+        padding-top: 130px;
+        padding-left: 56px;
+    }
+
+    .search-title {
+        font-size: 30px;
+        line-height: 20px;
+    }
+
+    .search-bar {
+        width: 250px;
+    }
+
+    input::placeholder {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .movie-part {
+        gap: 14px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    .movie-card {
+        width: 280px;
+        height: 400px;
+    }
+
+    .movie-poster {
+        width: 100%;
+        height: 100%;
+    }
+
+    .movie-info {
+        padding: 14px;
+
+    }
+
+    .movie-title {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .movie-genre {
+        height: 24px;
+        width: 60px;
+        font-size: 13px;
+        line-height: 14px;
+    }
+}
+
+
+@media only screen and (max-width:768px) {
+
+    /* ? Navbar */
+    .left {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: #1d1d1d;
+    }
+
+    .logo-div {
+        display: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .icon {
+        margin-bottom: 0;
+    }
+
+    .icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* ? Navbar */
+
+    .search-panel {
+        padding-top: 100px;
+        padding-left: 10px;
+    }
+
+    .search-header {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .search-title {
+        font-size: 20px;
+        line-height: 15px;
+    }
+
+    .search-bar {
+        width: 200px;
+        height: 30px;
+    }
+
+    input::placeholder {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    .movie-part {
+
+        gap: 10px;
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
+    .direction-icon {
+        margin-top: 4px;
+        margin-left: 15px;
+        width: 12px;
+        height: 12px;
+        border-right: 3.5px solid #ffffff;
+        border-top: 3.5px solid #ffffff;
+        transform: rotate(45deg);
+    }
+
+    form img {
+        width: 50px;
+    }
+
+    .movie-card {
+        width: 150px;
+        height: 250px;
+    }
+
+
+    .movie-info {
+        padding: 14px;
+
+    }
+
+    .movie-title {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .movie-genre {
+        height: 24px;
+        width: 40px;
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
