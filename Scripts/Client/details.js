@@ -988,7 +988,7 @@ function closeRemoveModal(commentId) {
 }
 
 // ----------------------------------------------------------------------------------------------------------------
-// PopUp
+// PopUp.
 
 function showPopup() {
   const popup = document.getElementById("popup");
