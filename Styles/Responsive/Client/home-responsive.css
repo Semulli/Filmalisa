@@ -116,24 +116,37 @@
 
     /* ? Navbar */
     .left {
-        width: 40px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: #1d1d1d;
     }
 
     .logo-div {
-        margin-bottom: 40px;
+        display: none;
     }
 
-    .logo-div img {
-        width: 35px;
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
     }
 
     .icon {
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
 
     .icon img {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     /* ? Navbar */
@@ -148,7 +161,7 @@
     }
 
     .text-overlay {
-        margin-left: 130px;
+        margin-inline: 10px;
         max-width: 550px;
     }
 
@@ -159,7 +172,7 @@
     }
 
     p {
-        font-size: 12px;
+        font-size: 8px;
         line-height: 1.1;
         margin-bottom: 12px;
     }
@@ -176,7 +189,7 @@
     }
 
     .category-section {
-        padding-left: 35px;
+        padding-left: 5px;
     }
 
     .category-card {
@@ -184,119 +197,8 @@
     }
 
     .movie-card {
-        width: 200px;
-        height: 300px;
-    }
-
-    .category-header {
-        margin: 20px 0px 10px 30px;
-    }
-
-    .category-P {
-        font-size: 18px;
-        line-height: 24px;
-    }
-
-    .chevron-icon {
-        margin-left: 10px;
-        width: 8px;
-        height: 8px;
-    }
-
-    .movie-details {
-        padding: 15px;
-    }
-
-    .movie-category {
-        font-size: 10px;
-    }
-
-    .movie-title {
-        font-size: 14px;
-        line-height: 22px;
-        padding-top: 8px;
-    }
-
-    .star {
-        font-size: 12px;
-        padding-top: 8px;
-    }
-}
-
-@media only screen and (max-width:768px) {
-
-    /* ? Navbar */
-    .left {
-        width: 40px;
-    }
-
-    .logo-div {
-        margin-bottom: 40px;
-    }
-
-    .logo-div img {
-        width: 35px;
-    }
-
-    .icon {
-        margin-bottom: 40px;
-    }
-
-    .icon img {
-        width: 20px;
-        height: 20px;
-    }
-
-    /* ? Navbar */
-
-
-    .right {
-        padding-bottom: 80px;
-    }
-
-    .carousel-container {
-        height: 550px;
-    }
-
-    .text-overlay {
-        margin-left: 130px;
-        max-width: 550px;
-    }
-
-    h1 {
-        font-size: 24px;
-        line-height: 25px;
-        margin-bottom: 14px;
-    }
-
-    p {
-        font-size: 12px;
-        line-height: 1.1;
-        margin-bottom: 12px;
-    }
-
-    .watch-btn {
-        width: 120px;
-        height: 30px;
-        font-size: 10px;
-    }
-
-    .carousel-buttons {
-        bottom: 14px;
-        gap: 6px;
-    }
-
-    .category-section {
-        padding-left: 35px;
-    }
-
-    .category-card {
-        gap: 10px;
-    }
-
-    .movie-card {
-        width: 200px;
-        height: 300px;
+        width: 150px;
+        height: 200px;
     }
 
     .category-header {
